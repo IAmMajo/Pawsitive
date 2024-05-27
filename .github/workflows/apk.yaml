@@ -8,7 +8,7 @@ jobs:
       - uses: actions/setup-java@v4.2.1
         with:
           distribution: temurin
-          java-version: 17.0.11+9
+          java-version: 22.0.1+8
       - uses: android-actions/setup-android@v3.2.1
         with:
           cmdline-tools-version: 11076708

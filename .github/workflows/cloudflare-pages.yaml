@@ -8,13 +8,13 @@ jobs:
       - uses: actions/setup-java@v4.2.1
         with:
           distribution: temurin
-          java-version: 17.0.11+9
+          java-version: 22.0.1+8
       - run: |
           chmod +x gradlew
-          ./gradlew wasmJsBrowserProductionWebpack
-      - uses: cloudflare/wrangler-action@v3.5.0
+          ./gradlew wasmJsBrowserDistribution
+      - uses: cloudflare/wrangler-action@v3.6.1
         with:
-          wranglerVersion: 3.57.0
+          wranglerVersion: 3.57.1
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 9839aabb4253ed85d80549a8f99ee832
           command: >
