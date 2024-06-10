@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -50,10 +52,12 @@ fun App() {
         Scaffold (
             bottomBar = {
                 NavigationBar(
+                    containerColor = Color.White,
                     modifier =
                         Modifier
                             .padding(Dp(10f))
                             .clip(RoundedCornerShape(Dp(20f)))
+                            .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
                 )
                 {
                     NavigationBarItem(
