@@ -1,0 +1,7 @@
+<resources>
+    <string name="search">Suchen</string>
+    <string name="rate">Bewerten</string>
+    <string name="favorites">Favoriten</string>
+    <string name="map">Karte</string>
+    <string name="profile">Profil</string>
+</resources>
