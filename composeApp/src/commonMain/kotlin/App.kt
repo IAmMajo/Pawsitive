@@ -34,6 +34,12 @@ import ui.ProfileScreen
 import ui.RateScreen
 import ui.SearchScreen
 
+
+
+
+////// VALUE SECTION ///////
+
+/// CLASSES ///
 enum class Screen {
     Search,
     Rate,
@@ -42,6 +48,14 @@ enum class Screen {
     Profile,
 }
 
+/// VALUES ///
+val BoxModifier = Modifier
+    .padding(Dp(10f))
+    .clip(RoundedCornerShape(Dp(20f)))
+    .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
+
+
+////// COMPOSABLE SECTION ///////
 @Composable
 @Preview
 fun App() {
@@ -53,11 +67,7 @@ fun App() {
             bottomBar = {
                 NavigationBar(
                     containerColor = Color.White,
-                    modifier =
-                        Modifier
-                            .padding(Dp(10f))
-                            .clip(RoundedCornerShape(Dp(20f)))
-                            .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
+                    modifier = BoxModifier
                 )
                 {
                     NavigationBarItem(
