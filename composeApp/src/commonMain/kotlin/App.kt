@@ -51,7 +51,7 @@ enum class Screen {
 /// VALUES ///
 val BoxModifier = Modifier
     .padding(Dp(10f))
-    .clip(RoundedCornerShape(Dp(20f)))
+    .clip(RoundedCornerShape(Dp(15f)))
     .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
 
 
