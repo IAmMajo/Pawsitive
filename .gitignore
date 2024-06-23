@@ -16,3 +16,9 @@ captures
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
+
+# amplify
+node_modules
+.amplify
+amplify_outputs*
+amplifyconfiguration*
