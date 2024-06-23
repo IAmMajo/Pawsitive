@@ -3,10 +3,10 @@ import { defineStorage } from '@aws-amplify/backend';
 export const storage = defineStorage({
   name: 'storage',
   access: (allow) => ({
-    'vet-pictures': [
+    'vet-pictures/*': [
       allow.guest.to(['get']),
     ],
-    'clinic-pictures': [
+    'clinic-pictures/*': [
       allow.guest.to(['get']),
     ],
     'pet-pictures/{entity_id}/*': [
