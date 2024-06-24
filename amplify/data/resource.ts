@@ -104,6 +104,7 @@ const schema = a.schema({
     .authorization((allow) => [allow.guest().to(['read']), allow.owner()]),
   Service: a.
     model({
+      id: a.string().required(),
       name: a.string().required(),
       categoryId: a.id().required(),
       category: a.belongsTo('ServiceCategory', 'categoryId'),
