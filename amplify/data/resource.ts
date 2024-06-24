@@ -43,7 +43,7 @@ const schema = a.schema({
       vet: a.belongsTo('Vet', 'vetId'),
       services: a.hasMany('VetRatingService', 'ratingId'),
       pets: a.hasMany('VetRatingPet', 'ratingId'),
-      owner: a.string().authorization(allow => [allow.owner().to(['read', 'delete'])]),
+      owner: a.string().required().authorization(allow => [allow.owner().to(['read', 'delete'])]),
     })
     .authorization((allow) => [allow.guest().to(['read']), allow.owner()]),
   ClinicRating: a.
@@ -54,7 +54,7 @@ const schema = a.schema({
       date: a.datetime().required(),
       clinic: a.belongsTo('Clinic', 'clinicId'),
       pets: a.hasMany('ClinicRatingPet', 'ratingId'),
-      owner: a.string().authorization(allow => [allow.owner().to(['read', 'delete'])]),
+      owner: a.string().required().authorization(allow => [allow.owner().to(['read', 'delete'])]),
     })
     .authorization((allow) => [allow.guest().to(['read']), allow.owner()]),
   VetRatingService: a.
@@ -63,7 +63,7 @@ const schema = a.schema({
       serviceId: a.id().required(),
       rating: a.belongsTo('VetRating', 'ratingId'),
       service: a.belongsTo('Service', 'serviceId'),
-      owner: a.string().authorization(allow => [allow.owner().to(['read', 'delete'])]),
+      owner: a.string().required().authorization(allow => [allow.owner().to(['read', 'delete'])]),
     })
     .identifier(['ratingId', 'serviceId'])
     .authorization((allow) => [allow.guest().to(['read']), allow.owner()]),
@@ -83,7 +83,7 @@ const schema = a.schema({
       petId: a.id().required(),
       rating: a.belongsTo('ClinicRating', 'ratingId'),
       pet: a.belongsTo('Pet', 'petId'),
-      owner: a.string().authorization(allow => [allow.owner().to(['read', 'delete'])]),
+      owner: a.string().required().authorization(allow => [allow.owner().to(['read', 'delete'])]),
     })
     .identifier(['ratingId', 'petId'])
     .authorization((allow) => [allow.guest().to(['read']), allow.owner()]),
@@ -104,7 +104,7 @@ const schema = a.schema({
       birthDate: a.date(),
       vetRatings: a.hasMany('VetRatingPet', 'petId'),
       clinicRatings: a.hasMany('ClinicRatingPet', 'petId'),
-      owner: a.string().authorization(allow => [allow.owner().to(['read', 'delete'])]),
+      owner: a.string().required().authorization(allow => [allow.owner().to(['read', 'delete'])]),
     })
     .authorization((allow) => [allow.guest().to(['read']), allow.owner()]),
   ServiceCategory: a.
