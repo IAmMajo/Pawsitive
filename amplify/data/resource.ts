@@ -104,12 +104,13 @@ const schema = a.schema({
     .authorization((allow) => [allow.guest().to(['read']), allow.owner()]),
   Service: a.
     model({
-      id: a.string().required(),
+      number: a.string().required(),
       name: a.string().required(),
       categoryId: a.id().required(),
       category: a.belongsTo('ServiceCategory', 'categoryId'),
       ratings: a.hasMany('VetRatingService', 'serviceId'),
     })
+    .identifier(['number'])
     .authorization((allow) => [allow.guest().to(['read'])]),
   Pet: a.
     model({
