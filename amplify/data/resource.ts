@@ -67,15 +67,15 @@ const schema = a.schema({
   VetRatingService: a.
     model({
       ratingId: a.id().required(),
-      serviceId: a.id().required(),
+      serviceNumber: a.id().required(),
       rating: a.belongsTo('VetRating', 'ratingId'),
-      service: a.belongsTo('Service', 'serviceId'),
+      service: a.belongsTo('Service', 'serviceNumber'),
       owner: a.string().required().authorization(allow => [
         allow.guest().to(['read']),
         allow.owner().to(['read', 'delete']),
       ]),
     })
-    .identifier(['ratingId', 'serviceId'])
+    .identifier(['ratingId', 'serviceNumber'])
     .authorization((allow) => [allow.guest().to(['read']), allow.owner()]),
   VetRatingPet: a.
     model({
@@ -109,7 +109,7 @@ const schema = a.schema({
       name: a.string().required(),
       categoryId: a.id().required(),
       category: a.belongsTo('ServiceCategory', 'categoryId'),
-      ratings: a.hasMany('VetRatingService', 'serviceId'),
+      ratings: a.hasMany('VetRatingService', 'serviceNumber'),
     })
     .identifier(['number'])
     .authorization((allow) => [allow.guest().to(['read'])]),
