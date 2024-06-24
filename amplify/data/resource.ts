@@ -7,9 +7,10 @@ import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
 const schema = a.schema({
   Vet: a
     .model({
-      clinicId: a.id().required(),
+      name: a.string().required(),
       imagePath: a.string(),
       specialization: a.string(),
+      clinicId: a.id().required(),
       clinic: a.belongsTo('Clinic', 'clinicId'),
       ratings: a.hasMany('VetRating', 'vetId'),
     })
