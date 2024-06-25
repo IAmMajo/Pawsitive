@@ -40,7 +40,6 @@ const schema = a.schema({
       ratingTreatment: a.float(),
       ratingEmpathy: a.float(),
       comment: a.string(),
-      date: a.datetime().required(),
       vet: a.belongsTo('Vet', 'vetId'),
       services: a.hasMany('VetRatingService', 'ratingId'),
       pets: a.hasMany('VetRatingPet', 'ratingId'),
@@ -55,7 +54,6 @@ const schema = a.schema({
       clinicId: a.id().required(),
       rating: a.float(),
       comment: a.string(),
-      date: a.datetime().required(),
       clinic: a.belongsTo('Clinic', 'clinicId'),
       pets: a.hasMany('ClinicRatingPet', 'ratingId'),
       owner: a.string().required().authorization(allow => [
