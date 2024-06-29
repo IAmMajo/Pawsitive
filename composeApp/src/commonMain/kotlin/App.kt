@@ -18,7 +18,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.compose.AppTheme
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import pawsitive.composeapp.generated.resources.Res
@@ -33,8 +32,7 @@ import ui.MapScreen
 import ui.ProfileScreen
 import ui.RateScreen
 import ui.SearchScreen
-
-
+import ui.theme.AppTheme
 
 
 ////// VALUE SECTION ///////
@@ -51,7 +49,7 @@ enum class Screen {
 /// VALUES ///
 val BoxModifier = Modifier
     .padding(Dp(10f))
-    .clip(RoundedCornerShape(Dp(20f)))
+    .clip(RoundedCornerShape(Dp(15f)))
     .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
 
 
