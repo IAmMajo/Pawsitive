@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class AppViewModel: ViewModel() {
-    private val _uiState = MutableStateFlow(AppState())
-    val uiState: StateFlow<AppState> = _uiState.asStateFlow()
+class AppViewModel : ViewModel() {
+  private val _uiState = MutableStateFlow(AppState())
+  val uiState: StateFlow<AppState> = _uiState.asStateFlow()
 
-    fun setSection(section: Screen) {
-        _uiState.update { currentState -> currentState.copy(section = section) }
-    }
+  fun setSection(section: Screen) {
+    _uiState.update { currentState -> currentState.copy(section = section) }
+  }
 }
