@@ -34,125 +34,83 @@ import ui.RateScreen
 import ui.SearchScreen
 import ui.theme.AppTheme
 
-
 ////// VALUE SECTION ///////
 
 /// CLASSES ///
 enum class Screen {
-    Search,
-    Rate,
-    Favorites,
-    Map,
-    Profile,
+  Search,
+  Rate,
+  Favorites,
+  Map,
+  Profile,
 }
 
 /// VALUES ///
-val BoxModifier = Modifier
-    .padding(Dp(10f))
-    .clip(RoundedCornerShape(Dp(15f)))
-    .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
-
+val BoxModifier =
+    Modifier.padding(Dp(10f))
+        .clip(RoundedCornerShape(Dp(15f)))
+        .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
 
 ////// COMPOSABLE SECTION ///////
 @Composable
 @Preview
 fun App() {
-    val navController = rememberNavController()
-    val viewModel = viewModel { AppViewModel() };
-    val uiState by viewModel.uiState.collectAsState()
-    AppTheme {
-        Scaffold (
-            bottomBar = {
-                NavigationBar(
-                    containerColor = Color.White,
-                    modifier = BoxModifier
-                )
-                {
-                    NavigationBarItem(
-                        selected = uiState.section === Screen.Search,
-                        onClick = {
-                            viewModel.setSection(Screen.Search)
-                            navController.navigate(Screen.Search.name)
-                        },
-                        icon = {
-                            Icon(Icons.Outlined.Star, stringResource(Res.string.search))
-                        },
-                        label = {
-                            Text(stringResource(Res.string.search))
-                        }
-                    )
-                    NavigationBarItem(
-                        selected = uiState.section === Screen.Favorites,
-                        onClick = {
-                            viewModel.setSection(Screen.Favorites)
-                            navController.navigate(Screen.Favorites.name)
-                        },
-                        icon = {
-                            Icon(Icons.Outlined.Star, stringResource(Res.string.favorites))
-                        },
-                        label = {
-                            Text(stringResource(Res.string.favorites))
-                        }
-                    )
-                    NavigationBarItem(
-                        selected = uiState.section === Screen.Rate,
-                        onClick = {
-                            viewModel.setSection(Screen.Rate)
-                            navController.navigate(Screen.Rate.name)
-                        },
-                        icon = {
-                            Icon(Icons.Outlined.Star, stringResource(Res.string.rate))
-                        },
-                        label = {
-                            Text(stringResource(Res.string.rate))
-                        }
-                    )
-                    NavigationBarItem(
-                        selected = uiState.section === Screen.Map,
-                        onClick = {
-                            viewModel.setSection(Screen.Map)
-                            navController.navigate(Screen.Map.name)
-                        },
-                        icon = {
-                            Icon(Icons.Outlined.Search, stringResource(Res.string.map))
-                        },
-                        label = {
-                            Text(stringResource(Res.string.map))
-                        }
-                    )
-                    NavigationBarItem(
-                        selected = uiState.section === Screen.Profile,
-                        onClick = {
-                            viewModel.setSection(Screen.Profile)
-                            navController.navigate(Screen.Profile.name)
-                        },
-                        icon = {
-                            Icon(Icons.Outlined.Search, stringResource(Res.string.profile))
-                        },
-                        label = {
-                            Text(stringResource(Res.string.profile))
-                        }
-                    )
-                }
-            }
-        ) {
-            NavHost(navController = navController, startDestination = Screen.Search.name) {
-                composable(route = Screen.Search.name) {
-                    SearchScreen()
-                }
-                composable(route = Screen.Rate.name) {
-                    RateScreen()
-                }
-                composable(route = Screen.Favorites.name) {
-                    FavoritesScreen()
-                }
-                composable(route = Screen.Map.name) {
-                    MapScreen()
-                }
-                composable(route = Screen.Profile.name) {
-                    ProfileScreen()
-                }
-            }
+  val navController = rememberNavController()
+  val viewModel = viewModel { AppViewModel() }
+  val uiState by viewModel.uiState.collectAsState()
+  AppTheme {
+    Scaffold(
+        bottomBar = {
+          NavigationBar(containerColor = Color.White, modifier = BoxModifier) {
+            NavigationBarItem(
+                selected = uiState.section === Screen.Search,
+                onClick = {
+                  viewModel.setSection(Screen.Search)
+                  navController.navigate(Screen.Search.name)
+                },
+                icon = { Icon(Icons.Outlined.Star, stringResource(Res.string.search)) },
+                label = { Text(stringResource(Res.string.search)) })
+            NavigationBarItem(
+                selected = uiState.section === Screen.Favorites,
+                onClick = {
+                  viewModel.setSection(Screen.Favorites)
+                  navController.navigate(Screen.Favorites.name)
+                },
+                icon = { Icon(Icons.Outlined.Star, stringResource(Res.string.favorites)) },
+                label = { Text(stringResource(Res.string.favorites)) })
+            NavigationBarItem(
+                selected = uiState.section === Screen.Rate,
+                onClick = {
+                  viewModel.setSection(Screen.Rate)
+                  navController.navigate(Screen.Rate.name)
+                },
+                icon = { Icon(Icons.Outlined.Star, stringResource(Res.string.rate)) },
+                label = { Text(stringResource(Res.string.rate)) })
+            NavigationBarItem(
+                selected = uiState.section === Screen.Map,
+                onClick = {
+                  viewModel.setSection(Screen.Map)
+                  navController.navigate(Screen.Map.name)
+                },
+                icon = { Icon(Icons.Outlined.Search, stringResource(Res.string.map)) },
+                label = { Text(stringResource(Res.string.map)) })
+            NavigationBarItem(
+                selected = uiState.section === Screen.Profile,
+                onClick = {
+                  viewModel.setSection(Screen.Profile)
+                  navController.navigate(Screen.Profile.name)
+                },
+                icon = { Icon(Icons.Outlined.Search, stringResource(Res.string.profile)) },
+                label = { Text(stringResource(Res.string.profile)) })
+          }
+        }) {
+          NavHost(navController = navController, startDestination = Screen.Search.name) {
+            composable(route = Screen.Search.name) { SearchScreen() }
+            composable(route = Screen.Rate.name) { RateScreen() }
+            composable(route = Screen.Favorites.name) { FavoritesScreen() }
+            composable(route = Screen.Map.name) { MapScreen() }
+            composable(route = Screen.Profile.name) { ProfileScreen() }
+          }
         }
-    }
+  }
 }

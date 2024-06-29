@@ -7,5 +7,5 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 @Preview
 fun FavoritesScreen() {
-    Text("FavoritesScreen")
+  Text("FavoritesScreen")
 }
