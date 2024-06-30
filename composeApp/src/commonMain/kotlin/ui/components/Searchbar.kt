@@ -20,40 +20,32 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
-val SearchbarModifier = Modifier
-  .padding(10.dp)
-  .clip(RoundedCornerShape(15.dp))
-  .shadow(elevation = 20.dp, spotColor = Color(0xff3a3a3a))
-  .background(Color.White)
+val SearchbarModifier =
+    Modifier.padding(10.dp)
+        .clip(RoundedCornerShape(15.dp))
+        .shadow(elevation = 20.dp, spotColor = Color(0xff3a3a3a))
+        .background(Color.White)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Searchbar() {
   val searchText = remember { mutableStateOf("") }
 
-  Row(
-    modifier = SearchbarModifier
-      .padding(8.dp)
-  ) {
+  Row(modifier = SearchbarModifier.padding(8.dp)) {
     OutlinedTextField(
-      colors = TextFieldDefaults
-        .outlinedTextFieldColors(
-          focusedBorderColor = Color.White,
-          unfocusedBorderColor = Color.White
-        ),
-      value = searchText.value,
-      onValueChange = { searchText.value = it },
-      placeholder = { Text("Search...", color = Color.Gray) },
-      trailingIcon = {
-        Icon(
-          imageVector = Icons.Outlined.Search,
-          tint = Color.Gray,
-          contentDescription = "Such-Icon",
-          modifier = Modifier.padding(end = 8.dp)
-        )
-      },
-
-      modifier = Modifier.weight(1f)
-    )
+        colors =
+            TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color.White, unfocusedBorderColor = Color.White),
+        value = searchText.value,
+        onValueChange = { searchText.value = it },
+        placeholder = { Text("Search...", color = Color.Gray) },
+        trailingIcon = {
+          Icon(
+              imageVector = Icons.Outlined.Search,
+              tint = Color.Gray,
+              contentDescription = "Such-Icon",
+              modifier = Modifier.padding(end = 8.dp))
+        },
+        modifier = Modifier.weight(1f))
   }
 }

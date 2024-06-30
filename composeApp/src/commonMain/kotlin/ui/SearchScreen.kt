@@ -13,9 +13,8 @@ import ui.components.Searchbar
 @Preview
 fun SearchScreen() {
   Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-   
     Searchbar()
-    
+
     ListEntryComponent()
     ListEntryComponent()
   }
