@@ -19,17 +19,15 @@ import ui.components.Searchbar
 fun SearchScreen() {
   val viewModel = viewModel { SearchViewModel() }
   val uiState by viewModel.uiState.collectAsState()
-  LaunchedEffect(true) {
-    viewModel.fetchResults()
-  }
+  LaunchedEffect(true) { viewModel.fetchResults() }
   Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
     Searchbar()
-    
+
     if (uiState.loading) {
       CircularProgressIndicator()
     } else {
       ListEntryComponent()
-      ListEntryComponent() 
+      ListEntryComponent()
     }
   }
 }
