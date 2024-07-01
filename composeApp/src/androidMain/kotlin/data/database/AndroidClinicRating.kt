@@ -2,8 +2,8 @@ package data.database
 
 import com.amplifyframework.core.model.LoadedModelList
 import com.amplifyframework.core.model.LoadedModelReference
-import kotlinx.datetime.Instant
 import com.amplifyframework.datastore.generated.model.ClinicRating as AmplifyClinicRating
+import kotlinx.datetime.Instant
 
 class AndroidClinicRating(amplifyClinicRating: AmplifyClinicRating) : ClinicRating {
   override val id: String = amplifyClinicRating.id

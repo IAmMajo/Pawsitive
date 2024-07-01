@@ -2,8 +2,8 @@ package data.database
 
 import com.amplifyframework.core.model.LoadedModelList
 import com.amplifyframework.core.model.LoadedModelReference
-import kotlinx.datetime.Instant
 import com.amplifyframework.datastore.generated.model.VetRating as AmplifyVetRating
+import kotlinx.datetime.Instant
 
 class AndroidVetRating(amplifyVetRating: AmplifyVetRating) : VetRating {
   override val id: String = amplifyVetRating.id
