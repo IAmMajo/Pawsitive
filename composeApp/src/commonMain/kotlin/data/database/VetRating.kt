@@ -1,7 +1,7 @@
 package data.database
 
 import extensions.averageNotZero
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Instant
 
 interface VetRating {
   val id: String
@@ -15,7 +15,7 @@ interface VetRating {
   val comment: String
   val services: List<Service>
   val pets: List<Pet>
-  val date: LocalDateTime
+  val date: Instant
 
   val rating: Double
     get() =
