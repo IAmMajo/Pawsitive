@@ -100,6 +100,7 @@ const schema = a.schema({
       pet: a.belongsTo("Pet", "petId"),
       owner: a
         .string()
+        .required()
         .authorization((allow) => [
           allow.guest().to(["read"]),
           allow.owner().to(["read", "delete"]),
