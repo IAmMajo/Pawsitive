@@ -480,8 +480,11 @@ fun ListEntryComponent(vet: Vet) {
                             run {
                               val commaPets = it.pets.dropLast(1)
                               val lastPet = it.pets.last().name
-                              commaPets.ifEmpty { lastPet }
-                              "${commaPets.joinToString { it.name }} ${stringResource(Res.string.and)} $lastPet"
+                              if (commaPets.isEmpty()) {
+                                lastPet
+                              } else {
+                                "${commaPets.joinToString { it.name }} ${stringResource(Res.string.and)} $lastPet"
+                              }
                             },
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
