@@ -23,20 +23,16 @@ fun SearchScreen() {
   val viewModel = viewModel { SearchViewModel() }
   val uiState by viewModel.uiState.collectAsState()
   LaunchedEffect(true) { viewModel.fetchResults() }
-  Column(Modifier
-    .fillMaxWidth()
-    .verticalScroll(state),
-    horizontalAlignment = Alignment
-      .CenterHorizontally
-  ) 
-  {
-    Searchbar()
+  Column(
+      Modifier.fillMaxWidth().verticalScroll(state),
+      horizontalAlignment = Alignment.CenterHorizontally) {
+        Searchbar()
 
-    if (uiState.loading) {
-      CircularProgressIndicator()
-    } else {
-      ListEntryComponent()
-      ListEntryComponent()
-    }
-  }
+        if (uiState.loading) {
+          CircularProgressIndicator()
+        } else {
+          ListEntryComponent()
+          ListEntryComponent()
+        }
+      }
 }
