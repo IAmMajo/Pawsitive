@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import data.database.Vet
 import org.jetbrains.compose.resources.painterResource
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.mockimage
@@ -48,7 +49,7 @@ val ButtonModifier =
 ////// COMPOSABLE SECTION ///////
 
 @Composable
-fun ListEntryComponent() {
+fun ListEntryComponent(vet: Vet) {
   var isExpanded by remember { mutableStateOf(false) }
   val expandedPadding = animateDpAsState(targetValue = if (isExpanded) 15.dp else 0.dp)
 
@@ -73,7 +74,7 @@ fun ListEntryComponent() {
                     verticalArrangement = Arrangement.Center,
                     modifier = Modifier.padding(start = 5.dp)) {
                       Text(
-                          text = "Rita Strauß",
+                          text = vet.name,
                           fontSize = 18.sp,
                           fontWeight = FontWeight.Bold,
                           color = Color(0xFF202020))
@@ -84,7 +85,7 @@ fun ListEntryComponent() {
                             tint = Color(0xFF959494),
                             modifier = Modifier.padding(start = 2.dp))
                         Text(
-                            text = "Schäferhunde",
+                            text = vet.specialization,
                             fontWeight = FontWeight.Medium,
                             color = Color(0xFF959494))
                       }
@@ -119,11 +120,16 @@ fun ListEntryComponent() {
                       tint = Color(0xFF00D47B),
                       modifier = StarModifier)
                 }
-                Text(text = "4,7", fontWeight = FontWeight.SemiBold, color = Color(0xFF202020))
+                Text(
+                    text = vet.averageRating,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color(0xFF202020),
+                )
               }
             }
 
         if (isExpanded) {
+          val clinic = vet.clinic!!
           Column(
               horizontalAlignment = Alignment.Start,
               modifier = Modifier.padding(top = expandedPadding.value)) {
@@ -134,7 +140,7 @@ fun ListEntryComponent() {
                       tint = Color(0xFF959494),
                       modifier = Modifier.padding(start = 2.dp))
                   Text(
-                      text = "Kleintierpraxis Mustermann",
+                      text = clinic.name,
                       fontWeight = FontWeight.SemiBold,
                       color = Color(0xFF959494))
                 }
@@ -145,7 +151,7 @@ fun ListEntryComponent() {
                       tint = Color(0xFF959494),
                       modifier = Modifier.padding(start = 2.dp))
                   Text(
-                      text = "Fantasiestraße 4, Fantasiestadt",
+                      text = clinic.shortAddress,
                       fontWeight = FontWeight.Medium,
                       color = Color(0xFF959494))
                 }
@@ -201,7 +207,7 @@ fun ListEntryComponent() {
                               modifier = StarModifier)
                         }
                         Text(
-                            text = "12",
+                            text = vet.diagnosisRatingsAmount.toString(),
                             fontWeight = FontWeight.SemiBold,
                             color = Color(0xFF202020))
                       }
@@ -240,7 +246,7 @@ fun ListEntryComponent() {
                               modifier = StarModifier)
                         }
                         Text(
-                            text = "23",
+                            text = vet.empathyRatingsAmount.toString(),
                             fontWeight = FontWeight.SemiBold,
                             color = Color(0xFF202020))
                       }
@@ -279,7 +285,7 @@ fun ListEntryComponent() {
                               modifier = StarModifier)
                         }
                         Text(
-                            text = "34",
+                            text = vet.empathyRatingsAmount.toString(),
                             fontWeight = FontWeight.SemiBold,
                             color = Color(0xFF202020))
                       }
@@ -324,48 +330,58 @@ fun ListEntryComponent() {
                       }
                     }
 
-                Column(
-                    horizontalAlignment = Alignment.Start,
-                    modifier = Modifier.fillMaxWidth().padding(top = 20.dp)) {
-                      HorizontalDivider(
-                          thickness = 3.dp, modifier = Modifier.padding(bottom = 10.dp))
-
-                      Row(
-                          verticalAlignment = Alignment.CenterVertically,
-                          modifier = Modifier.padding(bottom = 15.dp)) {
-                            Image(
-                                painter = painterResource(Res.drawable.mockimage),
-                                contentDescription = "MockImage",
-                                contentScale = ContentScale.Crop,
-                                modifier = ProfileCommentPictureModifier)
-                            Column(
-                                verticalArrangement = Arrangement.Center,
-                                modifier = Modifier.padding(start = 5.dp)) {
-                                  Text(
-                                      text = "Peter Strauß",
-                                      fontSize = 18.sp,
-                                      fontWeight = FontWeight.Bold,
-                                      color = Color(0xFF202020))
-                                  Row {
-                                    Icon(
-                                        Icons.Rounded.Star,
-                                        contentDescription = "Star Placeholder Icon",
-                                        tint = Color(0xFF959494),
-                                        modifier = Modifier.padding(start = 2.dp))
-                                    Text(
-                                        text = "Schäferhunde",
-                                        fontWeight = FontWeight.Medium,
-                                        color = Color(0xFF959494))
-                                  }
-                                }
-                          }
-                      Text(
-                          text =
-                              "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
-                          fontSize = 14.sp,
-                          fontWeight = FontWeight.Normal,
-                          color = Color(0xFF202020))
+                vet.ratings.forEach {
+                  Column(
+                      horizontalAlignment = Alignment.Start,
+                      modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
+                  ) {
+                    HorizontalDivider(
+                        thickness = 3.dp,
+                        modifier = Modifier.padding(bottom = 10.dp),
+                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(bottom = 15.dp),
+                    ) {
+                      Image(
+                          painter = painterResource(Res.drawable.mockimage),
+                          contentDescription = "MockImage",
+                          contentScale = ContentScale.Crop,
+                          modifier = ProfileCommentPictureModifier,
+                      )
+                      Column(
+                          verticalArrangement = Arrangement.Center,
+                          modifier = Modifier.padding(start = 5.dp),
+                      ) {
+                        Text(
+                            text = "Peter Strauß",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(0xFF202020),
+                        )
+                        Row {
+                          Icon(
+                              Icons.Rounded.Star,
+                              contentDescription = "Star Placeholder Icon",
+                              tint = Color(0xFF959494),
+                              modifier = Modifier.padding(start = 2.dp),
+                          )
+                          Text(
+                              text = "Schäferhunde",
+                              fontWeight = FontWeight.Medium,
+                              color = Color(0xFF959494),
+                          )
+                        }
+                      }
                     }
+                    Text(
+                        text = it.comment,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = Color(0xFF202020),
+                    )
+                  }
+                }
               }
         }
       }

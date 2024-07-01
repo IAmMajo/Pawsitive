@@ -1,2 +1,4 @@
 plugins:
   - "@prettier/plugin-xml"
+  - prettier-plugin-java
+xmlWhitespaceSensitivity: preserve

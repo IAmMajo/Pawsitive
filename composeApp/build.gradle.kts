@@ -39,6 +39,9 @@ kotlin {
     androidMain.dependencies {
       implementation(compose.preview)
       implementation(libs.androidx.activity.compose)
+      implementation("com.amplifyframework.ui:authenticator:1.2.0")
+      implementation("com.amplifyframework:aws-api:2.19.1")
+      implementation("com.amplifyframework:core-kotlin:2.19.1")
     }
     commonMain.dependencies {
       implementation(compose.runtime)
@@ -49,6 +52,7 @@ kotlin {
       implementation(compose.components.uiToolingPreview)
       implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
       implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
+      implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
     }
   }
 }
@@ -57,6 +61,7 @@ android {
   namespace = "dev.maxoverlack.pawsitive"
   compileSdk = libs.versions.android.compileSdk.get().toInt()
 
+  sourceSets["main"].java.srcDirs("src/androidMain/java")
   sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
   sourceSets["main"].res.srcDirs("src/androidMain/res")
   sourceSets["main"].resources.srcDirs("src/commonMain/resources")
