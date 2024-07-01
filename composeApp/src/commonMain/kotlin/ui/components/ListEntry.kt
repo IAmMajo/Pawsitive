@@ -28,7 +28,9 @@ import androidx.compose.ui.unit.sp
 import data.database.Vet
 import extensions.format
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import pawsitive.composeapp.generated.resources.Res
+import pawsitive.composeapp.generated.resources.and
 import pawsitive.composeapp.generated.resources.mockimage
 
 ////// VALUE SECTION ///////
@@ -475,7 +477,12 @@ fun ListEntryComponent(vet: Vet) {
                           modifier = Modifier.padding(start = 5.dp),
                       ) {
                         Text(
-                            text = "Peter Strauß",
+                            run {
+                              val commaPets = it.pets.dropLast(1)
+                              val lastPet = it.pets.last().name
+                              commaPets.ifEmpty { lastPet }
+                              "${commaPets.joinToString { it.name }} ${stringResource(Res.string.and)} $lastPet"
+                            },
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color(0xFF202020),
