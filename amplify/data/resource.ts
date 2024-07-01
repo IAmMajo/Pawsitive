@@ -26,6 +26,7 @@ const schema = a.schema({
       place: a.string().required(),
       longitude: a.float().required(),
       latitude: a.float().required(),
+      openingHours: a.string(),
       phone: a.phone(),
       email: a.email(),
       website: a.url(),
@@ -36,9 +37,12 @@ const schema = a.schema({
   VetRating: a
     .model({
       vetId: a.id().required(),
-      ratingDiagnosis: a.float(),
-      ratingTreatment: a.float(),
-      ratingEmpathy: a.float(),
+      ratingDiagnosis: a.integer().required(),
+      ratingTreatment: a.integer().required(),
+      ratingInformation: a.integer().required(),
+      ratingTrust: a.integer(),
+      ratingInvestedTime: a.integer(),
+      ratingFriendliness: a.integer(),
       comment: a.string(),
       vet: a.belongsTo("Vet", "vetId"),
       services: a.hasMany("VetRatingService", "ratingId"),
@@ -55,7 +59,12 @@ const schema = a.schema({
   ClinicRating: a
     .model({
       clinicId: a.id().required(),
-      rating: a.float(),
+      ratingWaitingTime: a.integer(),
+      ratingEquipment: a.integer(),
+      ratingPhoneAvailability: a.integer(),
+      ratingParking: a.integer(),
+      ratingPricePerformance: a.integer(),
+      ratingAlternativeMedicine: a.integer(),
       comment: a.string(),
       clinic: a.belongsTo("Clinic", "clinicId"),
       pets: a.hasMany("ClinicRatingPet", "ratingId"),
