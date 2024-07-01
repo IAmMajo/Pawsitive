@@ -14,6 +14,7 @@ class AndroidClinic(amplifyClinic: AmplifyClinic) : Clinic {
   override val place: String = amplifyClinic.place
   override val longitude: Double = amplifyClinic.longitude
   override val latitude: Double = amplifyClinic.latitude
+  override val openingHours: String = amplifyClinic.openingHours ?: ""
   override val phone: String = amplifyClinic.phone ?: ""
   override val email: String = amplifyClinic.email ?: ""
   override val website: String = amplifyClinic.website ?: ""

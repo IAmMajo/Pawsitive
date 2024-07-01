@@ -9,9 +9,12 @@ class AndroidVetRating(amplifyVetRating: AmplifyVetRating) : VetRating {
   override val id: String = amplifyVetRating.id
   override val vet: AndroidVet? =
       (amplifyVetRating.vet as? LoadedModelReference)?.value?.let { AndroidVet(it) }
-  override val ratingDiagnosis: Double = amplifyVetRating.ratingDiagnosis ?: 0.0
-  override val ratingTreatment: Double = amplifyVetRating.ratingTreatment ?: 0.0
-  override val ratingEmpathy: Double = amplifyVetRating.ratingEmpathy ?: 0.0
+  override val ratingDiagnosis: Int = amplifyVetRating.ratingDiagnosis
+  override val ratingTreatment: Int = amplifyVetRating.ratingTreatment
+  override val ratingInformation: Int = amplifyVetRating.ratingInformation
+  override val ratingTrust: Int = amplifyVetRating.ratingTrust ?: 0
+  override val ratingInvestedTime: Int = amplifyVetRating.ratingInvestedTime ?: 0
+  override val ratingFriendliness: Int = amplifyVetRating.ratingFriendliness ?: 0
   override val comment: String = amplifyVetRating.comment ?: ""
   override val services: List<AndroidService> = run {
     val servicesReference = amplifyVetRating.services

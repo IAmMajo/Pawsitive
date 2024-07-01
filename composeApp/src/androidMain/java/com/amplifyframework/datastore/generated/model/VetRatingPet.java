@@ -15,6 +15,7 @@ import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
 import com.amplifyframework.core.model.query.predicate.QueryField;
 import com.amplifyframework.core.model.temporal.Temporal;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -43,7 +44,6 @@ import java.util.UUID;
   },
   hasLazySupport = true
 )
-@Index(name = "undefined", fields = { "ratingId", "petId" })
 public final class VetRatingPet implements Model {
 
   public static final VetRatingPetPath rootPath = new VetRatingPetPath(

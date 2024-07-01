@@ -221,6 +221,13 @@
               "isRequired": true,
               "attributes": []
             },
+            "openingHours": {
+              "name": "openingHours",
+              "isArray": false,
+              "type": "String",
+              "isRequired": false,
+              "attributes": []
+            },
             "phone": {
               "name": "phone",
               "isArray": false,
@@ -339,21 +346,42 @@
             "ratingDiagnosis": {
               "name": "ratingDiagnosis",
               "isArray": false,
-              "type": "Float",
-              "isRequired": false,
+              "type": "Int",
+              "isRequired": true,
               "attributes": []
             },
             "ratingTreatment": {
               "name": "ratingTreatment",
               "isArray": false,
-              "type": "Float",
+              "type": "Int",
+              "isRequired": true,
+              "attributes": []
+            },
+            "ratingInformation": {
+              "name": "ratingInformation",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": true,
+              "attributes": []
+            },
+            "ratingTrust": {
+              "name": "ratingTrust",
+              "isArray": false,
+              "type": "Int",
               "isRequired": false,
               "attributes": []
             },
-            "ratingEmpathy": {
-              "name": "ratingEmpathy",
+            "ratingInvestedTime": {
+              "name": "ratingInvestedTime",
               "isArray": false,
-              "type": "Float",
+              "type": "Int",
+              "isRequired": false,
+              "attributes": []
+            },
+            "ratingFriendliness": {
+              "name": "ratingFriendliness",
+              "isArray": false,
+              "type": "Int",
               "isRequired": false,
               "attributes": []
             },
@@ -492,10 +520,45 @@
               "isRequired": true,
               "attributes": []
             },
-            "rating": {
-              "name": "rating",
+            "ratingWaitingTime": {
+              "name": "ratingWaitingTime",
               "isArray": false,
-              "type": "Float",
+              "type": "Int",
+              "isRequired": false,
+              "attributes": []
+            },
+            "ratingEquipment": {
+              "name": "ratingEquipment",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": false,
+              "attributes": []
+            },
+            "ratingPhoneAvailability": {
+              "name": "ratingPhoneAvailability",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": false,
+              "attributes": []
+            },
+            "ratingParking": {
+              "name": "ratingParking",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": false,
+              "attributes": []
+            },
+            "ratingPricePerformance": {
+              "name": "ratingPricePerformance",
+              "isArray": false,
+              "type": "Int",
+              "isRequired": false,
+              "attributes": []
+            },
+            "ratingAlternativeMedicine": {
+              "name": "ratingAlternativeMedicine",
+              "isArray": false,
+              "type": "Int",
               "isRequired": false,
               "attributes": []
             },
@@ -604,6 +667,13 @@
         "VetRatingService": {
           "name": "VetRatingService",
           "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
             "ratingId": {
               "name": "ratingId",
               "isArray": false,
@@ -680,15 +750,6 @@
               "properties": {}
             },
             {
-              "type": "key",
-              "properties": {
-                "fields": [
-                  "ratingId",
-                  "serviceNumber"
-                ]
-              }
-            },
-            {
               "type": "auth",
               "properties": {
                 "rules": [
@@ -716,16 +777,21 @@
             }
           ],
           "primaryKeyInfo": {
-            "isCustomPrimaryKey": true,
-            "primaryKeyFieldName": "ratingId",
-            "sortKeyFieldNames": [
-              "serviceNumber"
-            ]
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
+            "sortKeyFieldNames": []
           }
         },
         "VetRatingPet": {
           "name": "VetRatingPet",
           "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
             "ratingId": {
               "name": "ratingId",
               "isArray": false,
@@ -802,15 +868,6 @@
               "properties": {}
             },
             {
-              "type": "key",
-              "properties": {
-                "fields": [
-                  "ratingId",
-                  "petId"
-                ]
-              }
-            },
-            {
               "type": "auth",
               "properties": {
                 "rules": [
@@ -838,16 +895,21 @@
             }
           ],
           "primaryKeyInfo": {
-            "isCustomPrimaryKey": true,
-            "primaryKeyFieldName": "ratingId",
-            "sortKeyFieldNames": [
-              "petId"
-            ]
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
+            "sortKeyFieldNames": []
           }
         },
         "ClinicRatingPet": {
           "name": "ClinicRatingPet",
           "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
             "ratingId": {
               "name": "ratingId",
               "isArray": false,
@@ -924,15 +986,6 @@
               "properties": {}
             },
             {
-              "type": "key",
-              "properties": {
-                "fields": [
-                  "ratingId",
-                  "petId"
-                ]
-              }
-            },
-            {
               "type": "auth",
               "properties": {
                 "rules": [
@@ -960,18 +1013,16 @@
             }
           ],
           "primaryKeyInfo": {
-            "isCustomPrimaryKey": true,
-            "primaryKeyFieldName": "ratingId",
-            "sortKeyFieldNames": [
-              "petId"
-            ]
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
+            "sortKeyFieldNames": []
           }
         },
         "Service": {
           "name": "Service",
           "fields": {
-            "number": {
-              "name": "number",
+            "id": {
+              "name": "id",
               "isArray": false,
               "type": "String",
               "isRequired": true,
@@ -1050,7 +1101,7 @@
               "type": "key",
               "properties": {
                 "fields": [
-                  "number"
+                  "id"
                 ]
               }
             },
@@ -1070,8 +1121,8 @@
             }
           ],
           "primaryKeyInfo": {
-            "isCustomPrimaryKey": true,
-            "primaryKeyFieldName": "number",
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
             "sortKeyFieldNames": []
           }
         },

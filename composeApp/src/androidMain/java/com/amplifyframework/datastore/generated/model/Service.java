@@ -17,6 +17,7 @@ import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
 import com.amplifyframework.core.model.query.predicate.QueryField;
 import com.amplifyframework.core.model.temporal.Temporal;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -33,7 +34,7 @@ import java.util.UUID;
   },
   hasLazySupport = true
 )
-@Index(name = "undefined", fields = { "number" })
+@Index(name = "undefined", fields = { "id" })
 public final class Service implements Model {
 
   public static final ServicePath rootPath = new ServicePath(
@@ -42,15 +43,10 @@ public final class Service implements Model {
     null
   );
   public static final QueryField ID = field("Service", "id");
-  public static final QueryField NUMBER = field("Service", "number");
   public static final QueryField NAME = field("Service", "name");
   public static final QueryField CATEGORY_ID = field("Service", "categoryId");
   public static final QueryField CATEGORY = field("Service", "categoryId");
-  private final @ModelField(targetType = "ID", isRequired = true) String id;
-  private final @ModelField(
-    targetType = "String",
-    isRequired = true
-  ) String number;
+  private final @ModelField(targetType = "String", isRequired = true) String id;
   private final @ModelField(
     targetType = "String",
     isRequired = true
@@ -80,10 +76,6 @@ public final class Service implements Model {
     return id;
   }
 
-  public String getNumber() {
-    return number;
-  }
-
   public String getName() {
     return name;
   }
@@ -110,13 +102,11 @@ public final class Service implements Model {
 
   private Service(
     String id,
-    String number,
     String name,
     String categoryId,
     ModelReference<ServiceCategory> category
   ) {
     this.id = id;
-    this.number = number;
     this.name = name;
     this.categoryId = categoryId;
     this.category = category;
@@ -132,7 +122,6 @@ public final class Service implements Model {
       Service service = (Service) obj;
       return (
         ObjectsCompat.equals(getId(), service.getId()) &&
-        ObjectsCompat.equals(getNumber(), service.getNumber()) &&
         ObjectsCompat.equals(getName(), service.getName()) &&
         ObjectsCompat.equals(getCategoryId(), service.getCategoryId()) &&
         ObjectsCompat.equals(getCategory(), service.getCategory()) &&
@@ -146,7 +135,6 @@ public final class Service implements Model {
   public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getNumber())
       .append(getName())
       .append(getCategoryId())
       .append(getCategory())
@@ -161,7 +149,6 @@ public final class Service implements Model {
     return new StringBuilder()
       .append("Service {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("number=" + String.valueOf(getNumber()) + ", ")
       .append("name=" + String.valueOf(getName()) + ", ")
       .append("categoryId=" + String.valueOf(getCategoryId()) + ", ")
       .append("category=" + String.valueOf(getCategory()) + ", ")
@@ -171,7 +158,7 @@ public final class Service implements Model {
       .toString();
   }
 
-  public static NumberStep builder() {
+  public static NameStep builder() {
     return new Builder();
   }
 
@@ -184,15 +171,11 @@ public final class Service implements Model {
    * @return an instance of this model with only ID populated
    */
   public static Service justId(String id) {
-    return new Service(id, null, null, null, null);
+    return new Service(id, null, null, null);
   }
 
   public CopyOfBuilder copyOfBuilder() {
-    return new CopyOfBuilder(id, number, name, categoryId, category);
-  }
-
-  public interface NumberStep {
-    NameStep number(String number);
+    return new CopyOfBuilder(id, name, categoryId, category);
   }
 
   public interface NameStep {
@@ -209,11 +192,9 @@ public final class Service implements Model {
     BuildStep category(ServiceCategory category);
   }
 
-  public static class Builder
-    implements NumberStep, NameStep, CategoryIdStep, BuildStep {
+  public static class Builder implements NameStep, CategoryIdStep, BuildStep {
 
     private String id;
-    private String number;
     private String name;
     private String categoryId;
     private ModelReference<ServiceCategory> category;
@@ -222,13 +203,11 @@ public final class Service implements Model {
 
     private Builder(
       String id,
-      String number,
       String name,
       String categoryId,
       ModelReference<ServiceCategory> category
     ) {
       this.id = id;
-      this.number = number;
       this.name = name;
       this.categoryId = categoryId;
       this.category = category;
@@ -238,14 +217,7 @@ public final class Service implements Model {
     public Service build() {
       String id = this.id != null ? this.id : UUID.randomUUID().toString();
 
-      return new Service(id, number, name, categoryId, category);
-    }
-
-    @Override
-    public NameStep number(String number) {
-      Objects.requireNonNull(number);
-      this.number = number;
-      return this;
+      return new Service(id, name, categoryId, category);
     }
 
     @Override
@@ -282,20 +254,13 @@ public final class Service implements Model {
 
     private CopyOfBuilder(
       String id,
-      String number,
       String name,
       String categoryId,
       ModelReference<ServiceCategory> category
     ) {
-      super(id, number, name, categoryId, category);
-      Objects.requireNonNull(number);
+      super(id, name, categoryId, category);
       Objects.requireNonNull(name);
       Objects.requireNonNull(categoryId);
-    }
-
-    @Override
-    public CopyOfBuilder number(String number) {
-      return (CopyOfBuilder) super.number(number);
     }
 
     @Override

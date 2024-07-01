@@ -1,14 +1,17 @@
 package data.database
 
-import extensions.nanToZero
+import extensions.averageNotZero
 import kotlinx.datetime.LocalDateTime
 
 interface VetRating {
   val id: String
   val vet: Vet?
-  val ratingDiagnosis: Double
-  val ratingTreatment: Double
-  val ratingEmpathy: Double
+  val ratingDiagnosis: Int
+  val ratingTreatment: Int
+  val ratingInformation: Int
+  val ratingTrust: Int
+  val ratingInvestedTime: Int
+  val ratingFriendliness: Int
   val comment: String
   val services: List<Service>
   val pets: List<Pet>
@@ -16,8 +19,18 @@ interface VetRating {
 
   val rating: Double
     get() =
-        listOf(ratingDiagnosis, ratingTreatment, ratingEmpathy)
-            .filter { it != 0.0 }
-            .average()
-            .nanToZero()
+        listOf(
+                // Double weighting
+                ratingDiagnosis,
+                ratingTreatment,
+                ratingInformation,
+                ratingDiagnosis,
+                ratingTreatment,
+                ratingInformation,
+                // Single weighting
+                ratingTrust,
+                ratingInvestedTime,
+                ratingFriendliness,
+            )
+            .averageNotZero()
 }
