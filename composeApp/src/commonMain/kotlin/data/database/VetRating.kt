@@ -1,18 +1,36 @@
 package data.database
 
-import kotlinx.datetime.LocalDateTime
+import extensions.averageNotZero
+import kotlinx.datetime.Instant
 
 interface VetRating {
   val id: String
   val vet: Vet?
-  val ratingDiagnosis: Double
-  val ratingTreatment: Double
-  val ratingEmpathy: Double
+  val ratingDiagnosis: Int
+  val ratingTreatment: Int
+  val ratingInformation: Int
+  val ratingTrust: Int
+  val ratingInvestedTime: Int
+  val ratingFriendliness: Int
   val comment: String
   val services: List<Service>
   val pets: List<Pet>
-  val date: LocalDateTime
+  val date: Instant
 
   val rating: Double
-    get() = listOf(ratingDiagnosis, ratingTreatment, ratingEmpathy).filter { it != 0.0 }.average()
+    get() =
+        listOf(
+                // Double weighting
+                ratingDiagnosis,
+                ratingTreatment,
+                ratingInformation,
+                ratingDiagnosis,
+                ratingTreatment,
+                ratingInformation,
+                // Single weighting
+                ratingTrust,
+                ratingInvestedTime,
+                ratingFriendliness,
+            )
+            .averageNotZero()
 }

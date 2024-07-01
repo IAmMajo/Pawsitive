@@ -104,7 +104,11 @@ fun App() {
                 label = { Text(stringResource(Res.string.profile)) })
           }
         }) {
-          NavHost(navController = navController, startDestination = Screen.Search.name) {
+          NavHost(
+              navController = navController,
+              startDestination = Screen.Search.name,
+              modifier = Modifier.padding(it),
+          ) {
             composable(route = Screen.Search.name) { SearchScreen() }
             composable(route = Screen.Rate.name) { RateScreen() }
             composable(route = Screen.Favorites.name) { FavoritesScreen() }
