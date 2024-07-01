@@ -123,7 +123,8 @@ fun ListEntryComponent(vet: Vet) {
                 Text(
                     text = vet.averageRating,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF202020),)
+                    color = Color(0xFF202020),
+                )
               }
             }
 
