@@ -26,8 +26,9 @@ fun SearchScreen() {
     if (uiState.loading) {
       CircularProgressIndicator()
     } else {
-      ListEntryComponent()
-      ListEntryComponent()
+      uiState.results.forEach {
+        ListEntryComponent(it)
+      }
     }
   }
 }

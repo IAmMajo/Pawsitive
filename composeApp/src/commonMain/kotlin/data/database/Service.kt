@@ -1,6 +1,6 @@
 package data.database
 
 interface Service {
-  val number: Int
+  val number: String
   val name: String
 }

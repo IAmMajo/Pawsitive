@@ -1,5 +1,7 @@
 package data.database
 
+import extensions.format
+
 interface Vet {
   val id: String
   val name: String
@@ -8,8 +10,8 @@ interface Vet {
   val clinic: Clinic?
   val ratings: List<VetRating>
 
-  val averageRating: Double
-    get() = ratings.map { it.rating }.filter { it != 0.0 }.average()
+  val averageRating: String
+    get() = ratings.map { it.rating }.filter { it != 0.0 }.average().format()
 
   val diagnosisRatingsAmount: Int
     get() = ratings.filter { it.ratingDiagnosis != 0.0 }.size
@@ -20,12 +22,12 @@ interface Vet {
   val empathyRatingsAmount: Int
     get() = ratings.filter { it.ratingEmpathy != 0.0 }.size
 
-  val averageDiagnosisRating: Double
-    get() = ratings.sumOf { it.ratingDiagnosis } / diagnosisRatingsAmount
+  val averageDiagnosisRating: String
+    get() = (ratings.sumOf { it.ratingDiagnosis } / diagnosisRatingsAmount).format()
 
-  val averageTreatmentRating: Double
-    get() = ratings.sumOf { it.ratingTreatment } / treatmentRatingsAmount
+  val averageTreatmentRating: String
+    get() = (ratings.sumOf { it.ratingTreatment } / treatmentRatingsAmount).format()
 
-  val averageEmpathyRating: Double
-    get() = ratings.sumOf { it.ratingEmpathy } / empathyRatingsAmount
+  val averageEmpathyRating: String
+    get() = (ratings.sumOf { it.ratingEmpathy } / empathyRatingsAmount).format()
 }

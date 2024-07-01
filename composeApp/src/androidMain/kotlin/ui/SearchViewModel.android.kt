@@ -12,7 +12,7 @@ actual suspend fun getVetsList(): List<Vet> {
   val data =
       Amplify.API.query(
               ModelQuery.list<AmplifyVet, VetPath>(AmplifyVet::class.java) {
-                includes(it.clinic, it.ratings /*, it.ratings.pets, it.ratings.pets.pet*/)
+                includes(it.clinic, it.ratings)
               },
           )
           .data

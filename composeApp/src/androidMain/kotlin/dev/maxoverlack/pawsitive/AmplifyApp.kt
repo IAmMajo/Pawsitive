@@ -18,7 +18,8 @@ class AmplifyApp : Application() {
     Amplify.addPlugin(AWSApiPlugin())
     Amplify.configure(
         AmplifyOutputs(
-            runBlocking { Res.readBytes("files/amplify_outputs.json") }.decodeToString()),
+            runBlocking { Res.readBytes("files/amplify_outputs.json") }.decodeToString(),
+        ),
         applicationContext,
     )
   }
