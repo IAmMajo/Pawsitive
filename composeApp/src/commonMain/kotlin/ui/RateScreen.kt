@@ -14,7 +14,6 @@ import ui.components.FeedbackComponent
 fun RateScreen() {
 
   Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-    Text("RateScreen")
     FeedbackComponent()
   }
 }

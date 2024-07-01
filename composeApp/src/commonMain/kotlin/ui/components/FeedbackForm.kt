@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Icon
@@ -35,34 +34,37 @@ import pawsitive.composeapp.generated.resources.mockimage
 
 // Nico aus ListEntry.kt geklaut :) //
 val BoxModifier =
-    Modifier.padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
-        .padding(Dp(10f)) // Eigentlich der Margin (Compose ist super weird)
+    Modifier
+        .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
         .clip(RoundedCornerShape(Dp(15f)))
         .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
         .background(Color.White)
         .fillMaxWidth()
 
-val InnenEnrcken = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
-
 // aus ListEntry.kt + abgeändert
-val StarIconModifier = Modifier.size(24.dp).padding(vertical = 2.dp).padding(bottom = 6.dp)
+val StarIconModifier = Modifier
+  .size(24.dp)
+
+val TextFieldModifier = Modifier
+  .background(Color.LightGray)
+  .fillMaxWidth()
 
 @Composable
 fun FeedbackComponent() {
-
   // Column Bewertung Arzt
   Column() {
 
     // Info-Card Arzt -> abgeänderte ListEntryComponent()
     Column(
         modifier = BoxModifier
-        // .fillMaxWidth()
-        // .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
+        .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
         ) {
           Row(
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.SpaceBetween,
-              modifier = Modifier.fillMaxWidth()) {
+              modifier = Modifier
+                .fillMaxWidth()) 
+          {
                 // Nane + Bild
                 Row(verticalAlignment = Alignment.CenterVertically) {
                   Image(
@@ -129,7 +131,12 @@ fun FeedbackComponent() {
         }
 
     // Column: Rating Arzt //
-    Column(modifier = BoxModifier.background(Color.White)) {
+    Column(modifier = BoxModifier
+      .background(Color.White)
+      .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
+    )
+
+      {
 
       // Rating Diagnose
       Text(text = "Diagnose", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
@@ -232,7 +239,7 @@ fun FeedbackComponent() {
       TextField(
           value = rating.value,
           onValueChange = { rating.value = it },
-          modifier = BoxModifier.background(Color.LightGray),
+          modifier = TextFieldModifier,
           label = { Text("Feedback") })
     }
   }
