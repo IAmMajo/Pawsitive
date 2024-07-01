@@ -2,6 +2,8 @@ package ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -17,18 +19,19 @@ import ui.components.Searchbar
 @Composable
 @Preview
 fun SearchScreen() {
+  val state = rememberScrollState()
   val viewModel = viewModel { SearchViewModel() }
   val uiState by viewModel.uiState.collectAsState()
   LaunchedEffect(true) { viewModel.fetchResults() }
-  Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-    Searchbar()
+  Column(
+      Modifier.fillMaxWidth().verticalScroll(state),
+      horizontalAlignment = Alignment.CenterHorizontally) {
+        Searchbar()
 
-    if (uiState.loading) {
-      CircularProgressIndicator()
-    } else {
-      uiState.results.forEach {
-        ListEntryComponent(it)
+        if (uiState.loading) {
+          CircularProgressIndicator()
+        } else {
+          uiState.results.forEach { ListEntryComponent(it) }
+        }
       }
-    }
-  }
 }
