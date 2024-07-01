@@ -11,7 +11,7 @@ class AndroidClinicRating(amplifyClinicRating: AmplifyClinicRating) : ClinicRati
       (amplifyClinicRating.clinic as? LoadedModelReference)?.value?.let { AndroidClinic(it) }
   override val rating: Double = amplifyClinicRating.rating ?: 0.0
   override val comment: String = amplifyClinicRating.comment ?: ""
-  override val pets: List<AndroidPet> = run {
+  override val pets: List<AndroidPet> = run{
     val petsReference = amplifyClinicRating.pets
     if (petsReference is LoadedModelList) {
       petsReference.items.mapNotNull {

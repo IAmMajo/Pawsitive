@@ -1,5 +1,6 @@
 package data.database
 
+import extensions.nanToZero
 import kotlinx.datetime.LocalDateTime
 
 interface VetRating {
@@ -14,5 +15,9 @@ interface VetRating {
   val date: LocalDateTime
 
   val rating: Double
-    get() = listOf(ratingDiagnosis, ratingTreatment, ratingEmpathy).filter { it != 0.0 }.average()
+    get() =
+        listOf(ratingDiagnosis, ratingTreatment, ratingEmpathy)
+            .filter { it != 0.0 }
+            .average()
+            .nanToZero()
 }
