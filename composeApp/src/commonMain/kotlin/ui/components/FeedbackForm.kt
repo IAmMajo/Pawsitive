@@ -34,20 +34,16 @@ import pawsitive.composeapp.generated.resources.mockimage
 
 // Nico aus ListEntry.kt geklaut :) //
 val BoxModifier =
-    Modifier
-        .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
+    Modifier.padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
         .clip(RoundedCornerShape(Dp(15f)))
         .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
         .background(Color.White)
         .fillMaxWidth()
 
 // aus ListEntry.kt + abgeändert
-val StarIconModifier = Modifier
-  .size(24.dp)
+val StarIconModifier = Modifier.size(24.dp)
 
-val TextFieldModifier = Modifier
-  .background(Color.LightGray)
-  .fillMaxWidth()
+val TextFieldModifier = Modifier.background(Color.LightGray).fillMaxWidth()
 
 @Composable
 fun FeedbackComponent() {
@@ -56,15 +52,11 @@ fun FeedbackComponent() {
 
     // Info-Card Arzt -> abgeänderte ListEntryComponent()
     Column(
-        modifier = BoxModifier
-        .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
-        ) {
+        modifier = BoxModifier.padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)) {
           Row(
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.SpaceBetween,
-              modifier = Modifier
-                .fillMaxWidth()) 
-          {
+              modifier = Modifier.fillMaxWidth()) {
                 // Nane + Bild
                 Row(verticalAlignment = Alignment.CenterVertically) {
                   Image(
@@ -131,117 +123,118 @@ fun FeedbackComponent() {
         }
 
     // Column: Rating Arzt //
-    Column(modifier = BoxModifier
-      .background(Color.White)
-      .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
-    )
+    Column(
+        modifier =
+            BoxModifier.background(Color.White)
+                .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)) {
 
-      {
+          // Rating Diagnose
+          Text(text = "Diagnose", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+          Row() {
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+          }
+          // Rating Behandlung
+          Text(text = "Behandlung", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+          Row() {
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+          }
 
-      // Rating Diagnose
-      Text(text = "Diagnose", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
-      Row() {
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-      }
-      // Rating Behandlung
-      Text(text = "Behandlung", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
-      Row() {
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-      }
+          // Rating Aufklärung
 
-      // Rating Aufklärung
+          // Rating Vertrauensverhältnis
+          Text(
+              text = "Vertrauensverhältnis",
+              fontWeight = FontWeight.Medium,
+              color = Color(0xFF959494))
+          Row() {
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarIconModifier)
+          }
 
-      // Rating Vertrauensverhältnis
-      Text(text = "Vertrauensverhältnis", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
-      Row() {
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-        Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarIconModifier)
-      }
+          // Rating investierte Zeit
 
-      // Rating investierte Zeit
+          // Rating Freundlichkeit
 
-      // Rating Freundlichkeit
+          // Textfeld - Rating Arzt
 
-      // Textfeld - Rating Arzt
-
-      val rating = remember { mutableStateOf("") }
-      TextField(
-          value = rating.value,
-          onValueChange = { rating.value = it },
-          modifier = TextFieldModifier,
-          label = { Text("Feedback") })
-    }
+          val rating = remember { mutableStateOf("") }
+          TextField(
+              value = rating.value,
+              onValueChange = { rating.value = it },
+              modifier = TextFieldModifier,
+              label = { Text("Feedback") })
+        }
   }
 
   // Abschnitt: Bewertung Praxis

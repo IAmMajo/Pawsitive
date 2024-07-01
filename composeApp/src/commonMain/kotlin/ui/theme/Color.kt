@@ -2,7 +2,6 @@ package ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-
 // Material Colors (Don't change value names)
 val primaryLight = Color(0xFF00D47B)
 val onPrimaryLight = Color(0xFFFFFFFF)
