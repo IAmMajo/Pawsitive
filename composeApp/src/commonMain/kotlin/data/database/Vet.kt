@@ -21,13 +21,13 @@ interface Vet {
 
   val averageRatingInformation: Double
     get() = ratings.map { it.ratingInformation }.averageNotZero()
-  
+
   val averageRatingTrust: Double
     get() = ratings.map { it.ratingTrust }.averageNotZero()
-  
+
   val averageRatingInvestedTime: Double
     get() = ratings.map { it.ratingInvestedTime }.averageNotZero()
-  
+
   val averageRatingFriendliness: Double
     get() = ratings.map { it.ratingFriendliness }.averageNotZero()
 }

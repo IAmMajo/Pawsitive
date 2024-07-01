@@ -25,22 +25,22 @@ interface Clinic {
 
   val averageRating: Double
     get() = ratings.map { it.rating }.averageNotZero()
-  
+
   val averageRatingWaitingTime: Double
     get() = ratings.map { it.ratingWaitingTime }.averageNotZero()
-  
+
   val averageRatingEquipment: Double
     get() = ratings.map { it.ratingEquipment }.averageNotZero()
-  
+
   val averageRatingPhoneAvailability: Double
     get() = ratings.map { it.ratingPhoneAvailability }.averageNotZero()
-  
+
   val averageRatingParking: Double
     get() = ratings.map { it.ratingParking }.averageNotZero()
-  
+
   val averageRatingPricePerformance: Double
     get() = ratings.map { it.ratingPricePerformance }.averageNotZero()
-  
+
   val averageRatingAlternativeMedicine: Double
     get() = ratings.map { it.ratingAlternativeMedicine }.averageNotZero()
 }
