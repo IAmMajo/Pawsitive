@@ -91,7 +91,6 @@ const schema = a.schema({
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .identifier(["ratingId", "serviceNumber"])
     .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
   VetRatingPet: a
     .model({
@@ -106,7 +105,6 @@ const schema = a.schema({
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .identifier(["ratingId", "petId"])
     .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
   ClinicRatingPet: a
     .model({
@@ -122,17 +120,15 @@ const schema = a.schema({
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .identifier(["ratingId", "petId"])
     .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
   Service: a
     .model({
-      number: a.string().required(),
+      id: a.string().required(),
       name: a.string().required(),
       categoryId: a.id().required(),
       category: a.belongsTo("ServiceCategory", "categoryId"),
       ratings: a.hasMany("VetRatingService", "serviceNumber"),
     })
-    .identifier(["number"])
     .authorization((allow) => [allow.guest().to(["read"])]),
   Pet: a
     .model({
