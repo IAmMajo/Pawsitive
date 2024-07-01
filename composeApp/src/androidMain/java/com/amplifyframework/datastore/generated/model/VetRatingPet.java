@@ -73,6 +73,7 @@ public final class VetRatingPet implements Model {
   ) ModelReference<Pet> pet;
   private final @ModelField(
     targetType = "String",
+    isRequired = true,
     authRules = {
       @AuthRule(
         allow = AuthStrategy.PUBLIC,
@@ -222,7 +223,11 @@ public final class VetRatingPet implements Model {
   }
 
   public interface PetIdStep {
-    BuildStep petId(String petId);
+    OwnerStep petId(String petId);
+  }
+
+  public interface OwnerStep {
+    BuildStep owner(String owner);
   }
 
   public interface BuildStep {
@@ -230,17 +235,17 @@ public final class VetRatingPet implements Model {
     BuildStep id(String id);
     BuildStep rating(VetRating rating);
     BuildStep pet(Pet pet);
-    BuildStep owner(String owner);
   }
 
-  public static class Builder implements RatingIdStep, PetIdStep, BuildStep {
+  public static class Builder
+    implements RatingIdStep, PetIdStep, OwnerStep, BuildStep {
 
     private String id;
     private String ratingId;
     private String petId;
+    private String owner;
     private ModelReference<VetRating> rating;
     private ModelReference<Pet> pet;
-    private String owner;
 
     public Builder() {}
 
@@ -275,9 +280,16 @@ public final class VetRatingPet implements Model {
     }
 
     @Override
-    public BuildStep petId(String petId) {
+    public OwnerStep petId(String petId) {
       Objects.requireNonNull(petId);
       this.petId = petId;
+      return this;
+    }
+
+    @Override
+    public BuildStep owner(String owner) {
+      Objects.requireNonNull(owner);
+      this.owner = owner;
       return this;
     }
 
@@ -290,12 +302,6 @@ public final class VetRatingPet implements Model {
     @Override
     public BuildStep pet(Pet pet) {
       this.pet = new LoadedModelReferenceImpl<>(pet);
-      return this;
-    }
-
-    @Override
-    public BuildStep owner(String owner) {
-      this.owner = owner;
       return this;
     }
 
@@ -322,6 +328,7 @@ public final class VetRatingPet implements Model {
       super(id, ratingId, petId, rating, pet, owner);
       Objects.requireNonNull(ratingId);
       Objects.requireNonNull(petId);
+      Objects.requireNonNull(owner);
     }
 
     @Override
@@ -335,6 +342,11 @@ public final class VetRatingPet implements Model {
     }
 
     @Override
+    public CopyOfBuilder owner(String owner) {
+      return (CopyOfBuilder) super.owner(owner);
+    }
+
+    @Override
     public CopyOfBuilder rating(VetRating rating) {
       return (CopyOfBuilder) super.rating(rating);
     }
@@ -342,11 +354,6 @@ public final class VetRatingPet implements Model {
     @Override
     public CopyOfBuilder pet(Pet pet) {
       return (CopyOfBuilder) super.pet(pet);
-    }
-
-    @Override
-    public CopyOfBuilder owner(String owner) {
-      return (CopyOfBuilder) super.owner(owner);
     }
   }
 }

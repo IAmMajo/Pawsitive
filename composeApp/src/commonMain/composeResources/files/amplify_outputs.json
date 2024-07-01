@@ -840,7 +840,7 @@
               "name": "owner",
               "isArray": false,
               "type": "String",
-              "isRequired": false,
+              "isRequired": true,
               "attributes": []
             },
             "createdAt": {
