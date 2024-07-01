@@ -8,18 +8,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import ui.components.FeedbackComponent
-import ui.components.ListEntryComponent
-import ui.components.Searchbar
 
 @Composable
 @Preview
 fun RateScreen() {
-  
-  Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
+
+  Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
     Text("RateScreen")
     FeedbackComponent()
-    
   }
-  
 }
-
