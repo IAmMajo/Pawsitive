@@ -11,8 +11,8 @@ interface Clinic {
   val addressDetails: String
   val postalCode: Int
   val place: String
-  val longitude: Double
   val latitude: Double
+  val longitude: Double
   val openingHours: String
   val phone: String
   val email: String

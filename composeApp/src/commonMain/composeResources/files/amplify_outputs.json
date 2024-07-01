@@ -207,15 +207,15 @@
               "isRequired": true,
               "attributes": []
             },
-            "longitude": {
-              "name": "longitude",
+            "latitude": {
+              "name": "latitude",
               "isArray": false,
               "type": "Float",
               "isRequired": true,
               "attributes": []
             },
-            "latitude": {
-              "name": "latitude",
+            "longitude": {
+              "name": "longitude",
               "isArray": false,
               "type": "Float",
               "isRequired": true,
