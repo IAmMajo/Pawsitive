@@ -36,7 +36,8 @@ val ProfilePictureModifier = Modifier.size(70.dp).clip(CircleShape)
 val ProfileCommentPictureModifier = Modifier.size(35.dp).clip(CircleShape)
 
 val ListEntryBoxModifier =
-    Modifier.padding(Dp(10f)) // Eigentlich der Margin (Compose ist super weird)
+    Modifier
+        .padding(Dp(10f)) // Eigentlich der Margin (Compose ist super weird)
         .clip(RoundedCornerShape(Dp(15f)))
         .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
         .background(Color.White)
