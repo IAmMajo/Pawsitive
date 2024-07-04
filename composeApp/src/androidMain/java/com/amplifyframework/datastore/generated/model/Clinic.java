@@ -9,10 +9,12 @@ import com.amplifyframework.core.model.ModelList;
 import com.amplifyframework.core.model.ModelOperation;
 import com.amplifyframework.core.model.annotations.AuthRule;
 import com.amplifyframework.core.model.annotations.HasMany;
+import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
 import com.amplifyframework.core.model.query.predicate.QueryField;
 import com.amplifyframework.core.model.temporal.Temporal;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -43,8 +45,12 @@ public final class Clinic implements Model {
   );
   public static final QueryField POSTAL_CODE = field("Clinic", "postalCode");
   public static final QueryField PLACE = field("Clinic", "place");
-  public static final QueryField LONGITUDE = field("Clinic", "longitude");
   public static final QueryField LATITUDE = field("Clinic", "latitude");
+  public static final QueryField LONGITUDE = field("Clinic", "longitude");
+  public static final QueryField OPENING_HOURS = field(
+    "Clinic",
+    "openingHours"
+  );
   public static final QueryField PHONE = field("Clinic", "phone");
   public static final QueryField EMAIL = field("Clinic", "email");
   public static final QueryField WEBSITE = field("Clinic", "website");
@@ -74,11 +80,12 @@ public final class Clinic implements Model {
   private final @ModelField(
     targetType = "Float",
     isRequired = true
-  ) Double longitude;
+  ) Double latitude;
   private final @ModelField(
     targetType = "Float",
     isRequired = true
-  ) Double latitude;
+  ) Double longitude;
+  private final @ModelField(targetType = "String") String openingHours;
   private final @ModelField(targetType = "AWSPhone") String phone;
   private final @ModelField(targetType = "AWSEmail") String email;
   private final @ModelField(targetType = "AWSURL") String website;
@@ -131,12 +138,16 @@ public final class Clinic implements Model {
     return place;
   }
 
+  public Double getLatitude() {
+    return latitude;
+  }
+
   public Double getLongitude() {
     return longitude;
   }
 
-  public Double getLatitude() {
-    return latitude;
+  public String getOpeningHours() {
+    return openingHours;
   }
 
   public String getPhone() {
@@ -176,8 +187,9 @@ public final class Clinic implements Model {
     String addressDetails,
     Integer postalCode,
     String place,
-    Double longitude,
     Double latitude,
+    Double longitude,
+    String openingHours,
     String phone,
     String email,
     String website
@@ -190,8 +202,9 @@ public final class Clinic implements Model {
     this.addressDetails = addressDetails;
     this.postalCode = postalCode;
     this.place = place;
-    this.longitude = longitude;
     this.latitude = latitude;
+    this.longitude = longitude;
+    this.openingHours = openingHours;
     this.phone = phone;
     this.email = email;
     this.website = website;
@@ -214,8 +227,9 @@ public final class Clinic implements Model {
         ObjectsCompat.equals(getAddressDetails(), clinic.getAddressDetails()) &&
         ObjectsCompat.equals(getPostalCode(), clinic.getPostalCode()) &&
         ObjectsCompat.equals(getPlace(), clinic.getPlace()) &&
-        ObjectsCompat.equals(getLongitude(), clinic.getLongitude()) &&
         ObjectsCompat.equals(getLatitude(), clinic.getLatitude()) &&
+        ObjectsCompat.equals(getLongitude(), clinic.getLongitude()) &&
+        ObjectsCompat.equals(getOpeningHours(), clinic.getOpeningHours()) &&
         ObjectsCompat.equals(getPhone(), clinic.getPhone()) &&
         ObjectsCompat.equals(getEmail(), clinic.getEmail()) &&
         ObjectsCompat.equals(getWebsite(), clinic.getWebsite()) &&
@@ -236,8 +250,9 @@ public final class Clinic implements Model {
       .append(getAddressDetails())
       .append(getPostalCode())
       .append(getPlace())
-      .append(getLongitude())
       .append(getLatitude())
+      .append(getLongitude())
+      .append(getOpeningHours())
       .append(getPhone())
       .append(getEmail())
       .append(getWebsite())
@@ -259,8 +274,9 @@ public final class Clinic implements Model {
       .append("addressDetails=" + String.valueOf(getAddressDetails()) + ", ")
       .append("postalCode=" + String.valueOf(getPostalCode()) + ", ")
       .append("place=" + String.valueOf(getPlace()) + ", ")
-      .append("longitude=" + String.valueOf(getLongitude()) + ", ")
       .append("latitude=" + String.valueOf(getLatitude()) + ", ")
+      .append("longitude=" + String.valueOf(getLongitude()) + ", ")
+      .append("openingHours=" + String.valueOf(getOpeningHours()) + ", ")
       .append("phone=" + String.valueOf(getPhone()) + ", ")
       .append("email=" + String.valueOf(getEmail()) + ", ")
       .append("website=" + String.valueOf(getWebsite()) + ", ")
@@ -296,6 +312,7 @@ public final class Clinic implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -310,8 +327,9 @@ public final class Clinic implements Model {
       addressDetails,
       postalCode,
       place,
-      longitude,
       latitude,
+      longitude,
+      openingHours,
       phone,
       email,
       website
@@ -335,15 +353,15 @@ public final class Clinic implements Model {
   }
 
   public interface PlaceStep {
-    LongitudeStep place(String place);
-  }
-
-  public interface LongitudeStep {
-    LatitudeStep longitude(Double longitude);
+    LatitudeStep place(String place);
   }
 
   public interface LatitudeStep {
-    BuildStep latitude(Double latitude);
+    LongitudeStep latitude(Double latitude);
+  }
+
+  public interface LongitudeStep {
+    BuildStep longitude(Double longitude);
   }
 
   public interface BuildStep {
@@ -351,6 +369,7 @@ public final class Clinic implements Model {
     BuildStep id(String id);
     BuildStep imagePath(String imagePath);
     BuildStep addressDetails(String addressDetails);
+    BuildStep openingHours(String openingHours);
     BuildStep phone(String phone);
     BuildStep email(String email);
     BuildStep website(String website);
@@ -363,8 +382,8 @@ public final class Clinic implements Model {
       HouseNumberStep,
       PostalCodeStep,
       PlaceStep,
-      LongitudeStep,
       LatitudeStep,
+      LongitudeStep,
       BuildStep {
 
     private String id;
@@ -373,10 +392,11 @@ public final class Clinic implements Model {
     private String houseNumber;
     private Integer postalCode;
     private String place;
-    private Double longitude;
     private Double latitude;
+    private Double longitude;
     private String imagePath;
     private String addressDetails;
+    private String openingHours;
     private String phone;
     private String email;
     private String website;
@@ -392,8 +412,9 @@ public final class Clinic implements Model {
       String addressDetails,
       Integer postalCode,
       String place,
-      Double longitude,
       Double latitude,
+      Double longitude,
+      String openingHours,
       String phone,
       String email,
       String website
@@ -406,8 +427,9 @@ public final class Clinic implements Model {
       this.addressDetails = addressDetails;
       this.postalCode = postalCode;
       this.place = place;
-      this.longitude = longitude;
       this.latitude = latitude;
+      this.longitude = longitude;
+      this.openingHours = openingHours;
       this.phone = phone;
       this.email = email;
       this.website = website;
@@ -426,8 +448,9 @@ public final class Clinic implements Model {
         addressDetails,
         postalCode,
         place,
-        longitude,
         latitude,
+        longitude,
+        openingHours,
         phone,
         email,
         website
@@ -463,23 +486,23 @@ public final class Clinic implements Model {
     }
 
     @Override
-    public LongitudeStep place(String place) {
+    public LatitudeStep place(String place) {
       Objects.requireNonNull(place);
       this.place = place;
       return this;
     }
 
     @Override
-    public LatitudeStep longitude(Double longitude) {
-      Objects.requireNonNull(longitude);
-      this.longitude = longitude;
+    public LongitudeStep latitude(Double latitude) {
+      Objects.requireNonNull(latitude);
+      this.latitude = latitude;
       return this;
     }
 
     @Override
-    public BuildStep latitude(Double latitude) {
-      Objects.requireNonNull(latitude);
-      this.latitude = latitude;
+    public BuildStep longitude(Double longitude) {
+      Objects.requireNonNull(longitude);
+      this.longitude = longitude;
       return this;
     }
 
@@ -492,6 +515,12 @@ public final class Clinic implements Model {
     @Override
     public BuildStep addressDetails(String addressDetails) {
       this.addressDetails = addressDetails;
+      return this;
+    }
+
+    @Override
+    public BuildStep openingHours(String openingHours) {
+      this.openingHours = openingHours;
       return this;
     }
 
@@ -534,8 +563,9 @@ public final class Clinic implements Model {
       String addressDetails,
       Integer postalCode,
       String place,
-      Double longitude,
       Double latitude,
+      Double longitude,
+      String openingHours,
       String phone,
       String email,
       String website
@@ -549,8 +579,9 @@ public final class Clinic implements Model {
         addressDetails,
         postalCode,
         place,
-        longitude,
         latitude,
+        longitude,
+        openingHours,
         phone,
         email,
         website
@@ -560,8 +591,8 @@ public final class Clinic implements Model {
       Objects.requireNonNull(houseNumber);
       Objects.requireNonNull(postalCode);
       Objects.requireNonNull(place);
-      Objects.requireNonNull(longitude);
       Objects.requireNonNull(latitude);
+      Objects.requireNonNull(longitude);
     }
 
     @Override
@@ -590,13 +621,13 @@ public final class Clinic implements Model {
     }
 
     @Override
-    public CopyOfBuilder longitude(Double longitude) {
-      return (CopyOfBuilder) super.longitude(longitude);
+    public CopyOfBuilder latitude(Double latitude) {
+      return (CopyOfBuilder) super.latitude(latitude);
     }
 
     @Override
-    public CopyOfBuilder latitude(Double latitude) {
-      return (CopyOfBuilder) super.latitude(latitude);
+    public CopyOfBuilder longitude(Double longitude) {
+      return (CopyOfBuilder) super.longitude(longitude);
     }
 
     @Override
@@ -607,6 +638,11 @@ public final class Clinic implements Model {
     @Override
     public CopyOfBuilder addressDetails(String addressDetails) {
       return (CopyOfBuilder) super.addressDetails(addressDetails);
+    }
+
+    @Override
+    public CopyOfBuilder openingHours(String openingHours) {
+      return (CopyOfBuilder) super.openingHours(openingHours);
     }
 
     @Override

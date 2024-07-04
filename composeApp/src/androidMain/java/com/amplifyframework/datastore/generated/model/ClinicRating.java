@@ -12,10 +12,12 @@ import com.amplifyframework.core.model.ModelReference;
 import com.amplifyframework.core.model.annotations.AuthRule;
 import com.amplifyframework.core.model.annotations.BelongsTo;
 import com.amplifyframework.core.model.annotations.HasMany;
+import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
 import com.amplifyframework.core.model.query.predicate.QueryField;
 import com.amplifyframework.core.model.temporal.Temporal;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -53,7 +55,30 @@ public final class ClinicRating implements Model {
   );
   public static final QueryField ID = field("ClinicRating", "id");
   public static final QueryField CLINIC_ID = field("ClinicRating", "clinicId");
-  public static final QueryField RATING = field("ClinicRating", "rating");
+  public static final QueryField RATING_WAITING_TIME = field(
+    "ClinicRating",
+    "ratingWaitingTime"
+  );
+  public static final QueryField RATING_EQUIPMENT = field(
+    "ClinicRating",
+    "ratingEquipment"
+  );
+  public static final QueryField RATING_PHONE_AVAILABILITY = field(
+    "ClinicRating",
+    "ratingPhoneAvailability"
+  );
+  public static final QueryField RATING_PARKING = field(
+    "ClinicRating",
+    "ratingParking"
+  );
+  public static final QueryField RATING_PRICE_PERFORMANCE = field(
+    "ClinicRating",
+    "ratingPricePerformance"
+  );
+  public static final QueryField RATING_ALTERNATIVE_MEDICINE = field(
+    "ClinicRating",
+    "ratingAlternativeMedicine"
+  );
   public static final QueryField COMMENT = field("ClinicRating", "comment");
   public static final QueryField CLINIC = field("ClinicRating", "clinicId");
   public static final QueryField OWNER = field("ClinicRating", "owner");
@@ -62,7 +87,14 @@ public final class ClinicRating implements Model {
     targetType = "ID",
     isRequired = true
   ) String clinicId;
-  private final @ModelField(targetType = "Float") Double rating;
+  private final @ModelField(targetType = "Int") Integer ratingWaitingTime;
+  private final @ModelField(targetType = "Int") Integer ratingEquipment;
+  private final @ModelField(targetType = "Int") Integer ratingPhoneAvailability;
+  private final @ModelField(targetType = "Int") Integer ratingParking;
+  private final @ModelField(targetType = "Int") Integer ratingPricePerformance;
+  private final @ModelField(
+    targetType = "Int"
+  ) Integer ratingAlternativeMedicine;
   private final @ModelField(targetType = "String") String comment;
   private final @ModelField(targetType = "Clinic") @BelongsTo(
     targetName = "clinicId",
@@ -107,8 +139,28 @@ public final class ClinicRating implements Model {
     return clinicId;
   }
 
-  public Double getRating() {
-    return rating;
+  public Integer getRatingWaitingTime() {
+    return ratingWaitingTime;
+  }
+
+  public Integer getRatingEquipment() {
+    return ratingEquipment;
+  }
+
+  public Integer getRatingPhoneAvailability() {
+    return ratingPhoneAvailability;
+  }
+
+  public Integer getRatingParking() {
+    return ratingParking;
+  }
+
+  public Integer getRatingPricePerformance() {
+    return ratingPricePerformance;
+  }
+
+  public Integer getRatingAlternativeMedicine() {
+    return ratingAlternativeMedicine;
   }
 
   public String getComment() {
@@ -138,14 +190,24 @@ public final class ClinicRating implements Model {
   private ClinicRating(
     String id,
     String clinicId,
-    Double rating,
+    Integer ratingWaitingTime,
+    Integer ratingEquipment,
+    Integer ratingPhoneAvailability,
+    Integer ratingParking,
+    Integer ratingPricePerformance,
+    Integer ratingAlternativeMedicine,
     String comment,
     ModelReference<Clinic> clinic,
     String owner
   ) {
     this.id = id;
     this.clinicId = clinicId;
-    this.rating = rating;
+    this.ratingWaitingTime = ratingWaitingTime;
+    this.ratingEquipment = ratingEquipment;
+    this.ratingPhoneAvailability = ratingPhoneAvailability;
+    this.ratingParking = ratingParking;
+    this.ratingPricePerformance = ratingPricePerformance;
+    this.ratingAlternativeMedicine = ratingAlternativeMedicine;
     this.comment = comment;
     this.clinic = clinic;
     this.owner = owner;
@@ -162,7 +224,30 @@ public final class ClinicRating implements Model {
       return (
         ObjectsCompat.equals(getId(), clinicRating.getId()) &&
         ObjectsCompat.equals(getClinicId(), clinicRating.getClinicId()) &&
-        ObjectsCompat.equals(getRating(), clinicRating.getRating()) &&
+        ObjectsCompat.equals(
+          getRatingWaitingTime(),
+          clinicRating.getRatingWaitingTime()
+        ) &&
+        ObjectsCompat.equals(
+          getRatingEquipment(),
+          clinicRating.getRatingEquipment()
+        ) &&
+        ObjectsCompat.equals(
+          getRatingPhoneAvailability(),
+          clinicRating.getRatingPhoneAvailability()
+        ) &&
+        ObjectsCompat.equals(
+          getRatingParking(),
+          clinicRating.getRatingParking()
+        ) &&
+        ObjectsCompat.equals(
+          getRatingPricePerformance(),
+          clinicRating.getRatingPricePerformance()
+        ) &&
+        ObjectsCompat.equals(
+          getRatingAlternativeMedicine(),
+          clinicRating.getRatingAlternativeMedicine()
+        ) &&
         ObjectsCompat.equals(getComment(), clinicRating.getComment()) &&
         ObjectsCompat.equals(getClinic(), clinicRating.getClinic()) &&
         ObjectsCompat.equals(getOwner(), clinicRating.getOwner()) &&
@@ -177,7 +262,12 @@ public final class ClinicRating implements Model {
     return new StringBuilder()
       .append(getId())
       .append(getClinicId())
-      .append(getRating())
+      .append(getRatingWaitingTime())
+      .append(getRatingEquipment())
+      .append(getRatingPhoneAvailability())
+      .append(getRatingParking())
+      .append(getRatingPricePerformance())
+      .append(getRatingAlternativeMedicine())
       .append(getComment())
       .append(getClinic())
       .append(getOwner())
@@ -193,7 +283,26 @@ public final class ClinicRating implements Model {
       .append("ClinicRating {")
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("clinicId=" + String.valueOf(getClinicId()) + ", ")
-      .append("rating=" + String.valueOf(getRating()) + ", ")
+      .append(
+        "ratingWaitingTime=" + String.valueOf(getRatingWaitingTime()) + ", "
+      )
+      .append("ratingEquipment=" + String.valueOf(getRatingEquipment()) + ", ")
+      .append(
+        "ratingPhoneAvailability=" +
+        String.valueOf(getRatingPhoneAvailability()) +
+        ", "
+      )
+      .append("ratingParking=" + String.valueOf(getRatingParking()) + ", ")
+      .append(
+        "ratingPricePerformance=" +
+        String.valueOf(getRatingPricePerformance()) +
+        ", "
+      )
+      .append(
+        "ratingAlternativeMedicine=" +
+        String.valueOf(getRatingAlternativeMedicine()) +
+        ", "
+      )
       .append("comment=" + String.valueOf(getComment()) + ", ")
       .append("clinic=" + String.valueOf(getClinic()) + ", ")
       .append("owner=" + String.valueOf(getOwner()) + ", ")
@@ -216,11 +325,35 @@ public final class ClinicRating implements Model {
    * @return an instance of this model with only ID populated
    */
   public static ClinicRating justId(String id) {
-    return new ClinicRating(id, null, null, null, null, null);
+    return new ClinicRating(
+      id,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    );
   }
 
   public CopyOfBuilder copyOfBuilder() {
-    return new CopyOfBuilder(id, clinicId, rating, comment, clinic, owner);
+    return new CopyOfBuilder(
+      id,
+      clinicId,
+      ratingWaitingTime,
+      ratingEquipment,
+      ratingPhoneAvailability,
+      ratingParking,
+      ratingPricePerformance,
+      ratingAlternativeMedicine,
+      comment,
+      clinic,
+      owner
+    );
   }
 
   public interface ClinicIdStep {
@@ -234,7 +367,12 @@ public final class ClinicRating implements Model {
   public interface BuildStep {
     ClinicRating build();
     BuildStep id(String id);
-    BuildStep rating(Double rating);
+    BuildStep ratingWaitingTime(Integer ratingWaitingTime);
+    BuildStep ratingEquipment(Integer ratingEquipment);
+    BuildStep ratingPhoneAvailability(Integer ratingPhoneAvailability);
+    BuildStep ratingParking(Integer ratingParking);
+    BuildStep ratingPricePerformance(Integer ratingPricePerformance);
+    BuildStep ratingAlternativeMedicine(Integer ratingAlternativeMedicine);
     BuildStep comment(String comment);
     BuildStep clinic(Clinic clinic);
   }
@@ -244,7 +382,12 @@ public final class ClinicRating implements Model {
     private String id;
     private String clinicId;
     private String owner;
-    private Double rating;
+    private Integer ratingWaitingTime;
+    private Integer ratingEquipment;
+    private Integer ratingPhoneAvailability;
+    private Integer ratingParking;
+    private Integer ratingPricePerformance;
+    private Integer ratingAlternativeMedicine;
     private String comment;
     private ModelReference<Clinic> clinic;
 
@@ -253,14 +396,24 @@ public final class ClinicRating implements Model {
     private Builder(
       String id,
       String clinicId,
-      Double rating,
+      Integer ratingWaitingTime,
+      Integer ratingEquipment,
+      Integer ratingPhoneAvailability,
+      Integer ratingParking,
+      Integer ratingPricePerformance,
+      Integer ratingAlternativeMedicine,
       String comment,
       ModelReference<Clinic> clinic,
       String owner
     ) {
       this.id = id;
       this.clinicId = clinicId;
-      this.rating = rating;
+      this.ratingWaitingTime = ratingWaitingTime;
+      this.ratingEquipment = ratingEquipment;
+      this.ratingPhoneAvailability = ratingPhoneAvailability;
+      this.ratingParking = ratingParking;
+      this.ratingPricePerformance = ratingPricePerformance;
+      this.ratingAlternativeMedicine = ratingAlternativeMedicine;
       this.comment = comment;
       this.clinic = clinic;
       this.owner = owner;
@@ -270,7 +423,19 @@ public final class ClinicRating implements Model {
     public ClinicRating build() {
       String id = this.id != null ? this.id : UUID.randomUUID().toString();
 
-      return new ClinicRating(id, clinicId, rating, comment, clinic, owner);
+      return new ClinicRating(
+        id,
+        clinicId,
+        ratingWaitingTime,
+        ratingEquipment,
+        ratingPhoneAvailability,
+        ratingParking,
+        ratingPricePerformance,
+        ratingAlternativeMedicine,
+        comment,
+        clinic,
+        owner
+      );
     }
 
     @Override
@@ -288,8 +453,40 @@ public final class ClinicRating implements Model {
     }
 
     @Override
-    public BuildStep rating(Double rating) {
-      this.rating = rating;
+    public BuildStep ratingWaitingTime(Integer ratingWaitingTime) {
+      this.ratingWaitingTime = ratingWaitingTime;
+      return this;
+    }
+
+    @Override
+    public BuildStep ratingEquipment(Integer ratingEquipment) {
+      this.ratingEquipment = ratingEquipment;
+      return this;
+    }
+
+    @Override
+    public BuildStep ratingPhoneAvailability(Integer ratingPhoneAvailability) {
+      this.ratingPhoneAvailability = ratingPhoneAvailability;
+      return this;
+    }
+
+    @Override
+    public BuildStep ratingParking(Integer ratingParking) {
+      this.ratingParking = ratingParking;
+      return this;
+    }
+
+    @Override
+    public BuildStep ratingPricePerformance(Integer ratingPricePerformance) {
+      this.ratingPricePerformance = ratingPricePerformance;
+      return this;
+    }
+
+    @Override
+    public BuildStep ratingAlternativeMedicine(
+      Integer ratingAlternativeMedicine
+    ) {
+      this.ratingAlternativeMedicine = ratingAlternativeMedicine;
       return this;
     }
 
@@ -320,12 +517,29 @@ public final class ClinicRating implements Model {
     private CopyOfBuilder(
       String id,
       String clinicId,
-      Double rating,
+      Integer ratingWaitingTime,
+      Integer ratingEquipment,
+      Integer ratingPhoneAvailability,
+      Integer ratingParking,
+      Integer ratingPricePerformance,
+      Integer ratingAlternativeMedicine,
       String comment,
       ModelReference<Clinic> clinic,
       String owner
     ) {
-      super(id, clinicId, rating, comment, clinic, owner);
+      super(
+        id,
+        clinicId,
+        ratingWaitingTime,
+        ratingEquipment,
+        ratingPhoneAvailability,
+        ratingParking,
+        ratingPricePerformance,
+        ratingAlternativeMedicine,
+        comment,
+        clinic,
+        owner
+      );
       Objects.requireNonNull(clinicId);
       Objects.requireNonNull(owner);
     }
@@ -341,8 +555,45 @@ public final class ClinicRating implements Model {
     }
 
     @Override
-    public CopyOfBuilder rating(Double rating) {
-      return (CopyOfBuilder) super.rating(rating);
+    public CopyOfBuilder ratingWaitingTime(Integer ratingWaitingTime) {
+      return (CopyOfBuilder) super.ratingWaitingTime(ratingWaitingTime);
+    }
+
+    @Override
+    public CopyOfBuilder ratingEquipment(Integer ratingEquipment) {
+      return (CopyOfBuilder) super.ratingEquipment(ratingEquipment);
+    }
+
+    @Override
+    public CopyOfBuilder ratingPhoneAvailability(
+      Integer ratingPhoneAvailability
+    ) {
+      return (CopyOfBuilder) super.ratingPhoneAvailability(
+        ratingPhoneAvailability
+      );
+    }
+
+    @Override
+    public CopyOfBuilder ratingParking(Integer ratingParking) {
+      return (CopyOfBuilder) super.ratingParking(ratingParking);
+    }
+
+    @Override
+    public CopyOfBuilder ratingPricePerformance(
+      Integer ratingPricePerformance
+    ) {
+      return (CopyOfBuilder) super.ratingPricePerformance(
+        ratingPricePerformance
+      );
+    }
+
+    @Override
+    public CopyOfBuilder ratingAlternativeMedicine(
+      Integer ratingAlternativeMedicine
+    ) {
+      return (CopyOfBuilder) super.ratingAlternativeMedicine(
+        ratingAlternativeMedicine
+      );
     }
 
     @Override

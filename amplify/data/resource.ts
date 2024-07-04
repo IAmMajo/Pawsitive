@@ -24,8 +24,9 @@ const schema = a.schema({
       addressDetails: a.string(),
       postalCode: a.integer().required(),
       place: a.string().required(),
-      longitude: a.float().required(),
       latitude: a.float().required(),
+      longitude: a.float().required(),
+      openingHours: a.string(),
       phone: a.phone(),
       email: a.email(),
       website: a.url(),
@@ -36,9 +37,12 @@ const schema = a.schema({
   VetRating: a
     .model({
       vetId: a.id().required(),
-      ratingDiagnosis: a.float(),
-      ratingTreatment: a.float(),
-      ratingEmpathy: a.float(),
+      ratingDiagnosis: a.integer().required(),
+      ratingTreatment: a.integer().required(),
+      ratingInformation: a.integer().required(),
+      ratingTrust: a.integer(),
+      ratingInvestedTime: a.integer(),
+      ratingFriendliness: a.integer(),
       comment: a.string(),
       vet: a.belongsTo("Vet", "vetId"),
       services: a.hasMany("VetRatingService", "ratingId"),
@@ -55,7 +59,12 @@ const schema = a.schema({
   ClinicRating: a
     .model({
       clinicId: a.id().required(),
-      rating: a.float(),
+      ratingWaitingTime: a.integer(),
+      ratingEquipment: a.integer(),
+      ratingPhoneAvailability: a.integer(),
+      ratingParking: a.integer(),
+      ratingPricePerformance: a.integer(),
+      ratingAlternativeMedicine: a.integer(),
       comment: a.string(),
       clinic: a.belongsTo("Clinic", "clinicId"),
       pets: a.hasMany("ClinicRatingPet", "ratingId"),
@@ -82,7 +91,6 @@ const schema = a.schema({
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .identifier(["ratingId", "serviceNumber"])
     .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
   VetRatingPet: a
     .model({
@@ -92,12 +100,12 @@ const schema = a.schema({
       pet: a.belongsTo("Pet", "petId"),
       owner: a
         .string()
+        .required()
         .authorization((allow) => [
           allow.guest().to(["read"]),
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .identifier(["ratingId", "petId"])
     .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
   ClinicRatingPet: a
     .model({
@@ -113,17 +121,15 @@ const schema = a.schema({
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .identifier(["ratingId", "petId"])
     .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
   Service: a
     .model({
-      number: a.string().required(),
+      id: a.string().required(),
       name: a.string().required(),
       categoryId: a.id().required(),
       category: a.belongsTo("ServiceCategory", "categoryId"),
       ratings: a.hasMany("VetRatingService", "serviceNumber"),
     })
-    .identifier(["number"])
     .authorization((allow) => [allow.guest().to(["read"])]),
   Pet: a
     .model({

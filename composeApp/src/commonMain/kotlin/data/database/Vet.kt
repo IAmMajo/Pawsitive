@@ -1,6 +1,6 @@
 package data.database
 
-import extensions.format
+import extensions.averageNotZero
 
 interface Vet {
   val id: String
@@ -10,24 +10,24 @@ interface Vet {
   val clinic: Clinic?
   val ratings: List<VetRating>
 
-  val averageRating: String
-    get() = ratings.map { it.rating }.filter { it != 0.0 }.average().format()
+  val averageRating: Double
+    get() = ratings.map { it.rating }.averageNotZero()
 
-  val diagnosisRatingsAmount: Int
-    get() = ratings.filter { it.ratingDiagnosis != 0.0 }.size
+  val averageRatingDiagnosis: Double
+    get() = ratings.map { it.ratingDiagnosis }.averageNotZero()
 
-  val treatmentRatingsAmount: Int
-    get() = ratings.filter { it.ratingTreatment != 0.0 }.size
+  val averageRatingTreatment: Double
+    get() = ratings.map { it.ratingTreatment }.averageNotZero()
 
-  val empathyRatingsAmount: Int
-    get() = ratings.filter { it.ratingEmpathy != 0.0 }.size
+  val averageRatingInformation: Double
+    get() = ratings.map { it.ratingInformation }.averageNotZero()
 
-  val averageDiagnosisRating: String
-    get() = (ratings.sumOf { it.ratingDiagnosis } / diagnosisRatingsAmount).format()
+  val averageRatingTrust: Double
+    get() = ratings.map { it.ratingTrust }.averageNotZero()
 
-  val averageTreatmentRating: String
-    get() = (ratings.sumOf { it.ratingTreatment } / treatmentRatingsAmount).format()
+  val averageRatingInvestedTime: Double
+    get() = ratings.map { it.ratingInvestedTime }.averageNotZero()
 
-  val averageEmpathyRating: String
-    get() = (ratings.sumOf { it.ratingEmpathy } / empathyRatingsAmount).format()
+  val averageRatingFriendliness: Double
+    get() = ratings.map { it.ratingFriendliness }.averageNotZero()
 }

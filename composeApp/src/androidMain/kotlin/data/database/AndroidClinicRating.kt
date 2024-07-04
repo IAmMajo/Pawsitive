@@ -3,13 +3,18 @@ package data.database
 import com.amplifyframework.core.model.LoadedModelList
 import com.amplifyframework.core.model.LoadedModelReference
 import com.amplifyframework.datastore.generated.model.ClinicRating as AmplifyClinicRating
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Instant
 
 class AndroidClinicRating(amplifyClinicRating: AmplifyClinicRating) : ClinicRating {
   override val id: String = amplifyClinicRating.id
   override val clinic: AndroidClinic? =
       (amplifyClinicRating.clinic as? LoadedModelReference)?.value?.let { AndroidClinic(it) }
-  override val rating: Double = amplifyClinicRating.rating ?: 0.0
+  override val ratingWaitingTime: Int = amplifyClinicRating.ratingWaitingTime ?: 0
+  override val ratingEquipment: Int = amplifyClinicRating.ratingEquipment ?: 0
+  override val ratingPhoneAvailability: Int = amplifyClinicRating.ratingPhoneAvailability ?: 0
+  override val ratingParking: Int = amplifyClinicRating.ratingParking ?: 0
+  override val ratingPricePerformance: Int = amplifyClinicRating.ratingPricePerformance ?: 0
+  override val ratingAlternativeMedicine: Int = amplifyClinicRating.ratingAlternativeMedicine ?: 0
   override val comment: String = amplifyClinicRating.comment ?: ""
   override val pets: List<AndroidPet> = run {
     val petsReference = amplifyClinicRating.pets
@@ -21,5 +26,5 @@ class AndroidClinicRating(amplifyClinicRating: AmplifyClinicRating) : ClinicRati
       emptyList()
     }
   }
-  override val date: LocalDateTime = LocalDateTime.parse(amplifyClinicRating.createdAt.format())
+  override val date: Instant = Instant.parse(amplifyClinicRating.createdAt.format())
 }

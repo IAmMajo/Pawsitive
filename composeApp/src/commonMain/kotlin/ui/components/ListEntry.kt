@@ -26,8 +26,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import data.database.Vet
+import extensions.format
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import pawsitive.composeapp.generated.resources.Res
+import pawsitive.composeapp.generated.resources.and
 import pawsitive.composeapp.generated.resources.mockimage
 
 ////// VALUE SECTION ///////
@@ -122,7 +125,7 @@ fun ListEntryComponent(vet: Vet) {
                       modifier = StarModifier)
                 }
                 Text(
-                    text = vet.averageRating,
+                    text = vet.averageRating.format(),
                     fontWeight = FontWeight.SemiBold,
                     color = Color(0xFF202020),
                 )
@@ -177,159 +180,279 @@ fun ListEntryComponent(vet: Vet) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.fillMaxWidth()) {
-                      Text(text = "Diagnose")
-                      Row {
-                        Row {
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                        }
-                        Text(
-                            text = vet.diagnosisRatingsAmount.toString(),
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color(0xFF202020))
-                      }
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                  Text(text = "Diagnose")
+                  Row {
+                    Row {
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
                     }
+                    Text(
+                        text = vet.averageRatingDiagnosis.format(),
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(0xFF202020),
+                    )
+                  }
+                }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.fillMaxWidth()) {
-                      Text(text = "Behandlung")
-                      Row {
-                        Row {
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                        }
-                        Text(
-                            text = vet.empathyRatingsAmount.toString(),
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color(0xFF202020))
-                      }
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                  Text(text = "Behandlung")
+                  Row {
+                    Row {
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
                     }
+                    Text(
+                        text = vet.averageRatingTreatment.format(),
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(0xFF202020),
+                    )
+                  }
+                }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.fillMaxWidth()) {
-                      Text(text = "Empathie")
-                      Row {
-                        Row {
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                        }
-                        Text(
-                            text = vet.empathyRatingsAmount.toString(),
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color(0xFF202020))
-                      }
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                  Text(text = "Aufklärung")
+                  Row {
+                    Row {
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
                     }
+                    Text(
+                        text = vet.averageRatingInformation.format(),
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(0xFF202020),
+                    )
+                  }
+                }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.fillMaxWidth()) {
-                      Text(text = "Freundlichkeit")
-                      Row {
-                        Row {
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                        }
-                        Text(
-                            text = "34",
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color(0xFF202020))
-                      }
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                  Text(text = "Vertrauensverhältnis")
+                  Row {
+                    Row {
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
                     }
+                    Text(
+                        text = vet.averageRatingTrust.format(),
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(0xFF202020),
+                    )
+                  }
+                }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                  Text(text = "Investierte Zeit")
+                  Row {
+                    Row {
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                    }
+                    Text(
+                        text = vet.averageRatingInvestedTime.format(),
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(0xFF202020),
+                    )
+                  }
+                }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                  Text(text = "Freundlichkeit")
+                  Row {
+                    Row {
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                      Icon(
+                          Icons.Rounded.Star,
+                          contentDescription = "Star Placeholder Icon",
+                          tint = Color(0xFF00D47B),
+                          modifier = StarModifier,
+                      )
+                    }
+                    Text(
+                        text = vet.averageRatingFriendliness.format(),
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(0xFF202020),
+                    )
+                  }
+                }
 
                 vet.ratings.forEach {
                   Column(
@@ -355,7 +478,15 @@ fun ListEntryComponent(vet: Vet) {
                           modifier = Modifier.padding(start = 5.dp),
                       ) {
                         Text(
-                            text = "Peter Strauß",
+                            run {
+                              val commaPets = it.pets.dropLast(1)
+                              val lastPet = it.pets.last().name
+                              if (commaPets.isEmpty()) {
+                                lastPet
+                              } else {
+                                "${commaPets.joinToString { it.name }} ${stringResource(Res.string.and)} $lastPet"
+                              }
+                            },
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color(0xFF202020),

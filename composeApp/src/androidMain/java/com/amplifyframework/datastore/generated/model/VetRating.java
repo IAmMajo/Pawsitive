@@ -12,10 +12,12 @@ import com.amplifyframework.core.model.ModelReference;
 import com.amplifyframework.core.model.annotations.AuthRule;
 import com.amplifyframework.core.model.annotations.BelongsTo;
 import com.amplifyframework.core.model.annotations.HasMany;
+import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
 import com.amplifyframework.core.model.query.predicate.QueryField;
 import com.amplifyframework.core.model.temporal.Temporal;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -61,18 +63,42 @@ public final class VetRating implements Model {
     "VetRating",
     "ratingTreatment"
   );
-  public static final QueryField RATING_EMPATHY = field(
+  public static final QueryField RATING_INFORMATION = field(
     "VetRating",
-    "ratingEmpathy"
+    "ratingInformation"
+  );
+  public static final QueryField RATING_TRUST = field(
+    "VetRating",
+    "ratingTrust"
+  );
+  public static final QueryField RATING_INVESTED_TIME = field(
+    "VetRating",
+    "ratingInvestedTime"
+  );
+  public static final QueryField RATING_FRIENDLINESS = field(
+    "VetRating",
+    "ratingFriendliness"
   );
   public static final QueryField COMMENT = field("VetRating", "comment");
   public static final QueryField VET = field("VetRating", "vetId");
   public static final QueryField OWNER = field("VetRating", "owner");
   private final @ModelField(targetType = "ID", isRequired = true) String id;
   private final @ModelField(targetType = "ID", isRequired = true) String vetId;
-  private final @ModelField(targetType = "Float") Double ratingDiagnosis;
-  private final @ModelField(targetType = "Float") Double ratingTreatment;
-  private final @ModelField(targetType = "Float") Double ratingEmpathy;
+  private final @ModelField(
+    targetType = "Int",
+    isRequired = true
+  ) Integer ratingDiagnosis;
+  private final @ModelField(
+    targetType = "Int",
+    isRequired = true
+  ) Integer ratingTreatment;
+  private final @ModelField(
+    targetType = "Int",
+    isRequired = true
+  ) Integer ratingInformation;
+  private final @ModelField(targetType = "Int") Integer ratingTrust;
+  private final @ModelField(targetType = "Int") Integer ratingInvestedTime;
+  private final @ModelField(targetType = "Int") Integer ratingFriendliness;
   private final @ModelField(targetType = "String") String comment;
   private final @ModelField(targetType = "Vet") @BelongsTo(
     targetName = "vetId",
@@ -121,16 +147,28 @@ public final class VetRating implements Model {
     return vetId;
   }
 
-  public Double getRatingDiagnosis() {
+  public Integer getRatingDiagnosis() {
     return ratingDiagnosis;
   }
 
-  public Double getRatingTreatment() {
+  public Integer getRatingTreatment() {
     return ratingTreatment;
   }
 
-  public Double getRatingEmpathy() {
-    return ratingEmpathy;
+  public Integer getRatingInformation() {
+    return ratingInformation;
+  }
+
+  public Integer getRatingTrust() {
+    return ratingTrust;
+  }
+
+  public Integer getRatingInvestedTime() {
+    return ratingInvestedTime;
+  }
+
+  public Integer getRatingFriendliness() {
+    return ratingFriendliness;
   }
 
   public String getComment() {
@@ -164,9 +202,12 @@ public final class VetRating implements Model {
   private VetRating(
     String id,
     String vetId,
-    Double ratingDiagnosis,
-    Double ratingTreatment,
-    Double ratingEmpathy,
+    Integer ratingDiagnosis,
+    Integer ratingTreatment,
+    Integer ratingInformation,
+    Integer ratingTrust,
+    Integer ratingInvestedTime,
+    Integer ratingFriendliness,
     String comment,
     ModelReference<Vet> vet,
     String owner
@@ -175,7 +216,10 @@ public final class VetRating implements Model {
     this.vetId = vetId;
     this.ratingDiagnosis = ratingDiagnosis;
     this.ratingTreatment = ratingTreatment;
-    this.ratingEmpathy = ratingEmpathy;
+    this.ratingInformation = ratingInformation;
+    this.ratingTrust = ratingTrust;
+    this.ratingInvestedTime = ratingInvestedTime;
+    this.ratingFriendliness = ratingFriendliness;
     this.comment = comment;
     this.vet = vet;
     this.owner = owner;
@@ -201,8 +245,17 @@ public final class VetRating implements Model {
           vetRating.getRatingTreatment()
         ) &&
         ObjectsCompat.equals(
-          getRatingEmpathy(),
-          vetRating.getRatingEmpathy()
+          getRatingInformation(),
+          vetRating.getRatingInformation()
+        ) &&
+        ObjectsCompat.equals(getRatingTrust(), vetRating.getRatingTrust()) &&
+        ObjectsCompat.equals(
+          getRatingInvestedTime(),
+          vetRating.getRatingInvestedTime()
+        ) &&
+        ObjectsCompat.equals(
+          getRatingFriendliness(),
+          vetRating.getRatingFriendliness()
         ) &&
         ObjectsCompat.equals(getComment(), vetRating.getComment()) &&
         ObjectsCompat.equals(getVet(), vetRating.getVet()) &&
@@ -220,7 +273,10 @@ public final class VetRating implements Model {
       .append(getVetId())
       .append(getRatingDiagnosis())
       .append(getRatingTreatment())
-      .append(getRatingEmpathy())
+      .append(getRatingInformation())
+      .append(getRatingTrust())
+      .append(getRatingInvestedTime())
+      .append(getRatingFriendliness())
       .append(getComment())
       .append(getVet())
       .append(getOwner())
@@ -238,7 +294,16 @@ public final class VetRating implements Model {
       .append("vetId=" + String.valueOf(getVetId()) + ", ")
       .append("ratingDiagnosis=" + String.valueOf(getRatingDiagnosis()) + ", ")
       .append("ratingTreatment=" + String.valueOf(getRatingTreatment()) + ", ")
-      .append("ratingEmpathy=" + String.valueOf(getRatingEmpathy()) + ", ")
+      .append(
+        "ratingInformation=" + String.valueOf(getRatingInformation()) + ", "
+      )
+      .append("ratingTrust=" + String.valueOf(getRatingTrust()) + ", ")
+      .append(
+        "ratingInvestedTime=" + String.valueOf(getRatingInvestedTime()) + ", "
+      )
+      .append(
+        "ratingFriendliness=" + String.valueOf(getRatingFriendliness()) + ", "
+      )
       .append("comment=" + String.valueOf(getComment()) + ", ")
       .append("vet=" + String.valueOf(getVet()) + ", ")
       .append("owner=" + String.valueOf(getOwner()) + ", ")
@@ -261,7 +326,19 @@ public final class VetRating implements Model {
    * @return an instance of this model with only ID populated
    */
   public static VetRating justId(String id) {
-    return new VetRating(id, null, null, null, null, null, null, null);
+    return new VetRating(
+      id,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    );
   }
 
   public CopyOfBuilder copyOfBuilder() {
@@ -270,7 +347,10 @@ public final class VetRating implements Model {
       vetId,
       ratingDiagnosis,
       ratingTreatment,
-      ratingEmpathy,
+      ratingInformation,
+      ratingTrust,
+      ratingInvestedTime,
+      ratingFriendliness,
       comment,
       vet,
       owner
@@ -278,7 +358,19 @@ public final class VetRating implements Model {
   }
 
   public interface VetIdStep {
-    OwnerStep vetId(String vetId);
+    RatingDiagnosisStep vetId(String vetId);
+  }
+
+  public interface RatingDiagnosisStep {
+    RatingTreatmentStep ratingDiagnosis(Integer ratingDiagnosis);
+  }
+
+  public interface RatingTreatmentStep {
+    RatingInformationStep ratingTreatment(Integer ratingTreatment);
+  }
+
+  public interface RatingInformationStep {
+    OwnerStep ratingInformation(Integer ratingInformation);
   }
 
   public interface OwnerStep {
@@ -288,21 +380,31 @@ public final class VetRating implements Model {
   public interface BuildStep {
     VetRating build();
     BuildStep id(String id);
-    BuildStep ratingDiagnosis(Double ratingDiagnosis);
-    BuildStep ratingTreatment(Double ratingTreatment);
-    BuildStep ratingEmpathy(Double ratingEmpathy);
+    BuildStep ratingTrust(Integer ratingTrust);
+    BuildStep ratingInvestedTime(Integer ratingInvestedTime);
+    BuildStep ratingFriendliness(Integer ratingFriendliness);
     BuildStep comment(String comment);
     BuildStep vet(Vet vet);
   }
 
-  public static class Builder implements VetIdStep, OwnerStep, BuildStep {
+  public static class Builder
+    implements
+      VetIdStep,
+      RatingDiagnosisStep,
+      RatingTreatmentStep,
+      RatingInformationStep,
+      OwnerStep,
+      BuildStep {
 
     private String id;
     private String vetId;
+    private Integer ratingDiagnosis;
+    private Integer ratingTreatment;
+    private Integer ratingInformation;
     private String owner;
-    private Double ratingDiagnosis;
-    private Double ratingTreatment;
-    private Double ratingEmpathy;
+    private Integer ratingTrust;
+    private Integer ratingInvestedTime;
+    private Integer ratingFriendliness;
     private String comment;
     private ModelReference<Vet> vet;
 
@@ -311,9 +413,12 @@ public final class VetRating implements Model {
     private Builder(
       String id,
       String vetId,
-      Double ratingDiagnosis,
-      Double ratingTreatment,
-      Double ratingEmpathy,
+      Integer ratingDiagnosis,
+      Integer ratingTreatment,
+      Integer ratingInformation,
+      Integer ratingTrust,
+      Integer ratingInvestedTime,
+      Integer ratingFriendliness,
       String comment,
       ModelReference<Vet> vet,
       String owner
@@ -322,7 +427,10 @@ public final class VetRating implements Model {
       this.vetId = vetId;
       this.ratingDiagnosis = ratingDiagnosis;
       this.ratingTreatment = ratingTreatment;
-      this.ratingEmpathy = ratingEmpathy;
+      this.ratingInformation = ratingInformation;
+      this.ratingTrust = ratingTrust;
+      this.ratingInvestedTime = ratingInvestedTime;
+      this.ratingFriendliness = ratingFriendliness;
       this.comment = comment;
       this.vet = vet;
       this.owner = owner;
@@ -337,7 +445,10 @@ public final class VetRating implements Model {
         vetId,
         ratingDiagnosis,
         ratingTreatment,
-        ratingEmpathy,
+        ratingInformation,
+        ratingTrust,
+        ratingInvestedTime,
+        ratingFriendliness,
         comment,
         vet,
         owner
@@ -345,9 +456,30 @@ public final class VetRating implements Model {
     }
 
     @Override
-    public OwnerStep vetId(String vetId) {
+    public RatingDiagnosisStep vetId(String vetId) {
       Objects.requireNonNull(vetId);
       this.vetId = vetId;
+      return this;
+    }
+
+    @Override
+    public RatingTreatmentStep ratingDiagnosis(Integer ratingDiagnosis) {
+      Objects.requireNonNull(ratingDiagnosis);
+      this.ratingDiagnosis = ratingDiagnosis;
+      return this;
+    }
+
+    @Override
+    public RatingInformationStep ratingTreatment(Integer ratingTreatment) {
+      Objects.requireNonNull(ratingTreatment);
+      this.ratingTreatment = ratingTreatment;
+      return this;
+    }
+
+    @Override
+    public OwnerStep ratingInformation(Integer ratingInformation) {
+      Objects.requireNonNull(ratingInformation);
+      this.ratingInformation = ratingInformation;
       return this;
     }
 
@@ -359,20 +491,20 @@ public final class VetRating implements Model {
     }
 
     @Override
-    public BuildStep ratingDiagnosis(Double ratingDiagnosis) {
-      this.ratingDiagnosis = ratingDiagnosis;
+    public BuildStep ratingTrust(Integer ratingTrust) {
+      this.ratingTrust = ratingTrust;
       return this;
     }
 
     @Override
-    public BuildStep ratingTreatment(Double ratingTreatment) {
-      this.ratingTreatment = ratingTreatment;
+    public BuildStep ratingInvestedTime(Integer ratingInvestedTime) {
+      this.ratingInvestedTime = ratingInvestedTime;
       return this;
     }
 
     @Override
-    public BuildStep ratingEmpathy(Double ratingEmpathy) {
-      this.ratingEmpathy = ratingEmpathy;
+    public BuildStep ratingFriendliness(Integer ratingFriendliness) {
+      this.ratingFriendliness = ratingFriendliness;
       return this;
     }
 
@@ -403,9 +535,12 @@ public final class VetRating implements Model {
     private CopyOfBuilder(
       String id,
       String vetId,
-      Double ratingDiagnosis,
-      Double ratingTreatment,
-      Double ratingEmpathy,
+      Integer ratingDiagnosis,
+      Integer ratingTreatment,
+      Integer ratingInformation,
+      Integer ratingTrust,
+      Integer ratingInvestedTime,
+      Integer ratingFriendliness,
       String comment,
       ModelReference<Vet> vet,
       String owner
@@ -415,12 +550,18 @@ public final class VetRating implements Model {
         vetId,
         ratingDiagnosis,
         ratingTreatment,
-        ratingEmpathy,
+        ratingInformation,
+        ratingTrust,
+        ratingInvestedTime,
+        ratingFriendliness,
         comment,
         vet,
         owner
       );
       Objects.requireNonNull(vetId);
+      Objects.requireNonNull(ratingDiagnosis);
+      Objects.requireNonNull(ratingTreatment);
+      Objects.requireNonNull(ratingInformation);
       Objects.requireNonNull(owner);
     }
 
@@ -430,23 +571,38 @@ public final class VetRating implements Model {
     }
 
     @Override
+    public CopyOfBuilder ratingDiagnosis(Integer ratingDiagnosis) {
+      return (CopyOfBuilder) super.ratingDiagnosis(ratingDiagnosis);
+    }
+
+    @Override
+    public CopyOfBuilder ratingTreatment(Integer ratingTreatment) {
+      return (CopyOfBuilder) super.ratingTreatment(ratingTreatment);
+    }
+
+    @Override
+    public CopyOfBuilder ratingInformation(Integer ratingInformation) {
+      return (CopyOfBuilder) super.ratingInformation(ratingInformation);
+    }
+
+    @Override
     public CopyOfBuilder owner(String owner) {
       return (CopyOfBuilder) super.owner(owner);
     }
 
     @Override
-    public CopyOfBuilder ratingDiagnosis(Double ratingDiagnosis) {
-      return (CopyOfBuilder) super.ratingDiagnosis(ratingDiagnosis);
+    public CopyOfBuilder ratingTrust(Integer ratingTrust) {
+      return (CopyOfBuilder) super.ratingTrust(ratingTrust);
     }
 
     @Override
-    public CopyOfBuilder ratingTreatment(Double ratingTreatment) {
-      return (CopyOfBuilder) super.ratingTreatment(ratingTreatment);
+    public CopyOfBuilder ratingInvestedTime(Integer ratingInvestedTime) {
+      return (CopyOfBuilder) super.ratingInvestedTime(ratingInvestedTime);
     }
 
     @Override
-    public CopyOfBuilder ratingEmpathy(Double ratingEmpathy) {
-      return (CopyOfBuilder) super.ratingEmpathy(ratingEmpathy);
+    public CopyOfBuilder ratingFriendliness(Integer ratingFriendliness) {
+      return (CopyOfBuilder) super.ratingFriendliness(ratingFriendliness);
     }
 
     @Override

@@ -12,10 +12,12 @@ import com.amplifyframework.core.model.ModelReference;
 import com.amplifyframework.core.model.annotations.AuthRule;
 import com.amplifyframework.core.model.annotations.BelongsTo;
 import com.amplifyframework.core.model.annotations.HasMany;
+import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
 import com.amplifyframework.core.model.query.predicate.QueryField;
 import com.amplifyframework.core.model.temporal.Temporal;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
