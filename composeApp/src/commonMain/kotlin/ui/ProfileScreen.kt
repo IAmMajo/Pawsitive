@@ -60,7 +60,7 @@ fun ProfileScreen() {
         Text(
             text = "Tierklinik Beispiel",
             fontWeight = FontWeight.Bold,
-            fontSize = 24.sp,
+            fontSize = 20.sp,
             modifier = Modifier.align(Alignment.Start))
 
         Row {
@@ -98,7 +98,7 @@ fun ProfileScreen() {
       }
 
       // Additional Information
-      Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+      Column(modifier = Modifier.fillMaxWidth().padding(10.dp)) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -109,12 +109,12 @@ fun ProfileScreen() {
                     Icon(
                         Icons.Rounded.Star,
                         contentDescription = "Placeholder Icon",
-                        tint = Color(0xFF959494),
+                        tint = Color(0xffb9b9b9),
                     )
                     Text(
                         text = "Schäferhunde",
                         fontWeight = FontWeight.Medium,
-                        color = Color(0xFF959494))
+                        color = Color(0xffb9b9b9))
                   }
               Row(
                   modifier = Modifier.padding(top = 2.dp),
@@ -122,12 +122,12 @@ fun ProfileScreen() {
                     Icon(
                         Icons.Rounded.Star,
                         contentDescription = "Placeholder Icon",
-                        tint = Color(0xFF959494),
+                        tint = Color(0xffb9b9b9),
                     )
                     Text(
                         text = "Musterstraße 1",
                         fontWeight = FontWeight.Medium,
-                        color = Color(0xFF959494))
+                        color = Color(0xffb9b9b9))
                   }
             }
 
@@ -142,9 +142,9 @@ fun ProfileScreen() {
                     Icon(
                         Icons.Rounded.Star,
                         contentDescription = "Placeholder Icon",
-                        tint = Color(0xFF959494),
+                        tint = Color(0xffb9b9b9),
                     )
-                    Text(text = "2km", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+                    Text(text = "2km", fontWeight = FontWeight.Medium, color = Color(0xffb9b9b9))
                   }
               Row(
                   modifier = Modifier.padding(top = 2.dp),
@@ -153,12 +153,12 @@ fun ProfileScreen() {
                     Icon(
                         Icons.Rounded.Star,
                         contentDescription = "Placeholder Icon",
-                        tint = Color(0xFF959494),
+                        tint = Color(0xffb9b9b9),
                     )
                     Text(
                         text = "+49 1234 5678",
                         fontWeight = FontWeight.Medium,
-                        color = Color(0xFF959494),
+                        color = Color(0xffb9b9b9),
                         textAlign = TextAlign.Start)
                   }
             }

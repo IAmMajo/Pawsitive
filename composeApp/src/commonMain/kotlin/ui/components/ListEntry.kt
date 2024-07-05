@@ -3,8 +3,10 @@ package ui.components
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
@@ -14,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -44,6 +47,8 @@ fun ListEntryComponent(vet: Vet) {
       modifier =
           CardModifier
             .fillMaxWidth()
+            .shadow(8.dp, RoundedCornerShape(8.dp))
+            .background(Color.White, RoundedCornerShape(8.dp))
               .clickable { isExpanded = !isExpanded }
               .animateContentSize()
               .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)) {
@@ -65,55 +70,65 @@ fun ListEntryComponent(vet: Vet) {
                           text = vet.name,
                           fontSize = 18.sp,
                           fontWeight = FontWeight.Bold,
-                          color = Color(0xFF202020))
-                      Row {
-                        Icon(
-                            Icons.Rounded.Star,
-                            contentDescription = "Star Placeholder Icon",
-                            tint = Color(0xFF959494),
-                            modifier = Modifier.padding(start = 2.dp))
-                        Text(
-                            text = vet.specialization,
-                            fontWeight = FontWeight.Medium,
-                            color = Color(0xFF959494))
-                      }
+                          color = Color(0xFF202020),
+                        modifier = Modifier
+                          .padding(start = 5.dp)
+                      )
+                          
+                     
+
+                  Row (
+                    modifier = Modifier
+                      .padding(start = 3.dp)
+                  ) {
+                    Row {
+                      Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Star Placeholder Icon",
+                        tint = Color(0xFF00D47B),
+                        modifier = StarModifier)
+                      Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Star Placeholder Icon",
+                        tint = Color(0xFF00D47B),
+                        modifier = StarModifier)
+                      Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Star Placeholder Icon",
+                        tint = Color(0xFF00D47B),
+                        modifier = StarModifier)
+                      Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Star Placeholder Icon",
+                        tint = Color(0xFF00D47B),
+                        modifier = StarModifier)
+                      Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Star Placeholder Icon",
+                        tint = Color(0xFF00D47B),
+                        modifier = StarModifier)
+                    }
+                    Text(
+                      text = vet.averageRating.format(),
+                      fontWeight = FontWeight.SemiBold,
+                      color = Color(0xFF202020),
+                    )
+                  }
+                  Row {
+                    Icon(
+                      Icons.Rounded.Star,
+                      contentDescription = "Star Placeholder Icon",
+                      tint = Color(0xffb9b9b9),
+                      modifier = Modifier.padding(start = 2.dp))
+                    Text(
+                      text = vet.specialization,
+                      fontWeight = FontWeight.Medium,
+                      color = Color(0xffb9b9b9))
+                  }
                     }
               }
 
-              Row {
-                Row {
-                  Icon(
-                      Icons.Rounded.Star,
-                      contentDescription = "Star Placeholder Icon",
-                      tint = Color(0xFF00D47B),
-                      modifier = StarModifier)
-                  Icon(
-                      Icons.Rounded.Star,
-                      contentDescription = "Star Placeholder Icon",
-                      tint = Color(0xFF00D47B),
-                      modifier = StarModifier)
-                  Icon(
-                      Icons.Rounded.Star,
-                      contentDescription = "Star Placeholder Icon",
-                      tint = Color(0xFF00D47B),
-                      modifier = StarModifier)
-                  Icon(
-                      Icons.Rounded.Star,
-                      contentDescription = "Star Placeholder Icon",
-                      tint = Color(0xFF00D47B),
-                      modifier = StarModifier)
-                  Icon(
-                      Icons.Rounded.Star,
-                      contentDescription = "Star Placeholder Icon",
-                      tint = Color(0xFF00D47B),
-                      modifier = StarModifier)
-                }
-                Text(
-                    text = vet.averageRating.format(),
-                    fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF202020),
-                )
-              }
+
             }
 
         if (isExpanded) {
@@ -125,31 +140,31 @@ fun ListEntryComponent(vet: Vet) {
                   Icon(
                       Icons.Rounded.Star,
                       contentDescription = "Star Placeholder Icon",
-                      tint = Color(0xFF959494),
+                      tint = Color(0xffb9b9b9),
                       modifier = Modifier.padding(start = 2.dp))
                   Text(
                       text = clinic.name,
                       fontWeight = FontWeight.SemiBold,
-                      color = Color(0xFF959494))
+                      color = Color(0xffb9b9b9))
                 }
                 Row {
                   Icon(
                       Icons.Rounded.Place,
                       contentDescription = "Map-Pin Icon",
-                      tint = Color(0xFF959494),
+                      tint = Color(0xffb9b9b9),
                       modifier = Modifier.padding(start = 2.dp))
                   Text(
                       text = clinic.shortAddress,
                       fontWeight = FontWeight.Medium,
-                      color = Color(0xFF959494))
+                      color = Color(0xffb9b9b9))
                 }
                 Row {
                   Icon(
                       Icons.Rounded.Star,
                       contentDescription = "Distance Icon",
-                      tint = Color(0xFF959494),
+                      tint = Color(0xffb9b9b9),
                       modifier = Modifier.padding(start = 2.dp))
-                  Text(text = "10,4km", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+                  Text(text = "10,4km", fontWeight = FontWeight.Medium, color = Color(0xffb9b9b9))
                 }
               }
 
