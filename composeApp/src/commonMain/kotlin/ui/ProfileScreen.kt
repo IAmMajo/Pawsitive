@@ -4,7 +4,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Icon
@@ -13,15 +15,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import extensions.format
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.praxis
+import ui.components.StarModifier
 
 
 // Hier ist die vorläufige Version der Praxis View drin, da ich immernoch nicht auf ListEntryComponents
@@ -31,7 +38,11 @@ import pawsitive.composeapp.generated.resources.praxis
 @Composable
 @Preview
 fun ProfileScreen() {
-  Column {
+  val state = rememberScrollState()
+  Column(
+    modifier = Modifier
+      .verticalScroll(state)
+  ) {
     // Header Image
     Image(
       modifier = Modifier
@@ -42,109 +53,163 @@ fun ProfileScreen() {
       contentDescription = "Header Image der Praxis",
       contentScale = ContentScale.Crop
     )
-
-    // Profile Image
-    Box(
-      modifier = Modifier
-        .fillMaxWidth()
-        .padding(top = (-35).dp),
-      contentAlignment = Alignment.Center
-    ) {
-      Image(
-        modifier = Modifier
-          .size(100.dp)
-          .clip(CircleShape)
-          .background(Color.White)
-          .border(2.dp, Color.White, CircleShape)
-          .padding(4.dp)
-          .clip(CircleShape),
-        painter = painterResource(Res.drawable.praxis),
-        contentDescription = "Profile Picture",
-        contentScale = ContentScale.Crop
-      )
-    }
-
-    // Clinic Name
-    Text(
-      text = "Tierklinik Beispiel",
-      fontWeight = FontWeight.Bold,
-      fontSize = 24.sp,
-      modifier = Modifier
-        .padding(top = 8.dp)
-        .align(Alignment.CenterHorizontally)
-    )
-
-    // Additional Information
+    
     Column(
       modifier = Modifier
         .fillMaxWidth()
-        .padding(16.dp)
+        .background(Color.White)
+      
     ) {
+      
+      Column(
+        modifier = Modifier
+          .padding(top = 8.dp, start = 10.dp)
+          .fillMaxWidth()
+      ) {
+        // Clinic Name
+        Text(
+          text = "Tierklinik Beispiel",
+          fontWeight = FontWeight.Bold,
+          fontSize = 24.sp,
+          modifier = Modifier
+            .align(Alignment.Start)
+        )
+        
+        Row {
+          Icon(
+            Icons.Rounded.Star,
+            contentDescription = "Star Placeholder Icon",
+            tint = Color(0xFF00D47B),
+            modifier = StarModifier
+          )
+          Icon(
+            Icons.Rounded.Star,
+            contentDescription = "Star Placeholder Icon",
+            tint = Color(0xFF00D47B),
+            modifier = StarModifier
+          )
+          Icon(
+            Icons.Rounded.Star,
+            contentDescription = "Star Placeholder Icon",
+            tint = Color(0xFF00D47B),
+            modifier = StarModifier
+          )
+          Icon(
+            Icons.Rounded.Star,
+            contentDescription = "Star Placeholder Icon",
+            tint = Color(0xFF00D47B),
+            modifier = StarModifier
+          )
+          Icon(
+            Icons.Rounded.Star,
+            contentDescription = "Star Placeholder Icon",
+            tint = Color(0xFF00D47B),
+            modifier = StarModifier
+          )
+          Text(
+            text = "4,7",
+            fontWeight = FontWeight.SemiBold,
+            color = Color(0xFF202020),
+          )
+        }
+      }
+     
 
-      Row(
+      // Additional Information
+      Column(
         modifier = Modifier
-          .padding(top = 2.dp),
-        verticalAlignment = Alignment.CenterVertically
+          .fillMaxWidth()
+          .padding(16.dp)
       ) {
-        Icon(
-          Icons.Rounded.Star,
-          contentDescription = "Placeholder Icon",
-          tint = Color(0xFF959494),
-        )
-        Text(
-          text = "Schäferhunde",
-          fontWeight = FontWeight.Medium,
-          color = Color(0xFF959494)
-        )
+
+        Row(
+          verticalAlignment = Alignment.CenterVertically,
+          horizontalArrangement = Arrangement.SpaceBetween,
+          modifier = Modifier
+            .fillMaxWidth()
+        ) {
+          Row(
+            modifier = Modifier
+              .padding(top = 2.dp),
+            verticalAlignment = Alignment.CenterVertically
+          ) {
+            Icon(
+              Icons.Rounded.Star,
+              contentDescription = "Placeholder Icon",
+              tint = Color(0xFF959494),
+            )
+            Text(
+              text = "Schäferhunde",
+              fontWeight = FontWeight.Medium,
+              color = Color(0xFF959494)
+            )
+          }
+          Row(
+            modifier = Modifier
+              .padding(top = 2.dp),
+            verticalAlignment = Alignment.CenterVertically
+          ) {
+            Icon(
+              Icons.Rounded.Star,
+              contentDescription = "Placeholder Icon",
+              tint = Color(0xFF959494),
+            )
+            Text(
+              text = "Musterstraße 1",
+              fontWeight = FontWeight.Medium,
+              color = Color(0xFF959494)
+            )
+          }
+        }
+
+        Row(
+          verticalAlignment = Alignment.CenterVertically,
+          horizontalArrangement = Arrangement.SpaceBetween,
+          modifier = Modifier
+            .fillMaxWidth()
+        ) {
+          Row(
+            modifier = Modifier
+              .padding(top = 2.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start
+          ) {
+            Icon(
+              Icons.Rounded.Star,
+              contentDescription = "Placeholder Icon",
+              tint = Color(0xFF959494),
+            )
+            Text(
+              text = "2km",
+              fontWeight = FontWeight.Medium,
+              color = Color(0xFF959494)
+            )
+          }
+          Row(
+            modifier = Modifier
+              .padding(top = 2.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start
+          ) {
+            Icon(
+              Icons.Rounded.Star,
+              contentDescription = "Placeholder Icon",
+              tint = Color(0xFF959494),
+            )
+            Text(
+              text = "+49 1234 5678",
+              fontWeight = FontWeight.Medium,
+              color = Color(0xFF959494),
+              textAlign = TextAlign.Start
+            )
+          }
+        }
       }
-      Row(
-        modifier = Modifier
-          .padding(top = 2.dp),
-        verticalAlignment = Alignment.CenterVertically
-      ) {
-        Icon(
-          Icons.Rounded.Star,
-          contentDescription = "Placeholder Icon",
-          tint = Color(0xFF959494),
-        )
-        Text(
-          text = "Musterstraße 1",
-          fontWeight = FontWeight.Medium,
-          color = Color(0xFF959494)
-        )
-      }
-      Row(
-        modifier = Modifier
-          .padding(top = 2.dp),
-        verticalAlignment = Alignment.CenterVertically
-      ) {
-        Icon(
-          Icons.Rounded.Star,
-          contentDescription = "Placeholder Icon",
-          tint = Color(0xFF959494),
-        )
-        Text(
-          text = "2km",
-          fontWeight = FontWeight.Medium,
-          color = Color(0xFF959494)
-        )
-      }
-      Row(
-        modifier = Modifier
-          .padding(top = 2.dp),
-        verticalAlignment = Alignment.CenterVertically
-      ) {
-        Icon(
-          Icons.Rounded.Star,
-          contentDescription = "Placeholder Icon",
-          tint = Color(0xFF959494),
-        )
-        Text(
-          text = "123-456789",
-          fontWeight = FontWeight.Medium,
-          color = Color(0xFF959494)
-        )
-      }
+      
+      
+      
+      
     }
+
   }
 }
