@@ -1,5 +1,7 @@
 package ui.components
 
+// Resource Imports
+// Modifier Imports
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
@@ -23,13 +25,9 @@ import data.database.Vet
 import extensions.format
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-
-//Resource Imports
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.and
 import pawsitive.composeapp.generated.resources.mockimage
-
-// Modifier Imports
 import ui.theme.CardModifier
 import ui.theme.ProfilePictureModifier
 import ui.theme.ProfilePictureModifierSM
@@ -42,8 +40,7 @@ fun ListEntryComponent(vet: Vet) {
 
   Column(
       modifier =
-          CardModifier
-            .fillMaxWidth()
+          CardModifier.fillMaxWidth()
               .clickable { isExpanded = !isExpanded }
               .animateContentSize()
               .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)) {

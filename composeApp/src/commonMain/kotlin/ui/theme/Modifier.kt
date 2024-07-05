@@ -16,28 +16,18 @@ import androidx.compose.ui.unit.dp
 
 ///// CONTAINER MODIIFIER ///////
 
-val CardModifier = Modifier
-  .padding(Dp(10f))
-  .clip(RoundedCornerShape(Dp(15f)))
-  .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
-  .background(Color.White)
+val CardModifier =
+    Modifier.padding(Dp(10f))
+        .clip(RoundedCornerShape(Dp(15f)))
+        .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
+        .background(Color.White)
 
-val StarModifier = Modifier
-  .size(24.dp)
+val StarModifier = Modifier.size(24.dp)
 
-val ProfilePictureModifier = Modifier
-  .size(70.dp)
-  .clip(CircleShape)
+val ProfilePictureModifier = Modifier.size(70.dp).clip(CircleShape)
 
-val ProfilePictureModifierSM = Modifier
-  .size(35.dp)
-  .clip(CircleShape)
+val ProfilePictureModifierSM = Modifier.size(35.dp).clip(CircleShape)
 
-val HeaderImageModifier = Modifier
-  .fillMaxWidth()
-  .height(240.dp)
-
-
+val HeaderImageModifier = Modifier.fillMaxWidth().height(240.dp)
 
 /////  TEXT MODIFIER    ///////
-
