@@ -33,10 +33,7 @@ import ui.theme.StarModifier
 @Preview
 fun ProfileScreen() {
   val state = rememberScrollState()
-  Column(
-    modifier = Modifier
-      .verticalScroll(state)
-  ) {
+  Column(modifier = Modifier.verticalScroll(state)) {
     // Header Image
     Image(
       modifier = HeaderImageModifier
@@ -61,148 +58,111 @@ fun ProfileScreen() {
       ) {
         // Clinic Name
         Text(
-          text = "Tierklinik Beispiel",
-          fontWeight = FontWeight.Bold,
-          fontSize = 24.sp,
-          modifier = Modifier
-            .align(Alignment.Start)
-        )
-        
+            text = "Tierklinik Beispiel",
+            fontWeight = FontWeight.Bold,
+            fontSize = 24.sp,
+            modifier = Modifier.align(Alignment.Start))
+
         Row {
           Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarModifier
-          )
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier)
           Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarModifier
-          )
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier)
           Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarModifier
-          )
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier)
           Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarModifier
-          )
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier)
           Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarModifier
-          )
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier)
           Text(
-            text = "4,7",
-            fontWeight = FontWeight.SemiBold,
-            color = Color(0xFF202020),
+              text = "4,7",
+              fontWeight = FontWeight.SemiBold,
+              color = Color(0xFF202020),
           )
         }
       }
-     
 
       // Additional Information
-      Column(
-        modifier = Modifier
-          .fillMaxWidth()
-          .padding(16.dp)
-      ) {
+      Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()) {
+              Row(
+                  modifier = Modifier.padding(top = 2.dp),
+                  verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Placeholder Icon",
+                        tint = Color(0xFF959494),
+                    )
+                    Text(
+                        text = "Schäferhunde",
+                        fontWeight = FontWeight.Medium,
+                        color = Color(0xFF959494))
+                  }
+              Row(
+                  modifier = Modifier.padding(top = 2.dp),
+                  verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Placeholder Icon",
+                        tint = Color(0xFF959494),
+                    )
+                    Text(
+                        text = "Musterstraße 1",
+                        fontWeight = FontWeight.Medium,
+                        color = Color(0xFF959494))
+                  }
+            }
 
         Row(
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.SpaceBetween,
-          modifier = Modifier
-            .fillMaxWidth()
-        ) {
-          Row(
-            modifier = Modifier
-              .padding(top = 2.dp),
-            verticalAlignment = Alignment.CenterVertically
-          ) {
-            Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Placeholder Icon",
-              tint = Color(0xFF959494),
-            )
-            Text(
-              text = "Schäferhunde",
-              fontWeight = FontWeight.Medium,
-              color = Color(0xFF959494)
-            )
-          }
-          Row(
-            modifier = Modifier
-              .padding(top = 2.dp),
-            verticalAlignment = Alignment.CenterVertically
-          ) {
-            Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Placeholder Icon",
-              tint = Color(0xFF959494),
-            )
-            Text(
-              text = "Musterstraße 1",
-              fontWeight = FontWeight.Medium,
-              color = Color(0xFF959494)
-            )
-          }
-        }
-
-        Row(
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.SpaceBetween,
-          modifier = Modifier
-            .fillMaxWidth()
-        ) {
-          Row(
-            modifier = Modifier
-              .padding(top = 2.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start
-          ) {
-            Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Placeholder Icon",
-              tint = Color(0xFF959494),
-            )
-            Text(
-              text = "2km",
-              fontWeight = FontWeight.Medium,
-              color = Color(0xFF959494)
-            )
-          }
-          Row(
-            modifier = Modifier
-              .padding(top = 2.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start
-          ) {
-            Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Placeholder Icon",
-              tint = Color(0xFF959494),
-            )
-            Text(
-              text = "+49 1234 5678",
-              fontWeight = FontWeight.Medium,
-              color = Color(0xFF959494),
-              textAlign = TextAlign.Start
-            )
-          }
-        }
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()) {
+              Row(
+                  modifier = Modifier.padding(top = 2.dp),
+                  verticalAlignment = Alignment.CenterVertically,
+                  horizontalArrangement = Arrangement.Start) {
+                    Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Placeholder Icon",
+                        tint = Color(0xFF959494),
+                    )
+                    Text(text = "2km", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+                  }
+              Row(
+                  modifier = Modifier.padding(top = 2.dp),
+                  verticalAlignment = Alignment.CenterVertically,
+                  horizontalArrangement = Arrangement.Start) {
+                    Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Placeholder Icon",
+                        tint = Color(0xFF959494),
+                    )
+                    Text(
+                        text = "+49 1234 5678",
+                        fontWeight = FontWeight.Medium,
+                        color = Color(0xFF959494),
+                        textAlign = TextAlign.Start)
+                  }
+            }
       }
-      
-      
-      
-      
     }
-
   }
 }
