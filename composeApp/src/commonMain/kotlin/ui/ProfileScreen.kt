@@ -30,10 +30,9 @@ import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.praxis
 import ui.components.StarModifier
 
-
-// Hier ist die vorläufige Version der Praxis View drin, da ich immernoch nicht auf ListEntryComponents
+// Hier ist die vorläufige Version der Praxis View drin, da ich immernoch nicht auf
+// ListEntryComponents
 // im Web zugreifen kann, werde ich die View jetzt hier reinschreiben, dann muss Max die kopieren.
-
 
 @Composable
 @Preview
