@@ -1,7 +1,5 @@
 package ui.theme
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.ui.graphics.Color
 
 // Material Colors (Don't change value names)
@@ -49,10 +47,12 @@ val cardBackgroundColor = Color.White
 val subHeadingColor = Color(0xFF202020)
 val lightText = Color(0xFF959494)
 val textFieldColor = Color.LightGray
-val outlinedTextFieldFocusedBorderColor =  Color.White    // zum ausblenden der border im OutlinedTextField (Searchbar.kt)
-val outlinedTextFieldUnfocusedBorderColor =  Color.White  // zum ausblenden der border im OutlinedTextField (Searchbar.kt)
+val outlinedTextFieldFocusedBorderColor =
+    Color.White // zum ausblenden der border im OutlinedTextField (Searchbar.kt)
+val outlinedTextFieldUnfocusedBorderColor =
+    Color.White // zum ausblenden der border im OutlinedTextField (Searchbar.kt)
 val placeholderTextFieldColor = Color.Gray
 val starSelectedColor = Color(0xFF00D47B)
 val starNotSelectedColor = Color.LightGray
-val iconColor = Color(0xFF959494) // bisher nur Placeholder 
-val searchIconColor = Color.Gray 
+val iconColor = Color(0xFF959494) // bisher nur Placeholder
+val searchIconColor = Color.Gray
