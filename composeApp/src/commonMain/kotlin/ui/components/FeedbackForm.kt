@@ -641,17 +641,12 @@ fun FeedbackComponent() {
     // Abschnitt Tierprofil-Auswahl (eigene Column)
     // Column: Tierprofil (Auswahl, wenn mehr als ein Tierprofil existiert; drop-down?)
 
-   
     // Button (Feeedback absenden)
-    
+
     FilledTonalButton(
-      onClick = {/* .... */},
-      
-    ){
+        onClick = { /* .... */ },
+    ) {
       Text("senden")
     }
-    
-
   }
 }
-  
