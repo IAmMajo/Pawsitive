@@ -29,16 +29,13 @@ val SearchbarModifier = Modifier
   .clip(RoundedCornerShape(15.dp))
   .background(Color.White)
 
-val StarModifier = Modifier
-  .size(24.dp)
+val StarModifier = Modifier.size(24.dp)
 
 val ProfilePictureModifier = Modifier
   .size(60.dp)
   .clip(CircleShape)
 
-val ProfilePictureModifierSM = Modifier
-  .size(35.dp)
-  .clip(CircleShape)
+val ProfilePictureModifierSM = Modifier.size(35.dp).clip(CircleShape)
 
 val HeaderImageModifier = Modifier
   .fillMaxWidth()

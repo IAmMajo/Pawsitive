@@ -36,26 +36,16 @@ fun ProfileScreen() {
   Column(modifier = Modifier.verticalScroll(state)) {
     // Header Image
     Image(
-      modifier = HeaderImageModifier
-        .aspectRatio(painterResource(Res.drawable.praxis).intrinsicSize.width / painterResource(Res.drawable.praxis).intrinsicSize.height),
-      
-      painter = painterResource(Res.drawable.praxis),
-      contentDescription = "Header Image der Praxis",
-      contentScale = ContentScale.Crop
-    )
-    
-    Column(
-      modifier = Modifier
-        .fillMaxWidth()
-        .background(Color.White)
-      
-    ) {
-      
-      Column(
-        modifier = Modifier
-          .padding(top = 8.dp, start = 10.dp)
-          .fillMaxWidth()
-      ) {
+        modifier =
+            HeaderImageModifier.aspectRatio(
+                painterResource(Res.drawable.praxis).intrinsicSize.width /
+                    painterResource(Res.drawable.praxis).intrinsicSize.height),
+        painter = painterResource(Res.drawable.praxis),
+        contentDescription = "Header Image der Praxis",
+        contentScale = ContentScale.Crop)
+
+    Column(modifier = Modifier.fillMaxWidth().background(Color.White)) {
+      Column(modifier = Modifier.padding(top = 8.dp, start = 10.dp).fillMaxWidth()) {
         // Clinic Name
         Text(
             text = "Tierklinik Beispiel",
