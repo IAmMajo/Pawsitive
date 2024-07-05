@@ -36,6 +36,7 @@ import org.jetbrains.compose.resources.painterResource
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.mockimage
 import pawsitive.composeapp.generated.resources.praxis
+import ui.theme.ProfilePictureModifier
 
 // Nico aus ListEntry.kt geklaut :) //
 val BoxModifier =

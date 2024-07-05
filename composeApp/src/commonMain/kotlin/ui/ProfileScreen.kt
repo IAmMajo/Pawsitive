@@ -2,10 +2,8 @@ package ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Star
@@ -14,21 +12,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import extensions.format
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.praxis
-import ui.components.StarModifier
+import ui.theme.HeaderImageModifier
+import ui.theme.StarModifier
 
 // Hier ist die vorläufige Version der Praxis View drin, da ich immernoch nicht auf
 // ListEntryComponents
@@ -44,10 +39,9 @@ fun ProfileScreen() {
   ) {
     // Header Image
     Image(
-      modifier = Modifier
-        .fillMaxWidth()
-        .aspectRatio(painterResource(Res.drawable.praxis).intrinsicSize.width / painterResource(Res.drawable.praxis).intrinsicSize.height)
-        .height(240.dp),
+      modifier = HeaderImageModifier
+        .aspectRatio(painterResource(Res.drawable.praxis).intrinsicSize.width / painterResource(Res.drawable.praxis).intrinsicSize.height),
+      
       painter = painterResource(Res.drawable.praxis),
       contentDescription = "Header Image der Praxis",
       contentScale = ContentScale.Crop

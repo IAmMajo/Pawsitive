@@ -3,11 +3,8 @@ package ui.components
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
@@ -17,39 +14,26 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import data.database.Vet
 import extensions.format
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+
+//Resource Imports
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.and
 import pawsitive.composeapp.generated.resources.mockimage
 
-////// VALUE SECTION ///////
-val ProfilePictureModifier = Modifier.size(70.dp).clip(CircleShape)
-
-val ProfileCommentPictureModifier = Modifier.size(35.dp).clip(CircleShape)
-
-val ListEntryBoxModifier =
-    Modifier.padding(Dp(10f)) // Eigentlich der Margin (Compose ist super weird)
-        .clip(RoundedCornerShape(Dp(15f)))
-        .shadow(elevation = Dp(20f), spotColor = Color(0xff3a3a3a))
-        .background(Color.White)
-
-val StarModifier = Modifier.size(24.dp)
-
-val ButtonModifier =
-    Modifier.background(color = Color(0xFF00D47B)).clip(RoundedCornerShape(Dp(20f)))
-
-////// COMPOSABLE SECTION ///////
+// Modifier Imports
+import ui.theme.CardModifier
+import ui.theme.ProfilePictureModifier
+import ui.theme.ProfilePictureModifierSM
+import ui.theme.StarModifier
 
 @Composable
 fun ListEntryComponent(vet: Vet) {
@@ -58,7 +42,8 @@ fun ListEntryComponent(vet: Vet) {
 
   Column(
       modifier =
-          ListEntryBoxModifier.fillMaxWidth()
+          CardModifier
+            .fillMaxWidth()
               .clickable { isExpanded = !isExpanded }
               .animateContentSize()
               .padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)) {
@@ -470,7 +455,7 @@ fun ListEntryComponent(vet: Vet) {
                           painter = painterResource(Res.drawable.mockimage),
                           contentDescription = "MockImage",
                           contentScale = ContentScale.Crop,
-                          modifier = ProfileCommentPictureModifier,
+                          modifier = ProfilePictureModifierSM,
                       )
                       Column(
                           verticalArrangement = Arrangement.Center,
