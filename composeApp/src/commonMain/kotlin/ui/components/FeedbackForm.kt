@@ -16,6 +16,7 @@ import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -637,17 +638,20 @@ fun FeedbackComponent() {
                 label = { Text("Feedback") })
           }
     }
-    // Info-Card Praxis
+    // Abschnitt Tierprofil-Auswahl (eigene Column)
+    // Column: Tierprofil (Auswahl, wenn mehr als ein Tierprofil existiert; drop-down?)
 
-    // Column: Rating Praxis
-    // Row: Rating categories
-    // Kategorien: Erlebnis (Terminvergabe, Wartezeit, ...)
-
-    // Row: Textfeld
+   
+    // Button (Feeedback absenden)
+    
+    FilledTonalButton(
+      onClick = {/* .... */},
+      
+    ){
+      Text("senden")
+    }
+    
 
   }
 }
-  // Abschnitt Tierprofil-Auswahl
-  // Column: Tierprofil (Auswahl, wenn mehr als ein Tierprofil existiert; drop-down?)
-
-  // Absenden-Button
+  
