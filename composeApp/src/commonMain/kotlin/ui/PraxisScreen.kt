@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.painterResource
@@ -86,53 +85,53 @@ fun PraxisScreen() {
       // Additional Information
       Column(modifier = Modifier.fillMaxWidth().padding(10.dp)) {
         Row(
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.SpaceBetween,
-          modifier = Modifier.fillMaxWidth()) {
-          Row(
-            modifier = Modifier.padding(top = 2.dp),
-            verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Placeholder Icon",
-              tint = Color(0xffb9b9b9),
-            )
-            Text(
-              text = "Musterstraße 1",
-              fontWeight = FontWeight.Medium,
-              color = Color(0xffb9b9b9))
-          }
-          Row(
-            modifier = Modifier.padding(top = 2.dp),
-            verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Placeholder Icon",
-              tint = Color(0xffb9b9b9),
-            )
-            Text(
-              text = "+49 1234 5678",
-              fontWeight = FontWeight.Medium,
-              color = Color(0xffb9b9b9))
-          }
-        }
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()) {
+              Row(
+                  modifier = Modifier.padding(top = 2.dp),
+                  verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Placeholder Icon",
+                        tint = Color(0xffb9b9b9),
+                    )
+                    Text(
+                        text = "Musterstraße 1",
+                        fontWeight = FontWeight.Medium,
+                        color = Color(0xffb9b9b9))
+                  }
+              Row(
+                  modifier = Modifier.padding(top = 2.dp),
+                  verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Placeholder Icon",
+                        tint = Color(0xffb9b9b9),
+                    )
+                    Text(
+                        text = "+49 1234 5678",
+                        fontWeight = FontWeight.Medium,
+                        color = Color(0xffb9b9b9))
+                  }
+            }
 
         Row(
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.SpaceBetween,
-          modifier = Modifier.fillMaxWidth()) {
-          Row(
-            modifier = Modifier.padding(top = 2.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start) {
-            Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Placeholder Icon",
-              tint = Color(0xffb9b9b9),
-            )
-            Text(text = "2km", fontWeight = FontWeight.Medium, color = Color(0xffb9b9b9))
-          }
-        }
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()) {
+              Row(
+                  modifier = Modifier.padding(top = 2.dp),
+                  verticalAlignment = Alignment.CenterVertically,
+                  horizontalArrangement = Arrangement.Start) {
+                    Icon(
+                        Icons.Rounded.Star,
+                        contentDescription = "Placeholder Icon",
+                        tint = Color(0xffb9b9b9),
+                    )
+                    Text(text = "2km", fontWeight = FontWeight.Medium, color = Color(0xffb9b9b9))
+                  }
+            }
       }
     }
   }
