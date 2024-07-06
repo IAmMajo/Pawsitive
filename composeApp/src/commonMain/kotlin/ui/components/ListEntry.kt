@@ -38,7 +38,7 @@ import ui.theme.StarModifier
 
 @Composable
 fun ListEntryComponent(vet: Vet, navController: NavController) {
-  
+
   var isExpanded by remember { mutableStateOf(false) }
   val expandedPadding = animateDpAsState(targetValue = if (isExpanded) 15.dp else 0.dp)
 
@@ -502,19 +502,13 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                     )
                   }
                 }
-              
+
                 Button(
-                  onClick = {
-                    navController.navigate(Screen.Praxis.name)
-                  },
-                  modifier = Modifier.padding(top = 10.dp)
-                ){
-                  Text(text = "Praxis")
-                }
-            
+                    onClick = { navController.navigate(Screen.Praxis.name) },
+                    modifier = Modifier.padding(top = 10.dp)) {
+                      Text(text = "Praxis")
+                    }
               }
-          
-          
         }
       }
 }

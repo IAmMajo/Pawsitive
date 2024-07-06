@@ -32,53 +32,53 @@ fun PraxisScreen() {
   Column(modifier = Modifier.verticalScroll(state)) {
     // Header Image
     Image(
-      modifier =
-      HeaderImageModifier.aspectRatio(
-        painterResource(Res.drawable.praxis).intrinsicSize.width /
-          painterResource(Res.drawable.praxis).intrinsicSize.height),
-      painter = painterResource(Res.drawable.praxis),
-      contentDescription = "Header Image der Praxis",
-      contentScale = ContentScale.Crop)
+        modifier =
+            HeaderImageModifier.aspectRatio(
+                painterResource(Res.drawable.praxis).intrinsicSize.width /
+                    painterResource(Res.drawable.praxis).intrinsicSize.height),
+        painter = painterResource(Res.drawable.praxis),
+        contentDescription = "Header Image der Praxis",
+        contentScale = ContentScale.Crop)
 
     Column(modifier = Modifier.fillMaxWidth().background(Color.White)) {
       Column(modifier = Modifier.padding(top = 8.dp, start = 10.dp).fillMaxWidth()) {
         // Clinic Name
         Text(
-          text = "Tierklinik Beispiel",
-          fontWeight = FontWeight.Bold,
-          fontSize = 20.sp,
-          modifier = Modifier.align(Alignment.Start))
+            text = "Tierklinik Beispiel",
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp,
+            modifier = Modifier.align(Alignment.Start))
 
         Row {
           Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarModifier)
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier)
           Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarModifier)
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier)
           Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarModifier)
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier)
           Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarModifier)
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier)
           Icon(
-            Icons.Rounded.Star,
-            contentDescription = "Star Placeholder Icon",
-            tint = Color(0xFF00D47B),
-            modifier = StarModifier)
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier)
           Text(
-            text = "4,7",
-            fontWeight = FontWeight.SemiBold,
-            color = Color(0xFF202020),
+              text = "4,7",
+              fontWeight = FontWeight.SemiBold,
+              color = Color(0xFF202020),
           )
         }
       }
@@ -134,9 +134,8 @@ fun PraxisScreen() {
           }
         }
       }
-      
     }
   }
 }
 
-//Einbindung der Ärzte, die in dieser Praxis arbeiten
+// Einbindung der Ärzte, die in dieser Praxis arbeiten
