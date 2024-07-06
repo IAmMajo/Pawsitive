@@ -63,4 +63,4 @@ val iconColor = Color(0xFF959494) // bisher nur Placeholder
 val searchIconColor = Color.Gray
 
 // test:
-//val mainGreen = Color(0xff0ddc48)
+// val mainGreen = Color(0xff0ddc48)
