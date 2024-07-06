@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -681,38 +680,33 @@ fun FeedbackComponent() {
           contentScale = ContentScale.Crop,
           modifier = ProfilePictureModifier)
       Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxWidth()
-          .height(60.dp) // Höhe des Bildes, damit Text & Icon vertikal zentriert sind
-          .padding(end = 25.dp)
-        
-      ){
-        Text(
-          text = "Fridolin",
-          color = subHeadingColor,
-          fontSize = 18.sp,
-          fontWeight = FontWeight.Bold,
-          modifier = Modifier.padding(start = 5.dp),
-        )
-        Button(
-          onClick = { /* Auswahlmöglichkeit PetProfile ergänzen*/ },
-          colors = ButtonDefaults.buttonColors(
-            containerColor = Color.Transparent),
-          //shape = CircleShape,//RoundedCornerShape(Dp(20f)),          
-          
-        ) {
-          Icon(
-            Icons.Rounded.ArrowDropDown,
-            contentDescription = "Arrow Drop Down Icon",
-            tint = lightText,
-            modifier = Modifier.clip(RoundedCornerShape(Dp(15f))).background(secondaryButtonColor)
-            
-          )
-        }
-        
-      }
-      
+          verticalAlignment = Alignment.CenterVertically,
+          horizontalArrangement = Arrangement.SpaceBetween,
+          modifier =
+              Modifier.fillMaxWidth()
+                  .height(60.dp) // Höhe des Bildes, damit Text & Icon vertikal zentriert sind
+                  .padding(end = 25.dp)) {
+            Text(
+                text = "Fridolin",
+                color = subHeadingColor,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(start = 5.dp),
+            )
+            Button(
+                onClick = { /* Auswahlmöglichkeit PetProfile ergänzen*/ },
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                // shape = CircleShape,//RoundedCornerShape(Dp(20f)),
+
+            ) {
+              Icon(
+                  Icons.Rounded.ArrowDropDown,
+                  contentDescription = "Arrow Drop Down Icon",
+                  tint = lightText,
+                  modifier =
+                      Modifier.clip(RoundedCornerShape(Dp(15f))).background(secondaryButtonColor))
+            }
+          }
     }
 
     // Button (Feeedback absenden)
