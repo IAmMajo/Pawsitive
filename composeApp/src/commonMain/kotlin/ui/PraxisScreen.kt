@@ -98,7 +98,7 @@ fun PraxisScreen() {
               tint = Color(0xffb9b9b9),
             )
             Text(
-              text = "Schäferhunde",
+              text = "Musterstraße 1",
               fontWeight = FontWeight.Medium,
               color = Color(0xffb9b9b9))
           }
@@ -111,7 +111,7 @@ fun PraxisScreen() {
               tint = Color(0xffb9b9b9),
             )
             Text(
-              text = "Musterstraße 1",
+              text = "+49 1234 5678",
               fontWeight = FontWeight.Medium,
               color = Color(0xffb9b9b9))
           }
@@ -131,21 +131,6 @@ fun PraxisScreen() {
               tint = Color(0xffb9b9b9),
             )
             Text(text = "2km", fontWeight = FontWeight.Medium, color = Color(0xffb9b9b9))
-          }
-          Row(
-            modifier = Modifier.padding(top = 2.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start) {
-            Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Placeholder Icon",
-              tint = Color(0xffb9b9b9),
-            )
-            Text(
-              text = "+49 1234 5678",
-              fontWeight = FontWeight.Medium,
-              color = Color(0xffb9b9b9),
-              textAlign = TextAlign.Start)
           }
         }
       }
