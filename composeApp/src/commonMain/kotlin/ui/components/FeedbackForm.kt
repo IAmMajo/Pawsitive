@@ -9,17 +9,25 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.ArrowDropDown
 import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,11 +43,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.painterResource
 import pawsitive.composeapp.generated.resources.Res
+import pawsitive.composeapp.generated.resources.gecko
 import pawsitive.composeapp.generated.resources.mockimage
 import pawsitive.composeapp.generated.resources.praxis
 import ui.theme.ProfilePictureModifier
+import ui.theme.backgroundLight
+import ui.theme.greenTextColor
+import ui.theme.lightText
+import ui.theme.secondaryButtonColor
+import ui.theme.starNotSelectedColor
+import ui.theme.subHeadingColor
+import ui.theme.textFieldColor
 
-// Nico aus ListEntry.kt geklaut :) //
+// aus ListEntry.kt + abgeändert
 val BoxModifier =
     Modifier.padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
         .clip(RoundedCornerShape(Dp(15f)))
@@ -50,8 +66,9 @@ val BoxModifier =
 // aus ListEntry.kt + abgeändert
 val StarIconModifier = Modifier.size(24.dp)
 
-val TextFieldModifier = Modifier.background(Color.LightGray).fillMaxWidth()
+val TextFieldModifier = Modifier.fillMaxWidth()
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FeedbackComponent() {
   Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
@@ -155,27 +172,27 @@ fun FeedbackComponent() {
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
               }
             }
@@ -193,27 +210,27 @@ fun FeedbackComponent() {
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
               }
             }
@@ -229,27 +246,27 @@ fun FeedbackComponent() {
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
               }
             }
@@ -268,27 +285,27 @@ fun FeedbackComponent() {
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
               }
             }
@@ -307,27 +324,27 @@ fun FeedbackComponent() {
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
               }
             }
@@ -345,27 +362,27 @@ fun FeedbackComponent() {
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
+                    tint = starNotSelectedColor,
                     modifier = StarIconModifier)
               }
             }
@@ -477,30 +494,30 @@ fun FeedbackComponent() {
                   color = Color(0xFF959494))
               Row() {
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
               }
             }
 
@@ -518,30 +535,30 @@ fun FeedbackComponent() {
 
               Row() {
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
               }
             }
 
@@ -558,30 +575,30 @@ fun FeedbackComponent() {
                   color = Color(0xFF959494))
               Row() {
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
               }
             }
 
@@ -592,37 +609,37 @@ fun FeedbackComponent() {
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
               Text(
-                  text = "Angebot alternativer Heilmethoden",
+                  text = "Alternative Heilmethoden",
                   fontWeight = FontWeight.Medium,
                   color = Color(0xFF959494),
               )
 
               Row() {
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xFF00D47B),
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
                 Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color.LightGray,
-                    modifier = StarIconModifier)
+                  Icons.Rounded.Star,
+                  contentDescription = "Star Placeholder Icon",
+                  tint = starNotSelectedColor,
+                  modifier = StarIconModifier)
               }
             }
 
@@ -630,23 +647,96 @@ fun FeedbackComponent() {
 
             // Textfeld - Rating Arzt
 
-            val rating = remember { mutableStateOf("") }
-            TextField(
-                value = rating.value,
-                onValueChange = { rating.value = it },
-                modifier = TextFieldModifier,
-                label = { Text("Feedback") })
-          }
+        val rating = remember { mutableStateOf("") }
+        // NEU!!!
+        OutlinedTextField(
+          value = rating.value,
+          onValueChange = { rating.value = it },
+          modifier = TextFieldModifier,
+          label = { Text("Feedback...") },
+          //colors = OutlinedTextFieldDefaults.colors(textFieldColor),
+          colors = TextFieldDefaults.outlinedTextFieldColors(
+            unfocusedLabelColor = textFieldColor,
+            focusedLabelColor = greenTextColor,
+            unfocusedBorderColor = textFieldColor,
+            focusedBorderColor = greenTextColor,
+          ),
+          )  
+        // alt (zum Vergleich)
+        TextField(
+          value = rating.value,
+          onValueChange = { rating.value = it },
+          modifier = TextFieldModifier,
+          label = { Text("Feedback") },
+          )
+      }
     }
-    // Abschnitt Tierprofil-Auswahl (eigene Column)
+    
     // Column: Tierprofil (Auswahl, wenn mehr als ein Tierprofil existiert; drop-down?)
 
-    // Button (Feeedback absenden)
-
-    FilledTonalButton(
-        onClick = { /* .... */ },
+    Row(
+      modifier = Modifier.padding(start = 22.dp)
     ) {
-      Text("senden")
+      Image(
+        painter = painterResource(Res.drawable.gecko),
+        contentDescription = "MockImagePetProfile",
+        contentScale = ContentScale.Crop,
+        modifier = ProfilePictureModifier
+      )
+      Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.fillMaxWidth()
+          .padding(end = 25.dp)
+        
+      ){
+        Text(
+          text = "Fridolin",
+          color = subHeadingColor,
+          fontSize = 18.sp,
+          fontWeight = FontWeight.Bold,
+          modifier = Modifier.padding(start = 5.dp),
+        )
+        Button(
+          onClick = { /* Auswahlmöglichkeit PetProfile ergänzen*/ },
+          colors = ButtonDefaults.buttonColors(
+            containerColor = Color.Transparent),
+          //shape = CircleShape,//RoundedCornerShape(Dp(20f)),          
+          
+        ) {
+          Icon(
+            Icons.Rounded.ArrowDropDown,
+            contentDescription = "Arrow Drop Down Icon",
+            tint = lightText,
+            modifier = Modifier.clip(RoundedCornerShape(Dp(15f))).background(secondaryButtonColor)
+            
+          )
+        }
+        
+      }
+
+      
     }
+
+    // Button (Feeedback absenden)
+Row(
+  verticalAlignment = Alignment.CenterVertically,
+  horizontalArrangement = Arrangement.Center,
+  modifier = Modifier.fillMaxWidth()
+    .padding(start = 25.dp, end = 25.dp, top = 20.dp)
+) {
+  FilledTonalButton(
+    onClick = {/* .... */ },
+    modifier = Modifier.fillMaxWidth(),
+    ) {
+    Text("senden"
+      
+    )
   }
+}
+    
+  }
+
+  
+
 }
