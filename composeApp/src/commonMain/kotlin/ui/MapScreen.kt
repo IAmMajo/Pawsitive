@@ -11,23 +11,17 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import pawsitive.composeapp.generated.resources.Map
 import pawsitive.composeapp.generated.resources.Res
 
+@Composable
+@Preview
+fun MapScreen() {
 
-
-@Composable @Preview fun MapScreen() {
-  
-  Box(){
-    Box(
-      modifier = Modifier
-        .fillMaxSize()
-    ) {
+  Box() {
+    Box(modifier = Modifier.fillMaxSize()) {
       Image(
-        painter = painterResource(Res.drawable.Map),
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        modifier = Modifier
-          .fillMaxSize()
-      )
+          painter = painterResource(Res.drawable.Map),
+          contentDescription = null,
+          contentScale = ContentScale.Crop,
+          modifier = Modifier.fillMaxSize())
     }
   }
-  
 }

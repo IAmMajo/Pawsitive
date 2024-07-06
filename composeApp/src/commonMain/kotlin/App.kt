@@ -94,7 +94,6 @@ fun App() {
             composable(route = Screen.Map.name) { MapScreen() }
             composable(route = Screen.Profile.name) { ProfileScreen() }
             composable(route = Screen.Praxis.name) { PraxisScreen() }
-
           }
         }
   }
