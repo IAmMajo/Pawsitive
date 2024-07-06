@@ -3,156 +3,98 @@ package ui
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Star
-import androidx.compose.material3.Icon
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import pawsitive.composeapp.generated.resources.Res
-import pawsitive.composeapp.generated.resources.praxis
-import ui.theme.HeaderImageModifier
-import ui.theme.StarModifier
-
-// Hier ist die vorläufige Version der Praxis View drin, da ich immernoch nicht auf
-// ListEntryComponents
-// im Web zugreifen kann, werde ich die View jetzt hier reinschreiben, dann muss Max die kopieren.
+import pawsitive.composeapp.generated.resources.gecko
 
 @Composable
 @Preview
 fun ProfileScreen() {
-  val state = rememberScrollState()
-  Column(modifier = Modifier.verticalScroll(state)) {
-    // Header Image
-    Image(
-        modifier =
-            HeaderImageModifier.aspectRatio(
-                painterResource(Res.drawable.praxis).intrinsicSize.width /
-                    painterResource(Res.drawable.praxis).intrinsicSize.height),
-        painter = painterResource(Res.drawable.praxis),
-        contentDescription = "Header Image der Praxis",
-        contentScale = ContentScale.Crop)
-
-    Column(modifier = Modifier.fillMaxWidth().background(Color.White)) {
-      Column(modifier = Modifier.padding(top = 8.dp, start = 10.dp).fillMaxWidth()) {
-        // Clinic Name
+  Column {
+    Box(
+      modifier = Modifier
+        .height(250.dp)
+        .clip(RoundedCornerShape(8.dp))
+        .padding(5.dp)
+        .fillMaxWidth()
+    ) {
+      Image(
+        painter = painterResource(Res.drawable.gecko),
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = Modifier
+          .fillMaxSize()
+          .clip(RoundedCornerShape(8.dp))
+      )
+      Column(
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.Start,
+        modifier = Modifier
+          .fillMaxSize()
+      ) {
         Text(
-            text = "Tierklinik Beispiel",
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
-            modifier = Modifier.align(Alignment.Start))
-
-        Row {
-          Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Star Placeholder Icon",
-              tint = Color(0xFF00D47B),
-              modifier = StarModifier)
-          Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Star Placeholder Icon",
-              tint = Color(0xFF00D47B),
-              modifier = StarModifier)
-          Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Star Placeholder Icon",
-              tint = Color(0xFF00D47B),
-              modifier = StarModifier)
-          Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Star Placeholder Icon",
-              tint = Color(0xFF00D47B),
-              modifier = StarModifier)
-          Icon(
-              Icons.Rounded.Star,
-              contentDescription = "Star Placeholder Icon",
-              tint = Color(0xFF00D47B),
-              modifier = StarModifier)
-          Text(
-              text = "4,7",
-              fontWeight = FontWeight.SemiBold,
-              color = Color(0xFF202020),
-          )
-        }
+          text = "Thomas (19 Jahre alt)",
+          color = Color.LightGray,
+          fontWeight = FontWeight.Bold,
+          fontSize = 22.sp,
+          modifier = Modifier
+            .padding(horizontal = 16.dp)
+        )
+        Text(
+          text = "Stirnlappenbasilisk",
+          color = Color.LightGray,
+          fontWeight = FontWeight.SemiBold,
+          fontSize = 18.sp,
+          modifier = Modifier
+            .padding(start = 16.dp, end = 16.dp, bottom = 6.dp)
+        )
       }
+    }
 
-      // Additional Information
-      Column(modifier = Modifier.fillMaxWidth().padding(10.dp)) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth()) {
-              Row(
-                  modifier = Modifier.padding(top = 2.dp),
-                  verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        Icons.Rounded.Star,
-                        contentDescription = "Placeholder Icon",
-                        tint = Color(0xffb9b9b9),
-                    )
-                    Text(
-                        text = "Schäferhunde",
-                        fontWeight = FontWeight.Medium,
-                        color = Color(0xffb9b9b9))
-                  }
-              Row(
-                  modifier = Modifier.padding(top = 2.dp),
-                  verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        Icons.Rounded.Star,
-                        contentDescription = "Placeholder Icon",
-                        tint = Color(0xffb9b9b9),
-                    )
-                    Text(
-                        text = "Musterstraße 1",
-                        fontWeight = FontWeight.Medium,
-                        color = Color(0xffb9b9b9))
-                  }
-            }
+    Column(
+      horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.Center,
+      modifier = Modifier
+        .fillMaxWidth()
+        .height(200.dp)
+        .padding(5.dp)
+        .background(Color(0xFF00D47B), shape = RoundedCornerShape(15.dp))
+        .clip(RoundedCornerShape(8.dp))
+        .padding(10.dp)
+    ) {
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth()) {
-              Row(
-                  modifier = Modifier.padding(top = 2.dp),
-                  verticalAlignment = Alignment.CenterVertically,
-                  horizontalArrangement = Arrangement.Start) {
-                    Icon(
-                        Icons.Rounded.Star,
-                        contentDescription = "Placeholder Icon",
-                        tint = Color(0xffb9b9b9),
-                    )
-                    Text(text = "2km", fontWeight = FontWeight.Medium, color = Color(0xffb9b9b9))
-                  }
-              Row(
-                  modifier = Modifier.padding(top = 2.dp),
-                  verticalAlignment = Alignment.CenterVertically,
-                  horizontalArrangement = Arrangement.Start) {
-                    Icon(
-                        Icons.Rounded.Star,
-                        contentDescription = "Placeholder Icon",
-                        tint = Color(0xffb9b9b9),
-                    )
-                    Text(
-                        text = "+49 1234 5678",
-                        fontWeight = FontWeight.Medium,
-                        color = Color(0xffb9b9b9),
-                        textAlign = TextAlign.Start)
-                  }
-            }
+      Column(
+        horizontalAlignment = Alignment.Start
+      ) {
+        
+        Text(
+          text = "Spritze für Thomas",
+          fontSize = 18.sp,
+          color = Color(0xFF202020)
+        )
+        Text(
+          text = "28. April 2024",
+          fontSize = 35.sp,
+          fontWeight = FontWeight.Bold,
+          color = Color(0xFF202020)
+        )        
       }
     }
   }
 }
+
+
+//Hier könnte man dann auch die Ärzte eintragen, die man bereits besucht hat
+//DB Anbindung

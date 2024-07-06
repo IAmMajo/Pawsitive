@@ -1,7 +1,5 @@
 package ui.components
 
-// Resource Imports
-// Modifier Imports
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
@@ -12,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -24,6 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import data.database.Vet
 import extensions.format
 import org.jetbrains.compose.resources.painterResource
@@ -37,7 +37,8 @@ import ui.theme.ProfilePictureModifierSM
 import ui.theme.StarModifier
 
 @Composable
-fun ListEntryComponent(vet: Vet) {
+fun ListEntryComponent(vet: Vet, navController: NavController) {
+  
   var isExpanded by remember { mutableStateOf(false) }
   val expandedPadding = animateDpAsState(targetValue = if (isExpanded) 15.dp else 0.dp)
 
@@ -511,7 +512,19 @@ fun ListEntryComponent(vet: Vet) {
                     )
                   }
                 }
+              
+                Button(
+                  onClick = {
+                    navController.navigate(Screen.Praxis.name)
+                  },
+                  modifier = Modifier.padding(top = 10.dp)
+                ){
+                  Text(text = "Praxis")
+                }
+            
               }
+          
+          
         }
       }
 }
