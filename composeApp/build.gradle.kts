@@ -59,9 +59,7 @@ kotlin {
       implementation(libs.coil.network.ktor)
       implementation(libs.coil.compose)
     }
-    wasmJsMain.dependencies {
-      implementation(libs.ktor.client.js)
-    }
+    wasmJsMain.dependencies { implementation(libs.ktor.client.js) }
   }
 }
 

@@ -33,7 +33,7 @@ interface VetRating {
                 ratingFriendliness,
             )
             .averageNotZero()
-  
+
   suspend fun getImageUrl(): String {
     val pet = pets.find { it.imagePath.isNotEmpty() }
     if (pet == null) {

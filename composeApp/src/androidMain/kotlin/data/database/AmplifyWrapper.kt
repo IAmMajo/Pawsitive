@@ -10,15 +10,15 @@ abstract class AmplifyWrapper {
   protected fun temporalToDate(temporal: Temporal.Date?): LocalDate? {
     return temporal?.format()?.let { LocalDate.parse(it) }
   }
-  
+
   protected fun temporalToDateTime(temporal: Temporal.DateTime): Instant {
     return Instant.parse(temporal.format())
   }
-  
+
   protected suspend fun getImageUrl(imagePath: String?): String {
     if (imagePath.isNullOrEmpty()) {
       return ""
     }
-    return Amplify.Storage.getUrl(StoragePath.fromString(imagePath)).url.toString();
+    return Amplify.Storage.getUrl(StoragePath.fromString(imagePath)).url.toString()
   }
 }

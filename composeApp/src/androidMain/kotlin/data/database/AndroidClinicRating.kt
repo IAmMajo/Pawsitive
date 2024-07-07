@@ -5,7 +5,8 @@ import com.amplifyframework.core.model.LoadedModelReference
 import com.amplifyframework.datastore.generated.model.ClinicRating as AmplifyClinicRating
 import kotlinx.datetime.Instant
 
-class AndroidClinicRating(amplifyClinicRating: AmplifyClinicRating) : AmplifyWrapper(), ClinicRating {
+class AndroidClinicRating(amplifyClinicRating: AmplifyClinicRating) :
+    AmplifyWrapper(), ClinicRating {
   override val id: String = amplifyClinicRating.id
   override val clinic: AndroidClinic? =
       (amplifyClinicRating.clinic as? LoadedModelReference)?.value?.let { AndroidClinic(it) }
