@@ -149,10 +149,7 @@ fun FeedbackComponent(navController: NavController) {
                         contentDescription = "Placeholder Distance Icon",
                         tint = iconColor,
                         modifier = Modifier.padding(start = 2.dp))
-                    Text(
-                      text = "10,4km", 
-                      fontWeight = FontWeight.Medium, 
-                      color = lightText)
+                    Text(text = "10,4km", fontWeight = FontWeight.Medium, color = lightText)
                   }
                 }
           }
@@ -169,10 +166,7 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(
-                text = "Diagnose",
-                fontWeight = FontWeight.Medium,
-                color = lightText)
+              Text(text = "Diagnose", fontWeight = FontWeight.Medium, color = lightText)
 
               /////////////////////////////////////////////////////////////////////////////////////
               // StarRating
@@ -199,9 +193,10 @@ fun FeedbackComponent(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
               Text(
-                text = "Behandlung",
-                fontWeight = FontWeight.Medium,
-                color = lightText,)
+                  text = "Behandlung",
+                  fontWeight = FontWeight.Medium,
+                  color = lightText,
+              )
               Row(
                   verticalAlignment = Alignment.CenterVertically,
                   horizontalArrangement = Arrangement.SpaceBetween,
@@ -276,10 +271,7 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(
-                  text = "Vertrauensverhältnis",
-                  fontWeight = FontWeight.Medium,
-                  color = lightText)
+              Text(text = "Vertrauensverhältnis", fontWeight = FontWeight.Medium, color = lightText)
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -315,10 +307,7 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(
-                  text = "Investierte Zeit",
-                  fontWeight = FontWeight.Medium,
-                  color = lightText)
+              Text(text = "Investierte Zeit", fontWeight = FontWeight.Medium, color = lightText)
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -354,10 +343,7 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(
-                  text = "Freundlichkeit",
-                  fontWeight = FontWeight.Medium,
-                  color = lightText)
+              Text(text = "Freundlichkeit", fontWeight = FontWeight.Medium, color = lightText)
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -445,21 +431,12 @@ fun FeedbackComponent(navController: NavController) {
                     contentDescription = "Placeholder Info Icon",
                     tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp))
-                Text(
-                    text = "Öffnungszeiten:",
-                    fontWeight = FontWeight.SemiBold,
-                    color = lightText)
+                Text(text = "Öffnungszeiten:", fontWeight = FontWeight.SemiBold, color = lightText)
               }
               // Öffnungszeiten Mo-Fr. usw
               Column(modifier = Modifier.padding(start = 25.dp, bottom = 5.dp)) {
-                Text(
-                    text = "Mo-Fr: 8-13Uhr",
-                    fontWeight = FontWeight.Medium,
-                    color = lightText)
-                Text(
-                    text = "Di, Do: 15-18Uhr",
-                    fontWeight = FontWeight.Medium,
-                    color =lightText)
+                Text(text = "Mo-Fr: 8-13Uhr", fontWeight = FontWeight.Medium, color = lightText)
+                Text(text = "Di, Do: 15-18Uhr", fontWeight = FontWeight.Medium, color = lightText)
               }
 
               Row {
@@ -479,7 +456,7 @@ fun FeedbackComponent(navController: NavController) {
                     contentDescription = "Distance Icon",
                     tint = lightText,
                     modifier = Modifier.padding(start = 2.dp))
-                Text(text = "10,4km", fontWeight = FontWeight.Medium, color =lightText)
+                Text(text = "10,4km", fontWeight = FontWeight.Medium, color = lightText)
               }
             }
           }
@@ -577,10 +554,7 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(
-                  text = "Parkmöglichkeiten",
-                  fontWeight = FontWeight.Medium,
-                  color = lightText)
+              Text(text = "Parkmöglichkeiten", fontWeight = FontWeight.Medium, color = lightText)
               Row() {
                 Icon(
                     Icons.Rounded.Star,
