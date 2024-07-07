@@ -540,13 +540,13 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                     modifier = Modifier.fillMaxWidth()) {
                       Button(
                           onClick = { navController.navigate(Screen.Praxis.name) },
-                          modifier = Modifier.padding(top = 10.dp).width(165.dp)) {
+                          modifier = Modifier.padding(top = 10.dp).width(160.dp)) {
                             Text(text = "Praxis")
                           }
 
                       Button(
                           onClick = { navController.navigate(Screen.Rate.name) },
-                          modifier = Modifier.padding(top = 10.dp).width(165.dp)) {
+                          modifier = Modifier.padding(top = 10.dp).width(160.dp)) {
                             Text(text = "Bewerten")
                           }
                     }
