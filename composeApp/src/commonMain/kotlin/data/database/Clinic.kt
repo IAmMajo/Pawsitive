@@ -18,7 +18,7 @@ interface Clinic {
   val website: String
   val vets: List<Vet>
   val ratings: List<ClinicRating>
-  
+
   val streetAndHouseNumber: String
     get() = "$street $houseNumber"
 
