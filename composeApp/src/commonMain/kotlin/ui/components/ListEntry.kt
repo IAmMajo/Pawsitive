@@ -556,7 +556,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                             onClick = {
                               navController.navigate("${Screen.Clinic.name}/${clinic.id}")
                             },
-                            modifier = Modifier.padding(top = 10.dp).width(165.dp),
+                            modifier = Modifier.padding(top = 10.dp).width(160.dp),
                         ) {
                           Text(text = "Praxis")
                         }
@@ -564,7 +564,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
 
                       Button(
                           onClick = { navController.navigate(Screen.Rate.name) },
-                          modifier = Modifier.padding(top = 10.dp).width(165.dp),
+                          modifier = Modifier.padding(top = 10.dp).width(160.dp),
                       ) {
                         Text(text = "Bewerten")
                       }
