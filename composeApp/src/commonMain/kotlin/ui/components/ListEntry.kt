@@ -7,6 +7,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.DateRange
+import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Button
@@ -137,7 +139,7 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
               modifier = Modifier.padding(top = expandedPadding.value)) {
                 Row {
                   Icon(
-                      Icons.Rounded.Star,
+                      Icons.Rounded.Home,
                       contentDescription = "Star Placeholder Icon",
                       tint = Color(0xffb9b9b9),
                       modifier = Modifier.padding(start = 2.dp))
@@ -145,6 +147,17 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                       text = clinic.name,
                       fontWeight = FontWeight.SemiBold,
                       color = Color(0xffb9b9b9))
+                }
+                Row {
+                  Icon(
+                    Icons.Rounded.DateRange,
+                    contentDescription = "Calendar Icon",
+                    tint = Color(0xffb9b9b9),
+                    modifier = Modifier.padding(start = 2.dp))
+                  Text(
+                    text = "07:30 Uhr - 22:30 Uhr",
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xffb9b9b9))
                 }
                 Row {
                   Icon(
@@ -157,6 +170,7 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                       fontWeight = FontWeight.Medium,
                       color = Color(0xffb9b9b9))
                 }
+                
                 Row {
                   Icon(
                       Icons.Rounded.Star,
@@ -520,12 +534,33 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                     )
                   }
                 }
-
-                Button(
+                Row(
+                  horizontalArrangement = Arrangement.SpaceBetween,
+                  verticalAlignment = Alignment.CenterVertically,
+                  modifier = Modifier
+                    .fillMaxWidth()
+                ){
+                  Button(
                     onClick = { navController.navigate(Screen.Praxis.name) },
-                    modifier = Modifier.padding(top = 10.dp)) {
-                      Text(text = "Praxis")
-                    }
+                    modifier = Modifier
+                      .padding(top = 10.dp)
+                      .width(165.dp)
+                  ) {
+                    Text(text = "Praxis")
+                  }
+                  
+                  Button(
+                    onClick = { navController.navigate(Screen.Rate.name) },
+                    modifier = Modifier
+                      .padding(top = 10.dp)
+                      .width(165.dp)
+                  ){
+                    Text(
+                      text = "Bewerten"
+                    )
+                  }
+                }
+                
               }
         }
       }
