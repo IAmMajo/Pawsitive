@@ -29,7 +29,7 @@ fun SearchScreen(navController: NavController) {
   val drawerState = rememberDrawerState(DrawerValue.Closed)
   val scope = rememberCoroutineScope()
 
-  LaunchedEffect(true) { viewModel.fetchResults() }
+  LaunchedEffect(uiState.query) { viewModel.fetchResults() }
 
   ModalNavigationDrawer(
       modifier = Modifier.background(Color.White),
@@ -61,7 +61,7 @@ fun SearchScreen(navController: NavController) {
                   Modifier.fillMaxWidth().verticalScroll(state).padding(it),
                   horizontalAlignment = Alignment.CenterHorizontally,
               ) {
-                Searchbar()
+                Searchbar(viewModel, uiState)
                 if (uiState.loading) {
                   CircularProgressIndicator()
                 } else {
