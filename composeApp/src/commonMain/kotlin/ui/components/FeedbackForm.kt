@@ -16,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowDropDown
 import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Button
@@ -197,34 +198,18 @@ fun FeedbackComponent(navController: NavController) {
                   color = lightText,
               )
               Row(
-                  verticalAlignment = Alignment.CenterVertically,
-                  horizontalArrangement = Arrangement.SpaceBetween,
+                // modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
               ) {
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
+                var rating_1 by remember { mutableDoubleStateOf(0.0) }
+
+                StarRow(
+                  modifier = Modifier,
+                  rating = rating_1,
+                ) {
+                  rating_1 = it
+                }
               }
             }
 
@@ -235,32 +220,19 @@ fun FeedbackComponent(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
               Text(text = "Aufklärung", fontWeight = FontWeight.Medium, color = lightText)
-              Row() {
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
+              Row(
+                // modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+              ) {
+                var rating_1 by remember { mutableDoubleStateOf(0.0) }
+
+                StarRow(
+                  modifier = Modifier,
+                  rating = rating_1,
+                ) {
+                  rating_1 = it
+                }
               }
             }
 
@@ -271,32 +243,19 @@ fun FeedbackComponent(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
               Text(text = "Vertrauensverhältnis", fontWeight = FontWeight.Medium, color = lightText)
-              Row() {
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
+              Row(
+                // modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+              ) {
+                var rating_1 by remember { mutableDoubleStateOf(0.0) }
+
+                StarRow(
+                  modifier = Modifier,
+                  rating = rating_1,
+                ) {
+                  rating_1 = it
+                }
               }
             }
 
@@ -307,32 +266,19 @@ fun FeedbackComponent(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
               Text(text = "Investierte Zeit", fontWeight = FontWeight.Medium, color = lightText)
-              Row() {
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
+              Row(
+                // modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+              ) {
+                var rating_1 by remember { mutableDoubleStateOf(0.0) }
+
+                StarRow(
+                  modifier = Modifier,
+                  rating = rating_1,
+                ) {
+                  rating_1 = it
+                }
               }
             }
 
@@ -374,8 +320,7 @@ fun FeedbackComponent(navController: NavController) {
 
             //// Textfeld - Rating Arzt ////
             val rating = remember { mutableStateOf("") }
-
-            // NEUE Version Textfeld!!!
+            
             OutlinedTextField(
                 value = rating.value,
                 onValueChange = { rating.value = it },
@@ -455,7 +400,10 @@ fun FeedbackComponent(navController: NavController) {
                     contentDescription = "Distance Icon",
                     tint = lightText,
                     modifier = Modifier.padding(start = 2.dp))
-                Text(text = "10,4km", fontWeight = FontWeight.Medium, color = lightText)
+                Text(
+                  text = "10,4km",
+                  fontWeight = FontWeight.Medium,
+                  color = lightText,)
               }
             }
           }
@@ -476,32 +424,18 @@ fun FeedbackComponent(navController: NavController) {
                   text = "Ausstattung der Praxis",
                   fontWeight = FontWeight.Medium,
                   color = lightText)
-              Row() {
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
+              Row(
+                // modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+              ) {
+                var rating_1 by remember { mutableDoubleStateOf(0.0) }
+                StarRow(
+                  modifier = Modifier,
+                  rating = rating_1,
+                ) {
+                  rating_1 = it
+                }
               }
             }
 
@@ -516,33 +450,18 @@ fun FeedbackComponent(navController: NavController) {
                   fontWeight = FontWeight.Medium,
                   color = lightText,
               )
-
-              Row() {
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
+              Row(
+                // modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+              ) {
+                var rating_1 by remember { mutableDoubleStateOf(0.0) }
+                StarRow(
+                  modifier = Modifier,
+                  rating = rating_1,)
+                { 
+                  rating_1 = it
+                }
               }
             }
 
@@ -553,33 +472,22 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(text = "Parkmöglichkeiten", fontWeight = FontWeight.Medium, color = lightText)
-              Row() {
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
+              Text(
+                text = "Parkmöglichkeiten",
+                fontWeight = FontWeight.Medium,
+                color = lightText,)
+              Row(
+                // modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+              ) {
+                var rating_1 by remember { mutableDoubleStateOf(0.0) }
+                StarRow(
+                  modifier = Modifier,
+                  rating = rating_1,)
+                {
+                  rating_1 = it
+                }
               }
             }
 
@@ -594,33 +502,18 @@ fun FeedbackComponent(navController: NavController) {
                   fontWeight = FontWeight.Medium,
                   color = lightText,
               )
-
-              Row() {
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
+              Row(
+                // modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+              ) {
+                var rating_1 by remember { mutableDoubleStateOf(0.0) }
+                StarRow(
+                  modifier = Modifier,
+                  rating = rating_1,)
+                {
+                  rating_1 = it
+                }
               }
             }
 
