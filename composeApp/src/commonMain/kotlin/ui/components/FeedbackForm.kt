@@ -23,6 +23,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -327,7 +328,7 @@ fun FeedbackComponent(navController: NavController) {
                 label = { Text("Feedback...") },
                 // colors = OutlinedTextFieldDefaults.colors(textFieldColor),
                 colors =
-                    TextFieldDefaults.outlinedTextFieldColors(
+                    OutlinedTextFieldDefaults.colors(
                         unfocusedLabelColor = textFieldColor,
                         focusedLabelColor = greenTextColor,
                         unfocusedBorderColor = textFieldColor,
