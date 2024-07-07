@@ -44,9 +44,6 @@ import ui.theme.lightText
 import ui.theme.subHeadingColor
 import ui.theme.textFieldColor
 
-
-
-
 // aus ListEntry.kt + abgeändert
 val StarIconModifier = Modifier.size(24.dp)
 
@@ -56,118 +53,101 @@ val TextFieldModifier = Modifier.fillMaxWidth()
 @Composable
 fun FeedbackComponent(navController: NavController) {
   Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-
     DoctorCardComponent()
-    
+
     RatingArztComponent()
-    
-    
 
     /////// Abschnitt: Bewertung Praxis ///////
-    
+
     Column() {
-      
+
       // Info-Card Praxis
       Column(
-        modifier = PraxisCardModifier.padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)
-      ) {
-        Row(
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.SpaceBetween,
-          modifier = Modifier.fillMaxWidth()
-        ) {
-          // Name + Bild
-          Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(
-              painter = painterResource(Res.drawable.praxis),
-              contentDescription = "MockImage",
-              contentScale = ContentScale.Crop,
-              modifier = ProfilePictureModifier
-            )
+          modifier =
+              PraxisCardModifier.padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()) {
+                  // Name + Bild
+                  Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painter = painterResource(Res.drawable.praxis),
+                        contentDescription = "MockImage",
+                        contentScale = ContentScale.Crop,
+                        modifier = ProfilePictureModifier)
 
-            Column(
-              verticalArrangement = Arrangement.Center,
-              modifier = Modifier.padding(start = 5.dp)
-            ) {
-              Text(
-                modifier = Modifier.padding(start = 5.dp),
-                text = "Kleintierpraxis Tatze",
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                color = subHeadingColor
-              )
-              Row (
-                verticalAlignment = Alignment.CenterVertically
-              ) {
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                        modifier = Modifier.padding(start = 5.dp)) {
+                          Text(
+                              modifier = Modifier.padding(start = 5.dp),
+                              text = "Kleintierpraxis Tatze",
+                              fontSize = 20.sp,
+                              fontWeight = FontWeight.Bold,
+                              color = subHeadingColor)
+                          Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                Icons.Rounded.Place,
+                                contentDescription = "Map-Pin Icon",
+                                tint = iconColor,
+                                modifier = Modifier.padding(start = 2.dp))
+                            Text(
+                                text = "Fantasiestraße 4, Basel",
+                                fontWeight = FontWeight.Medium,
+                                color = lightText)
+                          }
+                        }
+                  }
+                }
+            // Angaben zur Praxis (in der Arzt-Info-Card) //
+            Column(horizontalAlignment = Alignment.Start, modifier = Modifier.padding(top = 7.dp)) {
+              Row {
                 Icon(
-                  Icons.Rounded.Place,
-                  contentDescription = "Map-Pin Icon",
-                  tint = iconColor,
-                  modifier = Modifier.padding(start = 2.dp)
-                )
+                    Icons.Rounded.DateRange,
+                    contentDescription = "Calender Icon",
+                    tint = iconColor,
+                    modifier = Modifier.padding(start = 2.dp))
                 Text(
-                  text = "Fantasiestraße 4, Basel",
-                  fontWeight = FontWeight.Medium,
-                  color = lightText
+                    text = "Mo-Fr: 8-13Uhr | Di, Do: 15-18Uhr",
+                    fontWeight = FontWeight.Medium,
+                    color = lightText)
+              }
+
+              Row {
+                Icon(
+                    Icons.Rounded.NearMe,
+                    contentDescription = "Distance Icon",
+                    tint = lightText,
+                    modifier = Modifier.padding(start = 2.dp))
+                Text(
+                    text = "10,4km",
+                    fontWeight = FontWeight.Medium,
+                    color = lightText,
                 )
               }
             }
           }
-        }
-        // Angaben zur Praxis (in der Arzt-Info-Card) //
-        Column(horizontalAlignment = Alignment.Start, modifier = Modifier.padding(top = 7.dp)) {
-          Row {
-            Icon(
-              Icons.Rounded.DateRange,
-              contentDescription = "Calender Icon",
-              tint = iconColor,
-              modifier = Modifier.padding(start = 2.dp)
-            )
-            Text(text = "Mo-Fr: 8-13Uhr | Di, Do: 15-18Uhr", fontWeight = FontWeight.Medium, color = lightText)
-          }
-
-
-          Row {
-            Icon(
-              Icons.Rounded.NearMe,
-              contentDescription = "Distance Icon",
-              tint = lightText,
-              modifier = Modifier.padding(start = 2.dp)
-            )
-            Text(
-              text = "10,4km",
-              fontWeight = FontWeight.Medium,
-              color = lightText,
-            )
-          }
-        }
-      }
 
       // Column: Rating Praxis //
-      Column(
-        modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)
-      ) {
+      Column(modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)) {
 
         // Rating Ausstattung (Praxis)
         Row(
-          modifier = Modifier.fillMaxWidth(),
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-          Text(
-            text = "Ausstattung der Praxis",
-            fontWeight = FontWeight.Medium,
-            color = lightText
-          )
-          Row(
-            // modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+          Text(text = "Ausstattung der Praxis", fontWeight = FontWeight.Medium, color = lightText)
+          Row(
+              // modifier = Modifier.fillMaxSize(),
+              verticalAlignment = Alignment.CenterVertically,
+              horizontalArrangement = Arrangement.SpaceBetween,
           ) {
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
             StarRow(
-              modifier = Modifier,
-              rating = rating_1,
+                modifier = Modifier,
+                rating = rating_1,
             ) {
               rating_1 = it
             }
@@ -176,24 +156,24 @@ fun FeedbackComponent(navController: NavController) {
 
         // Rating telefonische Erreichbarkeit (Prxis)
         Row(
-          modifier = Modifier.fillMaxWidth(),
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-          Text(
-            text = "Telefonische Erreichbarkeit",
-            fontWeight = FontWeight.Medium,
-            color = lightText,
-          )
-          Row(
-            // modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+          Text(
+              text = "Telefonische Erreichbarkeit",
+              fontWeight = FontWeight.Medium,
+              color = lightText,
+          )
+          Row(
+              // modifier = Modifier.fillMaxSize(),
+              verticalAlignment = Alignment.CenterVertically,
+              horizontalArrangement = Arrangement.SpaceBetween,
           ) {
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
             StarRow(
-              modifier = Modifier,
-              rating = rating_1,
+                modifier = Modifier,
+                rating = rating_1,
             ) {
               rating_1 = it
             }
@@ -203,24 +183,24 @@ fun FeedbackComponent(navController: NavController) {
         // Rating Parkmöglichkeiten (Praxis)
 
         Row(
-          modifier = Modifier.fillMaxWidth(),
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-          Text(
-            text = "Parkmöglichkeiten",
-            fontWeight = FontWeight.Medium,
-            color = lightText,
-          )
-          Row(
-            // modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+          Text(
+              text = "Parkmöglichkeiten",
+              fontWeight = FontWeight.Medium,
+              color = lightText,
+          )
+          Row(
+              // modifier = Modifier.fillMaxSize(),
+              verticalAlignment = Alignment.CenterVertically,
+              horizontalArrangement = Arrangement.SpaceBetween,
           ) {
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
             StarRow(
-              modifier = Modifier,
-              rating = rating_1,
+                modifier = Modifier,
+                rating = rating_1,
             ) {
               rating_1 = it
             }
@@ -229,24 +209,24 @@ fun FeedbackComponent(navController: NavController) {
 
         // Rating alternative Heilmethoden (vorhanden?)
         Row(
-          modifier = Modifier.fillMaxWidth(),
-          verticalAlignment = Alignment.CenterVertically,
-          horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-          Text(
-            text = "Alternative Heilmethoden",
-            fontWeight = FontWeight.Medium,
-            color = lightText,
-          )
-          Row(
-            // modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+          Text(
+              text = "Alternative Heilmethoden",
+              fontWeight = FontWeight.Medium,
+              color = lightText,
+          )
+          Row(
+              // modifier = Modifier.fillMaxSize(),
+              verticalAlignment = Alignment.CenterVertically,
+              horizontalArrangement = Arrangement.SpaceBetween,
           ) {
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
             StarRow(
-              modifier = Modifier,
-              rating = rating_1,
+                modifier = Modifier,
+                rating = rating_1,
             ) {
               rating_1 = it
             }
@@ -258,40 +238,36 @@ fun FeedbackComponent(navController: NavController) {
         val rating = remember { mutableStateOf("") }
         // NEUE Version Textfeld!!!
         OutlinedTextField(
-          value = rating.value,
-          onValueChange = { rating.value = it },
-          modifier = TextFieldModifier,
-          label = { Text("Feedback...") },
-          // colors = OutlinedTextFieldDefaults.colors(textFieldColor),
-          colors =
-          TextFieldDefaults.outlinedTextFieldColors(
-            unfocusedLabelColor = textFieldColor,
-            focusedLabelColor = greenTextColor,
-            unfocusedBorderColor = textFieldColor,
-            focusedBorderColor = greenTextColor,
-          ),
+            value = rating.value,
+            onValueChange = { rating.value = it },
+            modifier = TextFieldModifier,
+            label = { Text("Feedback...") },
+            // colors = OutlinedTextFieldDefaults.colors(textFieldColor),
+            colors =
+                TextFieldDefaults.outlinedTextFieldColors(
+                    unfocusedLabelColor = textFieldColor,
+                    focusedLabelColor = greenTextColor,
+                    unfocusedBorderColor = textFieldColor,
+                    focusedBorderColor = greenTextColor,
+                ),
         )
       }
     }
 
-   /////HIER SOLL DAS DROP DOWN HIN
+    ///// HIER SOLL DAS DROP DOWN HIN
     PetProfileDropdown()
-    
-    
-    
+
     // Button (Feeedback absenden)
     Row(
-      verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.Center,
-      modifier = Modifier.fillMaxWidth().padding(start = 5.dp, end = 20.dp, top = 20.dp)
-    ) {
-      Button(
-        onClick = { navController.navigate(Screen.Completed.name) },
-        modifier = Modifier.fillMaxWidth(),
-      ) {
-        Text("Senden")
-      }
-    }
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxWidth().padding(start = 5.dp, end = 20.dp, top = 20.dp)) {
+          Button(
+              onClick = { navController.navigate(Screen.Completed.name) },
+              modifier = Modifier.fillMaxWidth(),
+          ) {
+            Text("Senden")
+          }
+        }
   }
 }
-

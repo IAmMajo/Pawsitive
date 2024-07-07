@@ -28,88 +28,83 @@ import ui.theme.ProfilePictureModifierLG
 import ui.theme.iconColorLight
 import ui.theme.subHeadingColor
 
-
 @Composable
-fun DoctorCardComponent(){
+fun DoctorCardComponent() {
   // Info-Card Arzt -> abgeänderte ListEntryComponent()
-    Column(
-      modifier = ProfileCardModifier
-        .padding(start = 10.dp, end = 10.dp, top = 10.dp, bottom = 10.dp)
-      
-    ) {
-      Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxWidth()) {
-        // Nane + Bild
-        Row(verticalAlignment = Alignment.CenterVertically) {
-          Image(
-            painter = painterResource(Res.drawable.mockimage),
-            contentDescription = "MockImage",
-            contentScale = ContentScale.Crop,
-            modifier = ProfilePictureModifierLG)
+  Column(
+      modifier =
+          ProfileCardModifier.padding(start = 10.dp, end = 10.dp, top = 10.dp, bottom = 10.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()) {
+              // Nane + Bild
+              Row(verticalAlignment = Alignment.CenterVertically) {
+                Image(
+                    painter = painterResource(Res.drawable.mockimage),
+                    contentDescription = "MockImage",
+                    contentScale = ContentScale.Crop,
+                    modifier = ProfilePictureModifierLG)
 
-          Column(
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier.padding(start = 8.dp)) {
-            Text(
-              modifier = Modifier.padding(start = 5.dp),
-              text = "Rita Strauß",
-              fontSize = 20.sp,
-              fontWeight = FontWeight.Bold,
-              color = subHeadingColor)
-            Row(modifier = Modifier.padding(start = 2.dp, top = 2.dp)) {
-              Icon(
-                Icons.Rounded.Pets,
-                contentDescription = "Placeholder Icon",
-                tint = iconColorLight,
-                // modifier = Modifier.padding(start = 2.dp)
-              )
-              Text(
-                text = "Schäferhunde",
-                fontWeight = FontWeight.Medium,
-                color = iconColorLight)
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.padding(start = 8.dp)) {
+                      Text(
+                          modifier = Modifier.padding(start = 5.dp),
+                          text = "Rita Strauß",
+                          fontSize = 20.sp,
+                          fontWeight = FontWeight.Bold,
+                          color = subHeadingColor)
+                      Row(modifier = Modifier.padding(start = 2.dp, top = 2.dp)) {
+                        Icon(
+                            Icons.Rounded.Pets,
+                            contentDescription = "Placeholder Icon",
+                            tint = iconColorLight,
+                            // modifier = Modifier.padding(start = 2.dp)
+                        )
+                        Text(
+                            text = "Schäferhunde",
+                            fontWeight = FontWeight.Medium,
+                            color = iconColorLight)
+                      }
+                    }
+              }
             }
-          }
-        }
+        // Angaben zur Praxis (in der Arzt-Info-Card) //
+        Column(
+            horizontalAlignment = Alignment.Start,
+            modifier = Modifier.padding(top = 7.dp) // padding ergänzt
+            ) {
+              Row {
+                Icon(
+                    Icons.Rounded.Home,
+                    contentDescription = "Placeholder Icon",
+                    tint = iconColorLight,
+                    modifier = Modifier.padding(start = 2.dp))
+                Text(
+                    text = "Kleintierpraxis Tatze",
+                    fontWeight = FontWeight.SemiBold,
+                    color = iconColorLight)
+              }
+              Row {
+                Icon(
+                    Icons.Rounded.LocationOn,
+                    contentDescription = "Map-Pin Icon",
+                    tint = iconColorLight,
+                    modifier = Modifier.padding(start = 2.dp))
+                Text(
+                    text = "Fantasiestraße 4, Fantasiestadt",
+                    fontWeight = FontWeight.Medium,
+                    color = iconColorLight)
+              }
+              Row {
+                Icon(
+                    Icons.Rounded.NearMe,
+                    contentDescription = "Distance Icon",
+                    tint = iconColorLight,
+                    modifier = Modifier.padding(start = 2.dp))
+                Text(text = "10,4km", fontWeight = FontWeight.Medium, color = iconColorLight)
+              }
+            }
       }
-      // Angaben zur Praxis (in der Arzt-Info-Card) //
-      Column(
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier.padding(top = 7.dp) // padding ergänzt
-      ) {
-        Row {
-          Icon(
-            Icons.Rounded.Home,
-            contentDescription = "Placeholder Icon",
-            tint = iconColorLight,
-            modifier = Modifier.padding(start = 2.dp))
-          Text(
-            text = "Kleintierpraxis Tatze",
-            fontWeight = FontWeight.SemiBold,
-            color = iconColorLight)
-        }
-        Row {
-          Icon(
-            Icons.Rounded.LocationOn,
-            contentDescription = "Map-Pin Icon",
-            tint = iconColorLight,
-            modifier = Modifier.padding(start = 2.dp))
-          Text(
-            text = "Fantasiestraße 4, Fantasiestadt",
-            fontWeight = FontWeight.Medium,
-            color = iconColorLight)
-        }
-        Row {
-          Icon(
-            Icons.Rounded.NearMe,
-            contentDescription = "Distance Icon",
-            tint = iconColorLight,
-            modifier = Modifier.padding(start = 2.dp))
-          Text(text = "10,4km", fontWeight = FontWeight.Medium, color = iconColorLight)
-        }
-      }
-    }
 }
-
-  

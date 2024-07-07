@@ -33,11 +33,10 @@ val ProfileCardModifier =
       .fillMaxWidth()
 
 val PraxisCardModifier =
-  Modifier
-    .padding(horizontal = 7.dp, vertical = 5.dp)
-    .clip(RoundedCornerShape(15.dp))
-    .background(Color.White)
-    .fillMaxWidth()
+    Modifier.padding(horizontal = 7.dp, vertical = 5.dp)
+        .clip(RoundedCornerShape(15.dp))
+        .background(Color.White)
+        .fillMaxWidth()
 
 val SearchbarModifier =
     Modifier.padding(horizontal = 7.dp, vertical = 5.dp)
