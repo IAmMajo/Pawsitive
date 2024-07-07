@@ -15,7 +15,7 @@ import java.util.Set;
 public final class AmplifyModelProvider implements ModelProvider {
 
   private static final String AMPLIFY_MODEL_VERSION =
-    "55e555a735b94b9288165589db694fc8";
+    "d1031f82f4fc26edac9b010a46fdc130";
   private static AmplifyModelProvider amplifyGeneratedModelInstance;
 
   private AmplifyModelProvider() {}
@@ -39,6 +39,7 @@ public final class AmplifyModelProvider implements ModelProvider {
         Vet.class,
         Clinic.class,
         VetRating.class,
+        Favorite.class,
         ClinicRating.class,
         VetRatingService.class,
         VetRatingPet.class,
