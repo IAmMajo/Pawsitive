@@ -25,6 +25,20 @@ val CardModifier =
         .clip(RoundedCornerShape(Dp(15f)))
         .background(Color.White)
 
+val ProfileCardModifier =
+    Modifier
+      .padding(horizontal = 7.dp, vertical = 5.dp)
+      .clip(RoundedCornerShape(15.dp))
+      .background(Color(0xFF00D47B))
+      .fillMaxWidth()
+
+val PraxisCardModifier =
+  Modifier
+    .padding(horizontal = 7.dp, vertical = 5.dp)
+    .clip(RoundedCornerShape(15.dp))
+    .background(Color.White)
+    .fillMaxWidth()
+
 val SearchbarModifier =
     Modifier.padding(horizontal = 7.dp, vertical = 5.dp)
         .clip(RoundedCornerShape(15.dp))
@@ -33,6 +47,8 @@ val SearchbarModifier =
 val StarModifier = Modifier.size(24.dp)
 
 val ProfilePictureModifier = Modifier.size(60.dp).clip(CircleShape)
+
+val ProfilePictureModifierLG = Modifier.size(80.dp).clip(CircleShape)
 
 val ProfilePictureModifierSM = Modifier.size(35.dp).clip(CircleShape)
 

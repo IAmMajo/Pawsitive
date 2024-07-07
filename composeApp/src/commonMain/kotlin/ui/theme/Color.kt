@@ -60,6 +60,7 @@ val placeholderTextFieldColor = Color.Gray
 val starSelectedColor = Color(0xff0ddc48)
 val starNotSelectedColor = Color(0xff8a8a8a)
 val iconColor = Color(0xFF959494) // bisher nur Placeholder
+val iconColorLight = Color(0xffe0e0e0)
 val searchIconColor = Color.Gray
 
 // test:
