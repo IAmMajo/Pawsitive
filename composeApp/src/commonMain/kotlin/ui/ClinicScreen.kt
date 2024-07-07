@@ -5,6 +5,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.DateRange
+import androidx.compose.material.icons.rounded.NearMe
+import androidx.compose.material.icons.rounded.Phone
+import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
@@ -39,6 +43,10 @@ import pawsitive.composeapp.generated.resources.vets
 import ui.components.ListEntryComponent
 import ui.theme.HeaderImageModifier
 import ui.theme.StarModifier
+import ui.theme.iconColor
+import ui.theme.lightText
+import ui.theme.starNotSelectedColor
+import ui.theme.starSelectedColor
 import ui.theme.subHeadingColor
 
 @Composable
@@ -76,6 +84,7 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
               text = clinic.name,
               fontWeight = FontWeight.Bold,
               fontSize = 20.sp,
+              color = subHeadingColor,
               modifier = Modifier.align(Alignment.Start),
           )
 
@@ -83,7 +92,7 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
             Icon(
                 Icons.Rounded.Star,
                 contentDescription = "Star Placeholder Icon",
-                tint = Color(0xFF00D47B),
+                tint = starNotSelectedColor,
                 modifier = StarModifier,
             )
             Icon(
@@ -118,44 +127,62 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
           }
         }
 
-        // Additional Information
+        // Additional Information (zur Praxis)
         Column(modifier = Modifier.fillMaxWidth().padding(10.dp)) {
           Row(
               verticalAlignment = Alignment.CenterVertically,
-              horizontalArrangement = Arrangement.SpaceBetween,
               modifier = Modifier.fillMaxWidth(),
           ) {
-            Row(
-                modifier = Modifier.padding(top = 2.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-              Icon(
-                  Icons.Rounded.Star,
-                  contentDescription = "Placeholder Icon",
-                  tint = Color(0xffb9b9b9),
-              )
-              Text(
-                  text = clinic.streetAndHouseNumber,
-                  fontWeight = FontWeight.Medium,
-                  color = Color(0xffb9b9b9),
-              )
+            Icon(
+              Icons.Rounded.DateRange,
+              contentDescription = "Calender Icon",
+              tint = iconColor,
+              modifier = Modifier.padding(start = 2.dp)
+            )
+            Text(text = "Öffnungszeiten:", fontWeight = FontWeight.SemiBold, color = lightText)
+          }
+
+            // Öffnungszeiten Mo-Fr. usw
+            Column(
+              modifier = Modifier
+                .padding(start = 25.dp, bottom = 5.dp)
+            )
+            {
+              Text(text = clinic.openingHours, fontWeight = FontWeight.Medium, color = lightText)
+              
             }
+          Row(
+            modifier = Modifier.padding(top = 2.dp),
+            verticalAlignment = Alignment.CenterVertically,
+          ) {
+            Icon(
+              Icons.Rounded.Place,
+              contentDescription = "MapPin Icon",
+              tint = iconColor,
+            )
+            Text(
+              text = clinic.streetAndHouseNumber,
+              fontWeight = FontWeight.Medium,
+              color = lightText,
+            )
+          }
+            
             Row(
                 modifier = Modifier.padding(top = 2.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
               Icon(
-                  Icons.Rounded.Star,
-                  contentDescription = "Placeholder Icon",
-                  tint = Color(0xffb9b9b9),
+                  Icons.Rounded.Phone,
+                  contentDescription = "Phone Icon",
+                  tint = iconColor,
               )
               Text(
                   text = clinic.phone,
                   fontWeight = FontWeight.Medium,
-                  color = Color(0xffb9b9b9),
+                  color = lightText,
               )
             }
-          }
+          
 
           Row(
               verticalAlignment = Alignment.CenterVertically,
@@ -168,11 +195,14 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
                 horizontalArrangement = Arrangement.Start,
             ) {
               Icon(
-                  Icons.Rounded.Star,
-                  contentDescription = "Placeholder Icon",
-                  tint = Color(0xffb9b9b9),
+                  Icons.Rounded.NearMe,
+                  contentDescription = "Distance Icon",
+                  tint = iconColor,
               )
-              Text(text = "2km", fontWeight = FontWeight.Medium, color = Color(0xffb9b9b9))
+              Text(
+                text = "2km",
+                fontWeight = FontWeight.Medium,
+                color = lightText)
             }
           }
         }

@@ -9,6 +9,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.NearMe
+import androidx.compose.material.icons.rounded.Pets
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Button
@@ -41,6 +43,8 @@ import ui.theme.CardModifier
 import ui.theme.ProfilePictureModifier
 import ui.theme.ProfilePictureModifierSM
 import ui.theme.StarModifier
+import ui.theme.iconColor
+import ui.theme.lightText
 import ui.theme.subHeadingColor
 
 @Composable
@@ -84,7 +88,8 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                           color = subHeadingColor,
                           modifier = Modifier.padding(start = 5.dp))
 
-                      Row(modifier = Modifier.padding(start = 3.dp)) {
+                      Row(modifier = Modifier.padding(start = 3.dp),
+                        verticalAlignment = Alignment.CenterVertically,) {
                         Row {
                           Icon(
                               Icons.Rounded.Star,
@@ -118,16 +123,20 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                             color = subHeadingColor,
                         )
                       }
-                      Row {
+                      Row (
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth()
+                      )
+                  {
                         Icon(
-                            Icons.Rounded.Star,
-                            contentDescription = "Star Placeholder Icon",
-                            tint = Color(0xffb9b9b9),
+                            Icons.Rounded.Pets,
+                            contentDescription = "Paw Icon",
+                            tint = iconColor,
                             modifier = Modifier.padding(start = 2.dp))
                         Text(
                             text = vet.specialization,
                             fontWeight = FontWeight.Medium,
-                            color = Color(0xffb9b9b9))
+                            color = lightText)
                       }
                     }
               }
@@ -143,53 +152,53 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
               Row {
                 Icon(
                     Icons.Rounded.Home,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = Color(0xffb9b9b9),
+                    contentDescription = "Place Icon",
+                    tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp),
                 )
                 Text(
                     text = clinic.name,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xffb9b9b9),
+                    color = lightText,
                 )
               }
               Row {
                 Icon(
                     Icons.Rounded.DateRange,
                     contentDescription = "Calendar Icon",
-                    tint = Color(0xffb9b9b9),
+                    tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp),
                 )
                 Text(
                     text = clinic.openingHours,
                     fontWeight = FontWeight.Medium,
-                    color = Color(0xffb9b9b9),
+                    color = lightText,
                 )
               }
               Row {
                 Icon(
                     Icons.Rounded.Place,
                     contentDescription = "Map-Pin Icon",
-                    tint = Color(0xffb9b9b9),
+                    tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp),
                 )
                 Text(
                     text = clinic.shortAddress,
                     fontWeight = FontWeight.Medium,
-                    color = Color(0xffb9b9b9),
+                    color = lightText,
                 )
               }
               Row {
                 Icon(
-                    Icons.Rounded.Star,
+                    Icons.Rounded.NearMe,
                     contentDescription = "Distance Icon",
-                    tint = Color(0xffb9b9b9),
+                    tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp),
                 )
                 Text(
                     text = "10,4km",
                     fontWeight = FontWeight.Medium,
-                    color = Color(0xffb9b9b9),
+                    color = lightText,
                 )
               }
             }
@@ -208,7 +217,8 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Diagnose")
+                  Text(text = "Diagnose",
+                    color = lightText)
                   Row {
                     Row {
                       Icon(
@@ -254,7 +264,8 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Behandlung")
+                  Text(text = "Behandlung",
+                    color = lightText)
                   Row {
                     Row {
                       Icon(
@@ -300,7 +311,8 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Aufklärung")
+                  Text(text = "Aufklärung",
+                    color = lightText)
                   Row {
                     Row {
                       Icon(
@@ -346,7 +358,8 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Vertrauensverhältnis")
+                  Text(text = "Vertrauensverhältnis",
+                    color = lightText)
                   Row {
                     Row {
                       Icon(
@@ -392,7 +405,8 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Investierte Zeit")
+                  Text(text = "Investierte Zeit",
+                  color = lightText)
                   Row {
                     Row {
                       Icon(
@@ -438,7 +452,8 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Freundlichkeit")
+                  Text(text = "Freundlichkeit",
+                    color = lightText)
                   Row {
                     Row {
                       Icon(
