@@ -86,9 +86,9 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                           fontSize = 18.sp,
                           fontWeight = FontWeight.Bold,
                           color = subHeadingColor,
-                          modifier = Modifier.padding(start = 5.dp))
+                          modifier = Modifier.padding(start = 2.dp))
 
-                      Row(modifier = Modifier.padding(start = 3.dp),
+                      Row(modifier = Modifier.padding(start = 2.dp),
                         verticalAlignment = Alignment.CenterVertically,) {
                         Row {
                           Icon(
@@ -162,18 +162,29 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     color = lightText,
                 )
               }
-              Row {
-                Icon(
+              Column() {
+                Row {
+                  Icon(
                     Icons.Rounded.DateRange,
                     contentDescription = "Calendar Icon",
                     tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp),
-                )
-                Text(
+                  )
+                  Text(
+                    text = "Öffnungszeiten:",
+                    fontWeight = FontWeight.SemiBold,
+                    color = lightText
+                  )
+                }
+                Column(
+                  modifier = Modifier.padding(start = 26.dp, bottom = 5.dp))
+                 {
+                  Text(
                     text = clinic.openingHours,
                     fontWeight = FontWeight.Medium,
                     color = lightText,
-                )
+                  )
+                }
               }
               Row {
                 Icon(

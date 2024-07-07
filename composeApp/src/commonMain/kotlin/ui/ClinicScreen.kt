@@ -56,6 +56,7 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
   val viewModel = viewModel { ClinicViewModel() }
   val uiState by viewModel.uiState.collectAsState()
   LaunchedEffect(true) { viewModel.loadClinic(clinicId) }
+  // gesammte Ansicht
   Column(modifier = Modifier.verticalScroll(state)) {
     // Header Image
     AsyncImage(
@@ -145,7 +146,7 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
             // Öffnungszeiten Mo-Fr. usw
             Column(
               modifier = Modifier
-                .padding(start = 25.dp, bottom = 5.dp)
+                .padding(start = 26.dp, bottom = 5.dp)
             )
             {
               Text(text = clinic.openingHours, fontWeight = FontWeight.Medium, color = lightText)
@@ -222,5 +223,9 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
         LaunchedEffect(true) { ratingImageUrl = it.getImageUrl() }
       }
     }
+    // Map-Ausschnitt
+    
+    
+    
   }
 }
