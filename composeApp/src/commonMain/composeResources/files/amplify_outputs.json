@@ -5,15 +5,9 @@
     "user_pool_client_id": "3klbfl49c7g2n1f0liap13vqup",
     "identity_pool_id": "eu-central-1:1bcae12c-96ad-4d71-bba6-fb06875977aa",
     "mfa_methods": [],
-    "standard_required_attributes": [
-      "email"
-    ],
-    "username_attributes": [
-      "email"
-    ],
-    "user_verification_types": [
-      "email"
-    ],
+    "standard_required_attributes": ["email"],
+    "username_attributes": ["email"],
+    "user_verification_types": ["email"],
     "mfa_configuration": "NONE",
     "password_policy": {
       "min_length": 8,
@@ -28,9 +22,7 @@
     "url": "https://trv2hkydtjcohenuxflkqiiiru.appsync-api.eu-central-1.amazonaws.com/graphql",
     "aws_region": "eu-central-1",
     "default_authorization_type": "AWS_IAM",
-    "authorization_types": [
-      "AMAZON_COGNITO_USER_POOLS"
-    ],
+    "authorization_types": ["AMAZON_COGNITO_USER_POOLS"],
     "model_introspection": {
       "version": 1,
       "models": {
@@ -82,9 +74,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "clinicId"
-                ]
+                "targetNames": ["clinicId"]
               }
             },
             "ratings": {
@@ -98,9 +88,21 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "vetId"
-                ]
+                "associatedWith": ["vetId"]
+              }
+            },
+            "favorites": {
+              "name": "favorites",
+              "isArray": true,
+              "type": {
+                "model": "Favorite"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "isArrayNullable": true,
+              "association": {
+                "connectionType": "HAS_MANY",
+                "associatedWith": ["vetId"]
               }
             },
             "createdAt": {
@@ -134,9 +136,7 @@
                   {
                     "allow": "public",
                     "provider": "iam",
-                    "operations": [
-                      "read"
-                    ]
+                    "operations": ["read"]
                   }
                 ]
               }
@@ -260,9 +260,7 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "clinicId"
-                ]
+                "associatedWith": ["clinicId"]
               }
             },
             "ratings": {
@@ -276,9 +274,7 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "clinicId"
-                ]
+                "associatedWith": ["clinicId"]
               }
             },
             "createdAt": {
@@ -312,9 +308,7 @@
                   {
                     "allow": "public",
                     "provider": "iam",
-                    "operations": [
-                      "read"
-                    ]
+                    "operations": ["read"]
                   }
                 ]
               }
@@ -402,9 +396,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "vetId"
-                ]
+                "targetNames": ["vetId"]
               }
             },
             "services": {
@@ -418,9 +410,7 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "ratingId"
-                ]
+                "associatedWith": ["ratingId"]
               }
             },
             "pets": {
@@ -434,9 +424,7 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "ratingId"
-                ]
+                "associatedWith": ["ratingId"]
               }
             },
             "owner": {
@@ -477,21 +465,96 @@
                   {
                     "allow": "public",
                     "provider": "iam",
-                    "operations": [
-                      "read"
-                    ]
+                    "operations": ["read"]
                   },
                   {
                     "provider": "userPools",
                     "ownerField": "owner",
                     "allow": "owner",
                     "identityClaim": "cognito:username",
-                    "operations": [
-                      "create",
-                      "update",
-                      "delete",
-                      "read"
-                    ]
+                    "operations": ["create", "update", "delete", "read"]
+                  }
+                ]
+              }
+            }
+          ],
+          "primaryKeyInfo": {
+            "isCustomPrimaryKey": false,
+            "primaryKeyFieldName": "id",
+            "sortKeyFieldNames": []
+          }
+        },
+        "Favorite": {
+          "name": "Favorite",
+          "fields": {
+            "id": {
+              "name": "id",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
+            "vetId": {
+              "name": "vetId",
+              "isArray": false,
+              "type": "ID",
+              "isRequired": true,
+              "attributes": []
+            },
+            "vet": {
+              "name": "vet",
+              "isArray": false,
+              "type": {
+                "model": "Vet"
+              },
+              "isRequired": false,
+              "attributes": [],
+              "association": {
+                "connectionType": "BELONGS_TO",
+                "targetNames": ["vetId"]
+              }
+            },
+            "owner": {
+              "name": "owner",
+              "isArray": false,
+              "type": "String",
+              "isRequired": true,
+              "attributes": []
+            },
+            "createdAt": {
+              "name": "createdAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            },
+            "updatedAt": {
+              "name": "updatedAt",
+              "isArray": false,
+              "type": "AWSDateTime",
+              "isRequired": false,
+              "attributes": [],
+              "isReadOnly": true
+            }
+          },
+          "syncable": true,
+          "pluralName": "Favorites",
+          "attributes": [
+            {
+              "type": "model",
+              "properties": {}
+            },
+            {
+              "type": "auth",
+              "properties": {
+                "rules": [
+                  {
+                    "provider": "userPools",
+                    "ownerField": "owner",
+                    "allow": "owner",
+                    "identityClaim": "cognito:username",
+                    "operations": ["create", "update", "delete", "read"]
                   }
                 ]
               }
@@ -579,9 +642,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "clinicId"
-                ]
+                "targetNames": ["clinicId"]
               }
             },
             "pets": {
@@ -595,9 +656,7 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "ratingId"
-                ]
+                "associatedWith": ["ratingId"]
               }
             },
             "owner": {
@@ -638,21 +697,14 @@
                   {
                     "allow": "public",
                     "provider": "iam",
-                    "operations": [
-                      "read"
-                    ]
+                    "operations": ["read"]
                   },
                   {
                     "provider": "userPools",
                     "ownerField": "owner",
                     "allow": "owner",
                     "identityClaim": "cognito:username",
-                    "operations": [
-                      "create",
-                      "update",
-                      "delete",
-                      "read"
-                    ]
+                    "operations": ["create", "update", "delete", "read"]
                   }
                 ]
               }
@@ -698,9 +750,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "ratingId"
-                ]
+                "targetNames": ["ratingId"]
               }
             },
             "service": {
@@ -713,9 +763,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "serviceNumber"
-                ]
+                "targetNames": ["serviceNumber"]
               }
             },
             "owner": {
@@ -756,21 +804,14 @@
                   {
                     "allow": "public",
                     "provider": "iam",
-                    "operations": [
-                      "read"
-                    ]
+                    "operations": ["read"]
                   },
                   {
                     "provider": "userPools",
                     "ownerField": "owner",
                     "allow": "owner",
                     "identityClaim": "cognito:username",
-                    "operations": [
-                      "create",
-                      "update",
-                      "delete",
-                      "read"
-                    ]
+                    "operations": ["create", "update", "delete", "read"]
                   }
                 ]
               }
@@ -816,9 +857,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "ratingId"
-                ]
+                "targetNames": ["ratingId"]
               }
             },
             "pet": {
@@ -831,9 +870,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "petId"
-                ]
+                "targetNames": ["petId"]
               }
             },
             "owner": {
@@ -874,21 +911,14 @@
                   {
                     "allow": "public",
                     "provider": "iam",
-                    "operations": [
-                      "read"
-                    ]
+                    "operations": ["read"]
                   },
                   {
                     "provider": "userPools",
                     "ownerField": "owner",
                     "allow": "owner",
                     "identityClaim": "cognito:username",
-                    "operations": [
-                      "create",
-                      "update",
-                      "delete",
-                      "read"
-                    ]
+                    "operations": ["create", "update", "delete", "read"]
                   }
                 ]
               }
@@ -934,9 +964,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "ratingId"
-                ]
+                "targetNames": ["ratingId"]
               }
             },
             "pet": {
@@ -949,9 +977,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "petId"
-                ]
+                "targetNames": ["petId"]
               }
             },
             "owner": {
@@ -992,21 +1018,14 @@
                   {
                     "allow": "public",
                     "provider": "iam",
-                    "operations": [
-                      "read"
-                    ]
+                    "operations": ["read"]
                   },
                   {
                     "provider": "userPools",
                     "ownerField": "owner",
                     "allow": "owner",
                     "identityClaim": "cognito:username",
-                    "operations": [
-                      "create",
-                      "update",
-                      "delete",
-                      "read"
-                    ]
+                    "operations": ["create", "update", "delete", "read"]
                   }
                 ]
               }
@@ -1052,9 +1071,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "categoryId"
-                ]
+                "targetNames": ["categoryId"]
               }
             },
             "ratings": {
@@ -1068,9 +1085,7 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "serviceNumber"
-                ]
+                "associatedWith": ["serviceNumber"]
               }
             },
             "createdAt": {
@@ -1100,9 +1115,7 @@
             {
               "type": "key",
               "properties": {
-                "fields": [
-                  "id"
-                ]
+                "fields": ["id"]
               }
             },
             {
@@ -1112,9 +1125,7 @@
                   {
                     "allow": "public",
                     "provider": "iam",
-                    "operations": [
-                      "read"
-                    ]
+                    "operations": ["read"]
                   }
                 ]
               }
@@ -1182,9 +1193,7 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "petId"
-                ]
+                "associatedWith": ["petId"]
               }
             },
             "clinicRatings": {
@@ -1198,9 +1207,7 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "petId"
-                ]
+                "associatedWith": ["petId"]
               }
             },
             "owner": {
@@ -1241,21 +1248,14 @@
                   {
                     "allow": "public",
                     "provider": "iam",
-                    "operations": [
-                      "read"
-                    ]
+                    "operations": ["read"]
                   },
                   {
                     "provider": "userPools",
                     "ownerField": "owner",
                     "allow": "owner",
                     "identityClaim": "cognito:username",
-                    "operations": [
-                      "create",
-                      "update",
-                      "delete",
-                      "read"
-                    ]
+                    "operations": ["create", "update", "delete", "read"]
                   }
                 ]
               }
@@ -1301,9 +1301,7 @@
               "attributes": [],
               "association": {
                 "connectionType": "BELONGS_TO",
-                "targetNames": [
-                  "parentCategoryId"
-                ]
+                "targetNames": ["parentCategoryId"]
               }
             },
             "childCategories": {
@@ -1317,9 +1315,7 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "parentCategoryId"
-                ]
+                "associatedWith": ["parentCategoryId"]
               }
             },
             "services": {
@@ -1333,9 +1329,7 @@
               "isArrayNullable": true,
               "association": {
                 "connectionType": "HAS_MANY",
-                "associatedWith": [
-                  "categoryId"
-                ]
+                "associatedWith": ["categoryId"]
               }
             },
             "createdAt": {
@@ -1369,9 +1363,7 @@
                   {
                     "allow": "public",
                     "provider": "iam",
-                    "operations": [
-                      "read"
-                    ]
+                    "operations": ["read"]
                   }
                 ]
               }

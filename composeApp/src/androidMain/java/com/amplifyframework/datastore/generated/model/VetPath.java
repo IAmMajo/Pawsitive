@@ -10,6 +10,7 @@ public final class VetPath extends ModelPath<Vet> {
 
   private ClinicPath clinic;
   private VetRatingPath ratings;
+  private FavoritePath favorites;
 
   VetPath(
     @NonNull String name,
@@ -31,5 +32,12 @@ public final class VetPath extends ModelPath<Vet> {
       ratings = new VetRatingPath("ratings", true, this);
     }
     return ratings;
+  }
+
+  public synchronized FavoritePath getFavorites() {
+    if (favorites == null) {
+      favorites = new FavoritePath("favorites", true, this);
+    }
+    return favorites;
   }
 }

@@ -88,8 +88,10 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                           color = subHeadingColor,
                           modifier = Modifier.padding(start = 2.dp))
 
+
                       Row(modifier = Modifier.padding(start = 2.dp),
                         verticalAlignment = Alignment.CenterVertically,) {
+
                         Row {
                           Icon(
                               Icons.Rounded.Star,
@@ -123,21 +125,19 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                             color = subHeadingColor,
                         )
                       }
-                      Row (
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.fillMaxWidth()
-                      )
-                  {
-                        Icon(
-                            Icons.Rounded.Pets,
-                            contentDescription = "Paw Icon",
-                            tint = iconColor,
-                            modifier = Modifier.padding(start = 2.dp))
-                        Text(
-                            text = vet.specialization,
-                            fontWeight = FontWeight.Medium,
-                            color = lightText)
-                      }
+                      Row(
+                          verticalAlignment = Alignment.CenterVertically,
+                          modifier = Modifier.fillMaxWidth()) {
+                            Icon(
+                                Icons.Rounded.Pets,
+                                contentDescription = "Paw Icon",
+                                tint = iconColor,
+                                modifier = Modifier.padding(start = 2.dp))
+                            Text(
+                                text = vet.specialization,
+                                fontWeight = FontWeight.Medium,
+                                color = lightText)
+                          }
                     }
               }
             }
@@ -228,8 +228,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Diagnose",
-                    color = lightText)
+                  Text(text = "Diagnose", color = lightText)
                   Row {
                     Row {
                       Icon(
@@ -275,8 +274,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Behandlung",
-                    color = lightText)
+                  Text(text = "Behandlung", color = lightText)
                   Row {
                     Row {
                       Icon(
@@ -322,8 +320,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Aufklärung",
-                    color = lightText)
+                  Text(text = "Aufklärung", color = lightText)
                   Row {
                     Row {
                       Icon(
@@ -369,8 +366,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Vertrauensverhältnis",
-                    color = lightText)
+                  Text(text = "Vertrauensverhältnis", color = lightText)
                   Row {
                     Row {
                       Icon(
@@ -416,8 +412,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Investierte Zeit",
-                  color = lightText)
+                  Text(text = "Investierte Zeit", color = lightText)
                   Row {
                     Row {
                       Icon(
@@ -463,8 +458,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                  Text(text = "Freundlichkeit",
-                    color = lightText)
+                  Text(text = "Freundlichkeit", color = lightText)
                   Row {
                     Row {
                       Icon(
