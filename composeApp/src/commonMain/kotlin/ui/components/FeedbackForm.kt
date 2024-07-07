@@ -108,10 +108,20 @@ fun FeedbackComponent(navController: NavController) {
                     contentDescription = "Calender Icon",
                     tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp))
-                Text(
-                    text = "Mo-Fr: 8-13Uhr | Di, Do: 15-18Uhr",
+                Column {
+                  Text(
+                    text = "Öffnungszeiten",
                     fontWeight = FontWeight.Medium,
                     color = lightText)
+                  Text(
+                    text = "Mo-Fr: 8-13Uhr",
+                    fontWeight = FontWeight.Medium,
+                    color = lightText)
+                  Text(
+                    text = "Di, Do: 15-18Uhr",
+                    fontWeight = FontWeight.Medium,
+                    color = lightText)
+                }
               }
 
               Row {
