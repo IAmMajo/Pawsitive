@@ -160,7 +160,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     modifier = Modifier.padding(start = 2.dp),
                 )
                 Text(
-                    text = "07:30 Uhr - 22:30 Uhr",
+                    text = clinic.openingHours,
                     fontWeight = FontWeight.Medium,
                     color = Color(0xffb9b9b9),
                 )
