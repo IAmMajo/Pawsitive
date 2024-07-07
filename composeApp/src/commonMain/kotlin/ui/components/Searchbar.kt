@@ -3,7 +3,7 @@ package ui.components
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -34,7 +34,7 @@ fun Searchbar(viewModel: SearchViewModel, uiState: SearchState) {
         label = { Text("Search...", color = Color.Gray) },
         trailingIcon = {
           Icon(
-              imageVector = Icons.Outlined.Search,
+              imageVector = Icons.Rounded.Search,
               tint = Color.Gray,
               contentDescription = "Such-Icon",
               modifier = Modifier.padding(end = 8.dp),
