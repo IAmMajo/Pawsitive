@@ -190,8 +190,7 @@ fun FeedbackComponent(navController: NavController) {
             ){
               rating_1 = it
             }
-
-
+            
           }
         }
         /// Rating Behandlung

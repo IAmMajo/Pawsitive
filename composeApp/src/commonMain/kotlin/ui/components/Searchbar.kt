@@ -16,6 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import ui.theme.SearchbarModifier
+import ui.theme.greenTextColor
+import ui.theme.textFieldColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,7 +28,10 @@ fun Searchbar() {
     OutlinedTextField(
         colors =
             TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = Color.White, unfocusedBorderColor = Color.White),
+              unfocusedLabelColor = textFieldColor,
+              focusedLabelColor = greenTextColor,
+              unfocusedBorderColor = textFieldColor,
+              focusedBorderColor = greenTextColor,),
         value = searchText.value,
         onValueChange = { searchText.value = it },
         placeholder = { Text("Search...", color = Color.Gray) },
