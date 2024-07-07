@@ -31,58 +31,43 @@ fun SearchScreen(navController: NavController) {
   LaunchedEffect(true) { viewModel.fetchResults() }
 
   ModalNavigationDrawer(
-    modifier = Modifier.background(Color.White),
-    drawerState = drawerState,
-    drawerContent = {
-      ModalDrawerSheet(
-        modifier = Modifier.background(Color.White)
-      ) {
-        Column(Modifier.padding(16.dp)) {
-          DropdownMenuComponent("Tierart")
-          Spacer(modifier = Modifier.height(16.dp))
-          DropdownMenuComponent("Umkreis")
-          Spacer(modifier = Modifier.height(16.dp))
-          DropdownMenuComponent("Straße")
-        }
-      }
-    },
-    content = {
-      Scaffold(
-        topBar = {
-          TopAppBar(
-            title = { Text("") },
-            navigationIcon = {
-              IconButton(onClick = {
-                scope.launch {
-                  drawerState.open()
-                }
-              }) {
-                Icon(Icons.Default.Menu, contentDescription = "Menu")
-              }
-            },
-            colors = TopAppBarDefaults.topAppBarColors(
-              containerColor = Color.Transparent
-            )
-          )
-        }
-      ) {
-        Column(
-          Modifier
-            .fillMaxWidth()
-            .verticalScroll(state)
-            .padding(it),
-          horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-          Searchbar()
-          if (uiState.loading) {
-            CircularProgressIndicator()
-          } else {
-            uiState.results.forEach { ListEntryComponent(it, navController) }
+      modifier = Modifier.background(Color.White),
+      drawerState = drawerState,
+      drawerContent = {
+        ModalDrawerSheet(modifier = Modifier.background(Color.White)) {
+          Column(Modifier.padding(16.dp)) {
+            DropdownMenuComponent("Tierart")
+            Spacer(modifier = Modifier.height(16.dp))
+            DropdownMenuComponent("Umkreis")
+            Spacer(modifier = Modifier.height(16.dp))
+            DropdownMenuComponent("Straße")
           }
         }
-      }
-    }
-  )
+      },
+      content = {
+        Scaffold(
+            topBar = {
+              TopAppBar(
+                  title = { Text("") },
+                  navigationIcon = {
+                    IconButton(onClick = { scope.launch { drawerState.open() } }) {
+                      Icon(Icons.Default.Menu, contentDescription = "Menu")
+                    }
+                  },
+                  colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent))
+            }) {
+              Column(
+                  Modifier.fillMaxWidth().verticalScroll(state).padding(it),
+                  horizontalAlignment = Alignment.CenterHorizontally) {
+                    Searchbar()
+                    if (uiState.loading) {
+                      CircularProgressIndicator()
+                    } else {
+                      uiState.results.forEach { ListEntryComponent(it, navController) }
+                    }
+                  }
+            }
+      })
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -92,35 +77,24 @@ fun DropdownMenuComponent(label: String) {
   var selectedText by remember { mutableStateOf("") }
   val items = listOf("Item 1", "Item 2", "Item 3")
 
-  Column(
-  ) {
+  Column() {
     Text(text = label, fontWeight = FontWeight.SemiBold)
-    ExposedDropdownMenuBox(
-      expanded = expanded,
-      onExpandedChange = { expanded = !expanded }
-    ) {
+    ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = !expanded }) {
       TextField(
-        value = selectedText,
-        onValueChange = { selectedText = it },
-        readOnly = true,
-        label = { Text("Select Item") },
-        trailingIcon = {
-          ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
-        },
-        modifier = Modifier.menuAnchor()
-      )
-      ExposedDropdownMenu(
-        expanded = expanded,
-        onDismissRequest = { expanded = false }
-      ) {
+          value = selectedText,
+          onValueChange = { selectedText = it },
+          readOnly = true,
+          label = { Text("Select Item") },
+          trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+          modifier = Modifier.menuAnchor())
+      ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
         items.forEach { item ->
           DropdownMenuItem(
-            onClick = {
-              selectedText = item
-              expanded = false
-            },
-            text = { Text(text = item) }
-          )
+              onClick = {
+                selectedText = item
+                expanded = false
+              },
+              text = { Text(text = item) })
         }
       }
     }
