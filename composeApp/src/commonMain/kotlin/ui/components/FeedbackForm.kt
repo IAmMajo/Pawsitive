@@ -25,7 +25,6 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -163,10 +162,7 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(
-                text = "Diagnose", 
-                fontWeight = FontWeight.Medium, 
-                color = Color(0xFF959494))
+              Text(text = "Diagnose", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
               Row(
                   verticalAlignment = Alignment.CenterVertically,
                   horizontalArrangement = Arrangement.SpaceBetween,
@@ -204,10 +200,7 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(
-                text = "Behandlung", 
-                fontWeight = FontWeight.Medium, 
-                color = Color(0xFF959494))
+              Text(text = "Behandlung", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
               Row(
                   verticalAlignment = Alignment.CenterVertically,
                   horizontalArrangement = Arrangement.SpaceBetween,
@@ -246,10 +239,7 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(
-                text = "Aufklärung", 
-                fontWeight = FontWeight.Medium, 
-                color = Color(0xFF959494))
+              Text(text = "Aufklärung", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -394,25 +384,25 @@ fun FeedbackComponent(navController: NavController) {
                     modifier = StarIconModifier)
               }
             }
-        
-        //// Textfeld - Rating Arzt ////
-          val rating = remember { mutableStateOf("") }
 
-        // NEUE Version Textfeld!!!
-          OutlinedTextField(
-            value = rating.value,
-            onValueChange = { rating.value = it },
-            modifier = TextFieldModifier,
-            label = { Text("Feedback...") },
-            // colors = OutlinedTextFieldDefaults.colors(textFieldColor),
-            colors =
-            TextFieldDefaults.outlinedTextFieldColors(
-              unfocusedLabelColor = textFieldColor,
-              focusedLabelColor = greenTextColor,
-              unfocusedBorderColor = textFieldColor,
-              focusedBorderColor = greenTextColor,
-            ),
-          )
+            //// Textfeld - Rating Arzt ////
+            val rating = remember { mutableStateOf("") }
+
+            // NEUE Version Textfeld!!!
+            OutlinedTextField(
+                value = rating.value,
+                onValueChange = { rating.value = it },
+                modifier = TextFieldModifier,
+                label = { Text("Feedback...") },
+                // colors = OutlinedTextFieldDefaults.colors(textFieldColor),
+                colors =
+                    TextFieldDefaults.outlinedTextFieldColors(
+                        unfocusedLabelColor = textFieldColor,
+                        focusedLabelColor = greenTextColor,
+                        unfocusedBorderColor = textFieldColor,
+                        focusedBorderColor = greenTextColor,
+                    ),
+            )
           }
     }
 
@@ -658,12 +648,11 @@ fun FeedbackComponent(navController: NavController) {
                     modifier = StarIconModifier)
               }
             }
-        
-            
-        /// Textfeld - Rating Praxis //
-        
+
+            /// Textfeld - Rating Praxis //
+
             val rating = remember { mutableStateOf("") }
-        // NEUE Version Textfeld!!!
+            // NEUE Version Textfeld!!!
             OutlinedTextField(
                 value = rating.value,
                 onValueChange = { rating.value = it },
