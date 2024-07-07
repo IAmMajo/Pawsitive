@@ -29,7 +29,7 @@ val ProfileCardModifier =
     Modifier
       .padding(horizontal = 7.dp, vertical = 5.dp)
       .clip(RoundedCornerShape(15.dp))
-      .background(Color(0xFF00D47B))
+      .background(primaryLight)
       .fillMaxWidth()
 
 val PraxisCardModifier =
