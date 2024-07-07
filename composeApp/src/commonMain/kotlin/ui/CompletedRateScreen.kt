@@ -21,23 +21,16 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Preview
 fun CompletedRateScreen() {
   Column(
-    verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally,
-    modifier = Modifier
-      .fillMaxSize()
-  ){
-    Icon(
-      Icons.Rounded.Done,
-      contentDescription = "Star Placeholder Icon",
-      tint = Color(0xFF00D47B),
-      modifier = Modifier
-        .size(90.dp),
-    )
-    
-    Text(
-      text = "Bewertung abgeschickt!",
-      fontWeight = FontWeight.Bold,
-      fontSize = 20.sp
-    )
-  }
+      verticalArrangement = Arrangement.Center,
+      horizontalAlignment = Alignment.CenterHorizontally,
+      modifier = Modifier.fillMaxSize()) {
+        Icon(
+            Icons.Rounded.Done,
+            contentDescription = "Star Placeholder Icon",
+            tint = Color(0xFF00D47B),
+            modifier = Modifier.size(90.dp),
+        )
+
+        Text(text = "Bewertung abgeschickt!", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+      }
 }
