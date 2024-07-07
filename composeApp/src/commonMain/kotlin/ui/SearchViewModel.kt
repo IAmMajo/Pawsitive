@@ -15,7 +15,7 @@ class SearchViewModel : ViewModel() {
   suspend fun fetchResults() {
     _uiState.update { it.copy(loading = false, results = getVetsList(it.query)) }
   }
-  
+
   fun updateQuery(query: String) {
     _uiState.update { it.copy(loading = true, query = query) }
   }
