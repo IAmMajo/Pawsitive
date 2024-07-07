@@ -337,7 +337,7 @@ fun FeedbackComponent(navController: NavController) {
                     modifier = StarIconModifier)
               }
             }
-        
+
             /// Rating Freundlichkeit
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -376,7 +376,6 @@ fun FeedbackComponent(navController: NavController) {
                     modifier = StarIconModifier)
               }
             }
-
 
             //// Textfeld - Rating Arzt ////
             val rating = remember { mutableStateOf("") }

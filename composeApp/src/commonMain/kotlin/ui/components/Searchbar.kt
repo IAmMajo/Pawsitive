@@ -28,10 +28,11 @@ fun Searchbar() {
     OutlinedTextField(
         colors =
             TextFieldDefaults.outlinedTextFieldColors(
-              unfocusedLabelColor = textFieldColor,
-              focusedLabelColor = greenTextColor,
-              unfocusedBorderColor = textFieldColor,
-              focusedBorderColor = greenTextColor,),
+                unfocusedLabelColor = textFieldColor,
+                focusedLabelColor = greenTextColor,
+                unfocusedBorderColor = textFieldColor,
+                focusedBorderColor = greenTextColor,
+            ),
         value = searchText.value,
         onValueChange = { searchText.value = it },
         placeholder = { Text("Search...", color = Color.Gray) },
