@@ -88,10 +88,10 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                           color = subHeadingColor,
                           modifier = Modifier.padding(start = 2.dp))
 
-
-                      Row(modifier = Modifier.padding(start = 2.dp),
-                        verticalAlignment = Alignment.CenterVertically,) {
-
+                      Row(
+                          modifier = Modifier.padding(start = 2.dp),
+                          verticalAlignment = Alignment.CenterVertically,
+                      ) {
                         Row {
                           Icon(
                               Icons.Rounded.Star,
@@ -165,24 +165,19 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
               Column() {
                 Row {
                   Icon(
-                    Icons.Rounded.DateRange,
-                    contentDescription = "Calendar Icon",
-                    tint = iconColor,
-                    modifier = Modifier.padding(start = 2.dp),
+                      Icons.Rounded.DateRange,
+                      contentDescription = "Calendar Icon",
+                      tint = iconColor,
+                      modifier = Modifier.padding(start = 2.dp),
                   )
                   Text(
-                    text = "Öffnungszeiten:",
-                    fontWeight = FontWeight.SemiBold,
-                    color = lightText
-                  )
+                      text = "Öffnungszeiten:", fontWeight = FontWeight.SemiBold, color = lightText)
                 }
-                Column(
-                  modifier = Modifier.padding(start = 26.dp, bottom = 5.dp))
-                 {
+                Column(modifier = Modifier.padding(start = 26.dp, bottom = 5.dp)) {
                   Text(
-                    text = clinic.openingHours,
-                    fontWeight = FontWeight.Medium,
-                    color = lightText,
+                      text = clinic.openingHours,
+                      fontWeight = FontWeight.Medium,
+                      color = lightText,
                   )
                 }
               }

@@ -141,15 +141,10 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
             Text(text = "Öffnungszeiten:", fontWeight = FontWeight.SemiBold, color = lightText)
           }
 
-            // Öffnungszeiten Mo-Fr. usw
-            Column(
-              modifier = Modifier
-                .padding(start = 26.dp, bottom = 5.dp)
-            )
-            {
-              Text(text = clinic.openingHours, fontWeight = FontWeight.Medium, color = lightText)
-              
-            }
+          // Öffnungszeiten Mo-Fr. usw
+          Column(modifier = Modifier.padding(start = 26.dp, bottom = 5.dp)) {
+            Text(text = clinic.openingHours, fontWeight = FontWeight.Medium, color = lightText)
+          }
           Row(
               modifier = Modifier.padding(top = 2.dp),
               verticalAlignment = Alignment.CenterVertically,
@@ -218,8 +213,6 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
       }
     }
     // Map-Ausschnitt
-    
-    
-    
+
   }
 }
