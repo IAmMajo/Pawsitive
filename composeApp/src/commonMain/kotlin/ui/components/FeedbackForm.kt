@@ -715,7 +715,7 @@ fun FeedbackComponent(navController: NavController) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxWidth().padding(start = 25.dp, end = 25.dp, top = 20.dp)) {
-          FilledTonalButton(
+          Button(
               onClick = { navController.navigate(Screen.Completed.name) },
               modifier = Modifier.fillMaxWidth(),
           ) {

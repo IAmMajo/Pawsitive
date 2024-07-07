@@ -18,6 +18,7 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import ui.components.ListEntryComponent
 import ui.components.Searchbar
+import ui.theme.subHeadingColor
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,7 +52,7 @@ fun SearchScreen(navController: NavController) {
                   title = { Text("") },
                   navigationIcon = {
                     IconButton(onClick = { scope.launch { drawerState.open() } }) {
-                      Icon(Icons.Default.Menu, contentDescription = "Menu")
+                      Icon(Icons.Default.Menu, contentDescription = "Menu", tint = subHeadingColor)
                     }
                   },
                   colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xfffafafa)))
