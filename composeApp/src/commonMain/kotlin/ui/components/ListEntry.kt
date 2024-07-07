@@ -150,14 +150,14 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                 }
                 Row {
                   Icon(
-                    Icons.Rounded.DateRange,
-                    contentDescription = "Calendar Icon",
-                    tint = Color(0xffb9b9b9),
-                    modifier = Modifier.padding(start = 2.dp))
+                      Icons.Rounded.DateRange,
+                      contentDescription = "Calendar Icon",
+                      tint = Color(0xffb9b9b9),
+                      modifier = Modifier.padding(start = 2.dp))
                   Text(
-                    text = "07:30 Uhr - 22:30 Uhr",
-                    fontWeight = FontWeight.Medium,
-                    color = Color(0xffb9b9b9))
+                      text = "07:30 Uhr - 22:30 Uhr",
+                      fontWeight = FontWeight.Medium,
+                      color = Color(0xffb9b9b9))
                 }
                 Row {
                   Icon(
@@ -170,7 +170,7 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                       fontWeight = FontWeight.Medium,
                       color = Color(0xffb9b9b9))
                 }
-                
+
                 Row {
                   Icon(
                       Icons.Rounded.Star,
@@ -535,32 +535,21 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                   }
                 }
                 Row(
-                  horizontalArrangement = Arrangement.SpaceBetween,
-                  verticalAlignment = Alignment.CenterVertically,
-                  modifier = Modifier
-                    .fillMaxWidth()
-                ){
-                  Button(
-                    onClick = { navController.navigate(Screen.Praxis.name) },
-                    modifier = Modifier
-                      .padding(top = 10.dp)
-                      .width(165.dp)
-                  ) {
-                    Text(text = "Praxis")
-                  }
-                  
-                  Button(
-                    onClick = { navController.navigate(Screen.Rate.name) },
-                    modifier = Modifier
-                      .padding(top = 10.dp)
-                      .width(165.dp)
-                  ){
-                    Text(
-                      text = "Bewerten"
-                    )
-                  }
-                }
-                
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()) {
+                      Button(
+                          onClick = { navController.navigate(Screen.Praxis.name) },
+                          modifier = Modifier.padding(top = 10.dp).width(165.dp)) {
+                            Text(text = "Praxis")
+                          }
+
+                      Button(
+                          onClick = { navController.navigate(Screen.Rate.name) },
+                          modifier = Modifier.padding(top = 10.dp).width(165.dp)) {
+                            Text(text = "Bewerten")
+                          }
+                    }
               }
         }
       }
