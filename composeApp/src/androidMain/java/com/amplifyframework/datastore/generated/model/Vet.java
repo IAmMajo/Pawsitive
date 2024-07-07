@@ -65,6 +65,10 @@ public final class Vet implements Model {
     associatedWith = "vet",
     type = VetRating.class
   ) ModelList<VetRating> ratings = null;
+  private final @ModelField(targetType = "Favorite") @HasMany(
+    associatedWith = "vet",
+    type = Favorite.class
+  ) ModelList<Favorite> favorites = null;
   private @ModelField(
     targetType = "AWSDateTime",
     isReadOnly = true
@@ -100,6 +104,10 @@ public final class Vet implements Model {
 
   public ModelList<VetRating> getRatings() {
     return ratings;
+  }
+
+  public ModelList<Favorite> getFavorites() {
+    return favorites;
   }
 
   public Temporal.DateTime getCreatedAt() {
