@@ -64,7 +64,7 @@ fun SearchScreen(navController: NavController) {
                 if (uiState.loading) {
                   CircularProgressIndicator()
                 } else {
-                  uiState.results.forEach { ListEntryComponent(navController, it) }
+                  uiState.results.forEach { vet -> ListEntryComponent(navController, vet) }
                 }
               }
             }
