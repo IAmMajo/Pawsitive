@@ -58,14 +58,15 @@ fun SearchScreen(navController: NavController) {
             }) {
               Column(
                   Modifier.fillMaxWidth().verticalScroll(state).padding(it),
-                  horizontalAlignment = Alignment.CenterHorizontally) {
-                    Searchbar()
-                    if (uiState.loading) {
-                      CircularProgressIndicator()
-                    } else {
-                      uiState.results.forEach { ListEntryComponent(it, navController) }
-                    }
-                  }
+                  horizontalAlignment = Alignment.CenterHorizontally,
+              ) {
+                Searchbar()
+                if (uiState.loading) {
+                  CircularProgressIndicator()
+                } else {
+                  uiState.results.forEach { vet -> ListEntryComponent(navController, vet) }
+                }
+              }
             }
       })
 }

@@ -14,6 +14,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import pawsitive.composeapp.generated.resources.Res
@@ -22,9 +23,9 @@ import pawsitive.composeapp.generated.resources.profile
 import pawsitive.composeapp.generated.resources.rate
 import pawsitive.composeapp.generated.resources.search
 import ui.AppViewModel
+import ui.ClinicScreen
 import ui.CompletedRateScreen
 import ui.MapScreen
-import ui.PraxisScreen
 import ui.ProfileScreen
 import ui.RateScreen
 import ui.SearchScreen
@@ -37,7 +38,7 @@ enum class Screen {
   Rate,
   Map,
   Profile,
-  Praxis,
+  Clinic,
   Completed
 }
 
@@ -95,7 +96,12 @@ fun App() {
             composable(route = Screen.Rate.name) { RateScreen(navController) }
             composable(route = Screen.Map.name) { MapScreen() }
             composable(route = Screen.Profile.name) { ProfileScreen() }
-            composable(route = Screen.Praxis.name) { PraxisScreen() }
+            composable(
+                route = "${Screen.Clinic.name}/{clinicId}",
+                arguments = listOf(navArgument("clinicId") {}),
+            ) { backStackEntry ->
+              ClinicScreen(navController, backStackEntry.arguments!!.getString("clinicId")!!)
+            }
             composable(route = Screen.Completed.name) { CompletedRateScreen() }
           }
         }
