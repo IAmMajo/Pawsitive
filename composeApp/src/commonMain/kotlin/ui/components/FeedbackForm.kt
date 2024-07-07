@@ -109,18 +109,9 @@ fun FeedbackComponent(navController: NavController) {
                     tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp))
                 Column {
-                  Text(
-                    text = "Öffnungszeiten",
-                    fontWeight = FontWeight.Medium,
-                    color = lightText)
-                  Text(
-                    text = "Mo-Fr: 8-13Uhr",
-                    fontWeight = FontWeight.Medium,
-                    color = lightText)
-                  Text(
-                    text = "Di, Do: 15-18Uhr",
-                    fontWeight = FontWeight.Medium,
-                    color = lightText)
+                  Text(text = "Öffnungszeiten", fontWeight = FontWeight.Medium, color = lightText)
+                  Text(text = "Mo-Fr: 8-13Uhr", fontWeight = FontWeight.Medium, color = lightText)
+                  Text(text = "Di, Do: 15-18Uhr", fontWeight = FontWeight.Medium, color = lightText)
                 }
               }
 
