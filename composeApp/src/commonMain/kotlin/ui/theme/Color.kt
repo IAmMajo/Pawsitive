@@ -3,7 +3,7 @@ package ui.theme
 import androidx.compose.ui.graphics.Color
 
 // Material Colors (Don't change value names)
-val primaryLight = Color(0xFF00D47B)
+val primaryLight = Color(0xff0ddc48)
 val onPrimaryLight = Color(0xFFFFFFFF)
 val primaryContainerLight = Color(0xff18d554)
 val onPrimaryContainerLight = Color(0xFF005123)
@@ -44,10 +44,10 @@ val surfaceContainerHighestLight = Color(0xFFE5E2E1)
 val shadowColor = Color(0xff3a3a3a)
 val cardBackgroundColor = Color.White
 
-val primaryButtonColor = Color(0xFF00D47B)
+val primaryButtonColor = Color(0xff0ddc48)
 val secondaryButtonColor = Color(0xffbdbdbd)
 
-val subHeadingColor = Color(0xFF202020)
+val subHeadingColor = Color(0xFF293133)
 val lightText = Color(0xFF959494)
 val textFieldColor = Color.LightGray
 val greenTextColor = Color(0xff0ddc48)

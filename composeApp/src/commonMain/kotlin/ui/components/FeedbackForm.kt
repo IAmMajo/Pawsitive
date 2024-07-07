@@ -50,6 +50,7 @@ import pawsitive.composeapp.generated.resources.mockimage
 import pawsitive.composeapp.generated.resources.praxis
 import ui.theme.ProfilePictureModifier
 import ui.theme.greenTextColor
+import ui.theme.iconColor
 import ui.theme.lightText
 import ui.theme.secondaryButtonColor
 import ui.theme.starNotSelectedColor
@@ -94,23 +95,23 @@ fun FeedbackComponent(navController: NavController) {
 
                     Column(
                         verticalArrangement = Arrangement.Center,
-                        modifier = Modifier.padding(start = 10.dp)) {
+                        modifier = Modifier.padding(start = 8.dp)) {
                           Text(
                               text = "Rita Strauß",
                               fontSize = 18.sp,
                               fontWeight = FontWeight.Bold,
-                              color = Color(0xFF202020))
-                          Row(modifier = Modifier.padding(top = 2.dp)) {
+                              color = subHeadingColor)
+                          Row(modifier = Modifier.padding(start = 2.dp, top = 2.dp)) {
                             Icon(
                                 Icons.Rounded.Star,
                                 contentDescription = "Placeholder Icon",
-                                tint = Color(0xFF959494),
+                                tint = iconColor,
                                 // modifier = Modifier.padding(start = 2.dp)
                             )
                             Text(
                                 text = "Schäferhunde",
                                 fontWeight = FontWeight.Medium,
-                                color = Color(0xFF959494))
+                                color = lightText)
                           }
                         }
                   }
@@ -124,31 +125,34 @@ fun FeedbackComponent(navController: NavController) {
                     Icon(
                         Icons.Rounded.Home,
                         contentDescription = "Placeholder Icon",
-                        tint = Color(0xFF959494),
+                        tint = iconColor,
                         modifier = Modifier.padding(start = 2.dp))
                     Text(
-                        text = "Kleintierpraxis Mustermann",
+                        text = "Kleintierpraxis Tatze",
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF959494))
+                        color = lightText)
                   }
                   Row {
                     Icon(
                         Icons.Rounded.Place,
                         contentDescription = "Map-Pin Icon",
-                        tint = Color(0xFF959494),
+                        tint = iconColor,
                         modifier = Modifier.padding(start = 2.dp))
                     Text(
                         text = "Fantasiestraße 4, Fantasiestadt",
                         fontWeight = FontWeight.Medium,
-                        color = Color(0xFF959494))
+                        color = lightText)
                   }
                   Row {
                     Icon(
                         Icons.Rounded.Star,
                         contentDescription = "Placeholder Distance Icon",
-                        tint = Color(0xFF959494),
+                        tint = iconColor,
                         modifier = Modifier.padding(start = 2.dp))
-                    Text(text = "10,4km", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+                    Text(
+                      text = "10,4km", 
+                      fontWeight = FontWeight.Medium, 
+                      color = lightText)
                   }
                 }
           }
@@ -165,7 +169,10 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(text = "Diagnose", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+              Text(
+                text = "Diagnose",
+                fontWeight = FontWeight.Medium,
+                color = lightText)
 
               /////////////////////////////////////////////////////////////////////////////////////
               // StarRating
@@ -191,7 +198,10 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(text = "Behandlung", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+              Text(
+                text = "Behandlung",
+                fontWeight = FontWeight.Medium,
+                color = lightText,)
               Row(
                   verticalAlignment = Alignment.CenterVertically,
                   horizontalArrangement = Arrangement.SpaceBetween,
@@ -230,7 +240,7 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(text = "Aufklärung", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+              Text(text = "Aufklärung", fontWeight = FontWeight.Medium, color = lightText)
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -269,7 +279,7 @@ fun FeedbackComponent(navController: NavController) {
               Text(
                   text = "Vertrauensverhältnis",
                   fontWeight = FontWeight.Medium,
-                  color = Color(0xFF959494))
+                  color = lightText)
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -308,7 +318,7 @@ fun FeedbackComponent(navController: NavController) {
               Text(
                   text = "Investierte Zeit",
                   fontWeight = FontWeight.Medium,
-                  color = Color(0xFF959494))
+                  color = lightText)
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -347,7 +357,7 @@ fun FeedbackComponent(navController: NavController) {
               Text(
                   text = "Freundlichkeit",
                   fontWeight = FontWeight.Medium,
-                  color = Color(0xFF959494))
+                  color = lightText)
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -424,7 +434,7 @@ fun FeedbackComponent(navController: NavController) {
                               text = "Kleintierpraxis Tatze",
                               fontSize = 18.sp,
                               fontWeight = FontWeight.Bold,
-                              color = Color(0xFF202020))
+                              color = subHeadingColor)
                         }
                   }
                 }
@@ -434,43 +444,43 @@ fun FeedbackComponent(navController: NavController) {
                 Icon(
                     Icons.Rounded.DateRange,
                     contentDescription = "Placeholder Info Icon",
-                    tint = Color(0xFF959494),
+                    tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp))
                 Text(
                     text = "Öffnungszeiten:",
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF959494))
+                    color = lightText)
               }
               // Öffnungszeiten Mo-Fr. usw
               Column(modifier = Modifier.padding(start = 25.dp, bottom = 5.dp)) {
                 Text(
                     text = "Mo-Fr: 8-13Uhr",
                     fontWeight = FontWeight.Medium,
-                    color = Color(0xFF959494))
+                    color = lightText)
                 Text(
                     text = "Di, Do: 15-18Uhr",
                     fontWeight = FontWeight.Medium,
-                    color = Color(0xFF959494))
+                    color =lightText)
               }
 
               Row {
                 Icon(
                     Icons.Rounded.Place,
                     contentDescription = "Map-Pin Icon",
-                    tint = Color(0xFF959494),
+                    tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp))
                 Text(
                     text = "Fantasiestraße 4, Fantasiestadt",
                     fontWeight = FontWeight.Medium,
-                    color = Color(0xFF959494))
+                    color = lightText)
               }
               Row {
                 Icon(
                     Icons.Rounded.Star,
                     contentDescription = "Distance Icon",
-                    tint = Color(0xFF959494),
+                    tint = lightText,
                     modifier = Modifier.padding(start = 2.dp))
-                Text(text = "10,4km", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+                Text(text = "10,4km", fontWeight = FontWeight.Medium, color =lightText)
               }
             }
           }
@@ -490,7 +500,7 @@ fun FeedbackComponent(navController: NavController) {
               Text(
                   text = "Ausstattung der Praxis",
                   fontWeight = FontWeight.Medium,
-                  color = Color(0xFF959494))
+                  color = lightText)
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -529,7 +539,7 @@ fun FeedbackComponent(navController: NavController) {
               Text(
                   text = "Telefonische Erreichbarkeit",
                   fontWeight = FontWeight.Medium,
-                  color = Color(0xFF959494),
+                  color = lightText,
               )
 
               Row() {
@@ -571,7 +581,7 @@ fun FeedbackComponent(navController: NavController) {
               Text(
                   text = "Parkmöglichkeiten",
                   fontWeight = FontWeight.Medium,
-                  color = Color(0xFF959494))
+                  color = lightText)
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -610,7 +620,7 @@ fun FeedbackComponent(navController: NavController) {
               Text(
                   text = "Alternative Heilmethoden",
                   fontWeight = FontWeight.Medium,
-                  color = Color(0xFF959494),
+                  color = lightText,
               )
 
               Row() {
