@@ -55,7 +55,6 @@ import ui.theme.greenTextColor
 import ui.theme.iconColor
 import ui.theme.lightText
 import ui.theme.secondaryButtonColor
-import ui.theme.starNotSelectedColor
 import ui.theme.subHeadingColor
 import ui.theme.textFieldColor
 
@@ -292,15 +291,15 @@ fun FeedbackComponent(navController: NavController) {
             ) {
               Text(text = "Freundlichkeit", fontWeight = FontWeight.Medium, color = lightText)
               Row(
-                // modifier = Modifier.fillMaxSize(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
+                  // modifier = Modifier.fillMaxSize(),
+                  verticalAlignment = Alignment.CenterVertically,
+                  horizontalArrangement = Arrangement.SpaceBetween,
               ) {
                 var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
                 StarRow(
-                  modifier = Modifier,
-                  rating = rating_1,
+                    modifier = Modifier,
+                    rating = rating_1,
                 ) {
                   rating_1 = it
                 }
