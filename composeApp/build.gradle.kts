@@ -52,6 +52,7 @@ kotlin {
       implementation(compose.ui)
       implementation(compose.components.resources)
       implementation(compose.components.uiToolingPreview)
+      implementation(compose.materialIconsExtended)
       implementation(libs.lifecycle.viewmodel.compose)
       implementation(libs.navigation.compose)
       implementation(libs.kotlinx.datetime)
