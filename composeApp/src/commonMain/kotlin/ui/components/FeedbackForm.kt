@@ -16,7 +16,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowDropDown
 import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.LocationOn
+import androidx.compose.material.icons.rounded.NearMe
 import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material.icons.rounded.Pets
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Button
@@ -103,7 +106,7 @@ fun FeedbackComponent(navController: NavController) {
                               color = subHeadingColor)
                           Row(modifier = Modifier.padding(start = 2.dp, top = 2.dp)) {
                             Icon(
-                                Icons.Rounded.Star,
+                                Icons.Rounded.Pets,
                                 contentDescription = "Placeholder Icon",
                                 tint = iconColor,
                                 // modifier = Modifier.padding(start = 2.dp)
@@ -134,7 +137,7 @@ fun FeedbackComponent(navController: NavController) {
                   }
                   Row {
                     Icon(
-                        Icons.Rounded.Place,
+                        Icons.Rounded.LocationOn,
                         contentDescription = "Map-Pin Icon",
                         tint = iconColor,
                         modifier = Modifier.padding(start = 2.dp))
@@ -145,8 +148,8 @@ fun FeedbackComponent(navController: NavController) {
                   }
                   Row {
                     Icon(
-                        Icons.Rounded.Star,
-                        contentDescription = "Placeholder Distance Icon",
+                        Icons.Rounded.NearMe,
+                        contentDescription = "Distance Icon",
                         tint = iconColor,
                         modifier = Modifier.padding(start = 2.dp))
                     Text(text = "10,4km", fontWeight = FontWeight.Medium, color = lightText)
@@ -289,32 +292,19 @@ fun FeedbackComponent(navController: NavController) {
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
               Text(text = "Freundlichkeit", fontWeight = FontWeight.Medium, color = lightText)
-              Row() {
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
-                Icon(
-                    Icons.Rounded.Star,
-                    contentDescription = "Star Placeholder Icon",
-                    tint = starNotSelectedColor,
-                    modifier = StarIconModifier)
+              Row(
+                // modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+              ) {
+                var rating_1 by remember { mutableDoubleStateOf(0.0) }
+
+                StarRow(
+                  modifier = Modifier,
+                  rating = rating_1,
+                ) {
+                  rating_1 = it
+                }
               }
             }
 
@@ -372,7 +362,7 @@ fun FeedbackComponent(navController: NavController) {
               Row {
                 Icon(
                     Icons.Rounded.DateRange,
-                    contentDescription = "Placeholder Info Icon",
+                    contentDescription = "Calender Icon",
                     tint = iconColor,
                     modifier = Modifier.padding(start = 2.dp))
                 Text(text = "Öffnungszeiten:", fontWeight = FontWeight.SemiBold, color = lightText)
@@ -396,7 +386,7 @@ fun FeedbackComponent(navController: NavController) {
               }
               Row {
                 Icon(
-                    Icons.Rounded.Star,
+                    Icons.Rounded.NearMe,
                     contentDescription = "Distance Icon",
                     tint = lightText,
                     modifier = Modifier.padding(start = 2.dp))
