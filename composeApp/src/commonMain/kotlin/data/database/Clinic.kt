@@ -18,9 +18,12 @@ interface Clinic {
   val website: String
   val vets: List<Vet>
   val ratings: List<ClinicRating>
+  
+  val streetAndHouseNumber: String
+    get() = "$street $houseNumber"
 
   val shortAddress: String
-    get() = "$street $houseNumber, $place"
+    get() = "$streetAndHouseNumber, $place"
 
   val averageRating: Double
     get() = ratings.map { it.rating }.averageNotZero()

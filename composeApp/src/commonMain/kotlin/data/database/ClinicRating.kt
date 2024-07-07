@@ -27,4 +27,12 @@ interface ClinicRating {
                 ratingAlternativeMedicine,
             )
             .averageNotZero()
+
+  suspend fun getImageUrl(): String {
+    val pet = pets.find { it.imagePath.isNotEmpty() }
+    if (pet == null) {
+      return ""
+    }
+    return pet.getImageUrl()
+  }
 }

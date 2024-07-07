@@ -43,7 +43,7 @@ import ui.theme.ProfilePictureModifierSM
 import ui.theme.StarModifier
 
 @Composable
-fun ListEntryComponent(vet: Vet, navController: NavController) {
+fun ListEntryComponent(navController: NavController, vet: Vet) {
   var isExpanded by remember { mutableStateOf(false) }
   var imageUrl by remember { mutableStateOf("") }
   val expandedPadding = animateDpAsState(targetValue = if (isExpanded) 15.dp else 0.dp)
@@ -68,8 +68,8 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                             .crossfade(true)
                             .build(),
                     contentDescription = null,
-                    contentScale = ContentScale.Crop,
                     modifier = ProfilePictureModifier,
+                    contentScale = ContentScale.Crop,
                     placeholder = painterResource(Res.drawable.vet_placeholder),
                     error = painterResource(Res.drawable.vet_placeholder),
                 )
@@ -133,53 +133,66 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
             }
 
         if (isExpanded) {
-          val clinic = vet.clinic!!
-          Column(
-              horizontalAlignment = Alignment.Start,
-              modifier = Modifier.padding(top = expandedPadding.value)) {
-                Row {
-                  Icon(
-                      Icons.Rounded.Home,
-                      contentDescription = "Star Placeholder Icon",
-                      tint = Color(0xffb9b9b9),
-                      modifier = Modifier.padding(start = 2.dp))
-                  Text(
-                      text = clinic.name,
-                      fontWeight = FontWeight.SemiBold,
-                      color = Color(0xffb9b9b9))
-                }
-                Row {
-                  Icon(
-                      Icons.Rounded.DateRange,
-                      contentDescription = "Calendar Icon",
-                      tint = Color(0xffb9b9b9),
-                      modifier = Modifier.padding(start = 2.dp))
-                  Text(
-                      text = "07:30 Uhr - 22:30 Uhr",
-                      fontWeight = FontWeight.Medium,
-                      color = Color(0xffb9b9b9))
-                }
-                Row {
-                  Icon(
-                      Icons.Rounded.Place,
-                      contentDescription = "Map-Pin Icon",
-                      tint = Color(0xffb9b9b9),
-                      modifier = Modifier.padding(start = 2.dp))
-                  Text(
-                      text = clinic.shortAddress,
-                      fontWeight = FontWeight.Medium,
-                      color = Color(0xffb9b9b9))
-                }
-
-                Row {
-                  Icon(
-                      Icons.Rounded.Star,
-                      contentDescription = "Distance Icon",
-                      tint = Color(0xffb9b9b9),
-                      modifier = Modifier.padding(start = 2.dp))
-                  Text(text = "10,4km", fontWeight = FontWeight.Medium, color = Color(0xffb9b9b9))
-                }
+          val clinic = vet.clinic
+          if (clinic != null) {
+            Column(
+                horizontalAlignment = Alignment.Start,
+                modifier = Modifier.padding(top = expandedPadding.value),
+            ) {
+              Row {
+                Icon(
+                    Icons.Rounded.Home,
+                    contentDescription = "Star Placeholder Icon",
+                    tint = Color(0xffb9b9b9),
+                    modifier = Modifier.padding(start = 2.dp),
+                )
+                Text(
+                    text = clinic.name,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color(0xffb9b9b9),
+                )
               }
+              Row {
+                Icon(
+                    Icons.Rounded.DateRange,
+                    contentDescription = "Calendar Icon",
+                    tint = Color(0xffb9b9b9),
+                    modifier = Modifier.padding(start = 2.dp),
+                )
+                Text(
+                    text = "07:30 Uhr - 22:30 Uhr",
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xffb9b9b9),
+                )
+              }
+              Row {
+                Icon(
+                    Icons.Rounded.Place,
+                    contentDescription = "Map-Pin Icon",
+                    tint = Color(0xffb9b9b9),
+                    modifier = Modifier.padding(start = 2.dp),
+                )
+                Text(
+                    text = clinic.shortAddress,
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xffb9b9b9),
+                )
+              }
+              Row {
+                Icon(
+                    Icons.Rounded.Star,
+                    contentDescription = "Distance Icon",
+                    tint = Color(0xffb9b9b9),
+                    modifier = Modifier.padding(start = 2.dp),
+                )
+                Text(
+                    text = "10,4km",
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xffb9b9b9),
+                )
+              }
+            }
+          }
 
           Column(
               horizontalAlignment = Alignment.Start,
@@ -488,8 +501,8 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                                   .crossfade(true)
                                   .build(),
                           contentDescription = null,
-                          contentScale = ContentScale.Crop,
                           modifier = ProfilePictureModifierSM,
+                          contentScale = ContentScale.Crop,
                           placeholder = painterResource(Res.drawable.pet_placeholder),
                           error = painterResource(Res.drawable.pet_placeholder),
                       )
@@ -538,17 +551,23 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()) {
-                      Button(
-                          onClick = { navController.navigate(Screen.Praxis.name) },
-                          modifier = Modifier.padding(top = 10.dp).width(165.dp)) {
-                            Text(text = "Praxis")
-                          }
+                      if (clinic != null) {
+                        Button(
+                            onClick = {
+                              navController.navigate("${Screen.Clinic.name}/${clinic.id}")
+                            },
+                            modifier = Modifier.padding(top = 10.dp).width(165.dp),
+                        ) {
+                          Text(text = "Praxis")
+                        }
+                      }
 
                       Button(
                           onClick = { navController.navigate(Screen.Rate.name) },
-                          modifier = Modifier.padding(top = 10.dp).width(165.dp)) {
-                            Text(text = "Bewerten")
-                          }
+                          modifier = Modifier.padding(top = 10.dp).width(165.dp),
+                      ) {
+                        Text(text = "Bewerten")
+                      }
                     }
               }
         }

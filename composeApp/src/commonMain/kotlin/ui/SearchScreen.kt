@@ -26,13 +26,14 @@ fun SearchScreen(navController: NavController) {
   LaunchedEffect(true) { viewModel.fetchResults() }
   Column(
       Modifier.fillMaxWidth().verticalScroll(state),
-      horizontalAlignment = Alignment.CenterHorizontally) {
-        Searchbar()
+      horizontalAlignment = Alignment.CenterHorizontally,
+  ) {
+    Searchbar()
 
-        if (uiState.loading) {
-          CircularProgressIndicator()
-        } else {
-          uiState.results.forEach { ListEntryComponent(it, navController) }
-        }
-      }
+    if (uiState.loading) {
+      CircularProgressIndicator()
+    } else {
+      uiState.results.forEach { ListEntryComponent(navController, it) }
+    }
+  }
 }
