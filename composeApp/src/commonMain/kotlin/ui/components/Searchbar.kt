@@ -30,12 +30,12 @@ fun Searchbar() {
             TextFieldDefaults.outlinedTextFieldColors(
                 unfocusedLabelColor = textFieldColor,
                 focusedLabelColor = greenTextColor,
-                unfocusedBorderColor = textFieldColor,
-                focusedBorderColor = greenTextColor,
+                unfocusedBorderColor = Color.Transparent,
+                focusedBorderColor = Color.Transparent,
             ),
         value = searchText.value,
         onValueChange = { searchText.value = it },
-        placeholder = { Text("Search...", color = Color.Gray) },
+        label = { Text("Search...", color = Color.Gray) },
         trailingIcon = {
           Icon(
               imageVector = Icons.Outlined.Search,
