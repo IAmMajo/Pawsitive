@@ -8,10 +8,13 @@ import com.amplifyframework.kotlin.core.Amplify
 import data.database.AndroidVet
 import data.database.Vet
 
-actual suspend fun getVetsList(): List<Vet> {
+actual suspend fun getVetsList(query: String): List<Vet> {
   val data =
       Amplify.API.query(
-              ModelQuery.list<AmplifyVet, VetPath>(AmplifyVet::class.java) {
+              ModelQuery.list<AmplifyVet, VetPath>(
+                  AmplifyVet::class.java,
+                  AmplifyVet.NAME.contains(query),
+              ) {
                 includes(it.clinic, it.ratings.pets.pet)
               },
           )
