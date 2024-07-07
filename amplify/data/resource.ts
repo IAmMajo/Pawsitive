@@ -13,6 +13,7 @@ const schema = a.schema({
       clinicId: a.id().required(),
       clinic: a.belongsTo("Clinic", "clinicId"),
       ratings: a.hasMany("VetRating", "vetId"),
+      favorites: a.hasMany("Favorite", "vetId"),
     })
     .authorization((allow) => [allow.guest().to(["read"])]),
   Clinic: a
@@ -56,6 +57,16 @@ const schema = a.schema({
         ]),
     })
     .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+  Favorite: a
+    .model({
+      vetId: a.id().required(),
+      vet: a.belongsTo("Vet", "vetId"),
+      owner: a
+        .string()
+        .required()
+        .authorization((allow) => [allow.owner().to(["read", "delete"])]),
+    })
+    .authorization((allow) => [allow.owner()]),
   ClinicRating: a
     .model({
       clinicId: a.id().required(),
