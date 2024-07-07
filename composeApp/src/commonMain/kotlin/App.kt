@@ -1,7 +1,9 @@
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.icons.rounded.Pets
+import androidx.compose.material.icons.rounded.Place
+import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -59,7 +61,7 @@ fun App() {
                   viewModel.setSection(Screen.Search)
                   navController.navigate(Screen.Search.name)
                 },
-                icon = { Icon(Icons.Outlined.Star, stringResource(Res.string.search)) },
+                icon = { Icon(Icons.Rounded.Search, stringResource(Res.string.search)) },
                 label = { Text(stringResource(Res.string.search)) })
             NavigationBarItem(
                 selected = uiState.section === Screen.Rate,
@@ -67,7 +69,7 @@ fun App() {
                   viewModel.setSection(Screen.Rate)
                   navController.navigate(Screen.Rate.name)
                 },
-                icon = { Icon(Icons.Outlined.Star, stringResource(Res.string.rate)) },
+                icon = { Icon(Icons.Rounded.Star, stringResource(Res.string.rate)) },
                 label = { Text(stringResource(Res.string.rate)) })
             NavigationBarItem(
                 selected = uiState.section === Screen.Map,
@@ -75,7 +77,7 @@ fun App() {
                   viewModel.setSection(Screen.Map)
                   navController.navigate(Screen.Map.name)
                 },
-                icon = { Icon(Icons.Outlined.Search, stringResource(Res.string.map)) },
+                icon = { Icon(Icons.Rounded.Place, stringResource(Res.string.map)) },
                 label = { Text(stringResource(Res.string.map)) })
             NavigationBarItem(
                 selected = uiState.section === Screen.Profile,
@@ -83,7 +85,7 @@ fun App() {
                   viewModel.setSection(Screen.Profile)
                   navController.navigate(Screen.Profile.name)
                 },
-                icon = { Icon(Icons.Outlined.Search, stringResource(Res.string.profile)) },
+                icon = { Icon(Icons.Rounded.Pets, stringResource(Res.string.profile)) },
                 label = { Text(stringResource(Res.string.profile)) })
           }
         }) {
