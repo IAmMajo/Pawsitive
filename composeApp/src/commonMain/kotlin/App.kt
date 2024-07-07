@@ -22,6 +22,7 @@ import pawsitive.composeapp.generated.resources.profile
 import pawsitive.composeapp.generated.resources.rate
 import pawsitive.composeapp.generated.resources.search
 import ui.AppViewModel
+import ui.CompletedRateScreen
 import ui.MapScreen
 import ui.PraxisScreen
 import ui.ProfileScreen
@@ -36,7 +37,8 @@ enum class Screen {
   Rate,
   Map,
   Profile,
-  Praxis
+  Praxis,
+  Completed
 }
 
 ////// COMPOSABLE SECTION ///////
@@ -90,10 +92,11 @@ fun App() {
               modifier = Modifier.padding(it),
           ) {
             composable(route = Screen.Search.name) { SearchScreen(navController) }
-            composable(route = Screen.Rate.name) { RateScreen() }
+            composable(route = Screen.Rate.name) { RateScreen(navController) }
             composable(route = Screen.Map.name) { MapScreen() }
             composable(route = Screen.Profile.name) { ProfileScreen() }
             composable(route = Screen.Praxis.name) { PraxisScreen() }
+            composable(route = Screen.Completed.name) { CompletedRateScreen() }
           }
         }
   }

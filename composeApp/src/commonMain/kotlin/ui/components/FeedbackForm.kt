@@ -40,6 +40,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import org.jetbrains.compose.resources.painterResource
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.gecko
@@ -68,7 +69,7 @@ val TextFieldModifier = Modifier.fillMaxWidth()
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FeedbackComponent() {
+fun FeedbackComponent(navController: NavController) {
   Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
 
     // Column Bewertung Arzt
@@ -715,7 +716,7 @@ fun FeedbackComponent() {
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxWidth().padding(start = 25.dp, end = 25.dp, top = 20.dp)) {
           FilledTonalButton(
-              onClick = { /* .... */ },
+              onClick = { navController.navigate(Screen.Completed.name) },
               modifier = Modifier.fillMaxWidth(),
           ) {
             Text("senden")
