@@ -163,7 +163,10 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(text = "Diagnose", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+              Text(
+                text = "Diagnose", 
+                fontWeight = FontWeight.Medium, 
+                color = Color(0xFF959494))
               Row(
                   verticalAlignment = Alignment.CenterVertically,
                   horizontalArrangement = Arrangement.SpaceBetween,
@@ -201,7 +204,10 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(text = "Behandlung", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+              Text(
+                text = "Behandlung", 
+                fontWeight = FontWeight.Medium, 
+                color = Color(0xFF959494))
               Row(
                   verticalAlignment = Alignment.CenterVertically,
                   horizontalArrangement = Arrangement.SpaceBetween,
@@ -240,7 +246,10 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Text(text = "Aufklärung", fontWeight = FontWeight.Medium, color = Color(0xFF959494))
+              Text(
+                text = "Aufklärung", 
+                fontWeight = FontWeight.Medium, 
+                color = Color(0xFF959494))
               Row() {
                 Icon(
                     Icons.Rounded.Star,
@@ -385,17 +394,25 @@ fun FeedbackComponent(navController: NavController) {
                     modifier = StarIconModifier)
               }
             }
+        
+        //// Textfeld - Rating Arzt ////
+          val rating = remember { mutableStateOf("") }
 
-            //// Textfeld - Rating Arzt ////
-            val rating = remember { mutableStateOf("") }
-
-            Column() {
-              TextField(
-                  value = rating.value,
-                  onValueChange = { rating.value = it },
-                  modifier = TextFieldModifier,
-                  label = { Text("Feedback") })
-            }
+        // NEUE Version Textfeld!!!
+          OutlinedTextField(
+            value = rating.value,
+            onValueChange = { rating.value = it },
+            modifier = TextFieldModifier,
+            label = { Text("Feedback...") },
+            // colors = OutlinedTextFieldDefaults.colors(textFieldColor),
+            colors =
+            TextFieldDefaults.outlinedTextFieldColors(
+              unfocusedLabelColor = textFieldColor,
+              focusedLabelColor = greenTextColor,
+              unfocusedBorderColor = textFieldColor,
+              focusedBorderColor = greenTextColor,
+            ),
+          )
           }
     }
 
@@ -641,13 +658,12 @@ fun FeedbackComponent(navController: NavController) {
                     modifier = StarIconModifier)
               }
             }
-
-            // Rating Freundlichkeit
-
-            // Textfeld - Rating Arzt
-
+        
+            
+        /// Textfeld - Rating Praxis //
+        
             val rating = remember { mutableStateOf("") }
-            // NEU!!!
+        // NEUE Version Textfeld!!!
             OutlinedTextField(
                 value = rating.value,
                 onValueChange = { rating.value = it },
@@ -661,13 +677,6 @@ fun FeedbackComponent(navController: NavController) {
                         unfocusedBorderColor = textFieldColor,
                         focusedBorderColor = greenTextColor,
                     ),
-            )
-            // alt (zum Vergleich)
-            TextField(
-                value = rating.value,
-                onValueChange = { rating.value = it },
-                modifier = TextFieldModifier,
-                label = { Text("Feedback") },
             )
           }
     }
