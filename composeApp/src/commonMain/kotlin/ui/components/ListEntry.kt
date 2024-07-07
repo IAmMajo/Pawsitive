@@ -2,7 +2,6 @@ package ui.components
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -24,13 +23,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil3.compose.AsyncImage
+import coil3.compose.LocalPlatformContext
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import data.database.Vet
 import extensions.format
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.and
-import pawsitive.composeapp.generated.resources.mockimage
+import pawsitive.composeapp.generated.resources.pet_placeholder
+import pawsitive.composeapp.generated.resources.vet_placeholder
 import ui.theme.CardModifier
 import ui.theme.ProfilePictureModifier
 import ui.theme.ProfilePictureModifierSM
@@ -38,10 +42,10 @@ import ui.theme.StarModifier
 
 @Composable
 fun ListEntryComponent(vet: Vet, navController: NavController) {
-
   var isExpanded by remember { mutableStateOf(false) }
+  var imageUrl by remember { mutableStateOf("") }
   val expandedPadding = animateDpAsState(targetValue = if (isExpanded) 15.dp else 0.dp)
-
+  LaunchedEffect(true) { imageUrl = vet.getImageUrl() }
   Column(
       modifier =
           CardModifier.fillMaxWidth()
@@ -55,12 +59,18 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth()) {
               Row(verticalAlignment = Alignment.CenterVertically) {
-                Image(
-                    painter = painterResource(Res.drawable.mockimage),
-                    contentDescription = "MockImage",
+                AsyncImage(
+                    model =
+                        ImageRequest.Builder(LocalPlatformContext.current)
+                            .data(imageUrl)
+                            .crossfade(true)
+                            .build(),
+                    contentDescription = null,
                     contentScale = ContentScale.Crop,
-                    modifier = ProfilePictureModifier)
-
+                    modifier = ProfilePictureModifier,
+                    placeholder = painterResource(Res.drawable.vet_placeholder),
+                    error = painterResource(Res.drawable.vet_placeholder),
+                )
                 Column(
                     verticalArrangement = Arrangement.Center,
                     modifier = Modifier.padding(start = 5.dp)) {
@@ -443,6 +453,8 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                 }
 
                 vet.ratings.forEach {
+                  var ratingImageUrl by remember { mutableStateOf("") }
+                  LaunchedEffect(true) { ratingImageUrl = it.getImageUrl() }
                   Column(
                       horizontalAlignment = Alignment.Start,
                       modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
@@ -455,11 +467,17 @@ fun ListEntryComponent(vet: Vet, navController: NavController) {
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.padding(bottom = 15.dp),
                     ) {
-                      Image(
-                          painter = painterResource(Res.drawable.mockimage),
-                          contentDescription = "MockImage",
+                      AsyncImage(
+                          model =
+                              ImageRequest.Builder(LocalPlatformContext.current)
+                                  .data(ratingImageUrl)
+                                  .crossfade(true)
+                                  .build(),
+                          contentDescription = null,
                           contentScale = ContentScale.Crop,
                           modifier = ProfilePictureModifierSM,
+                          placeholder = painterResource(Res.drawable.pet_placeholder),
+                          error = painterResource(Res.drawable.pet_placeholder),
                       )
                       Column(
                           verticalArrangement = Arrangement.Center,

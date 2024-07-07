@@ -5,7 +5,7 @@ import com.amplifyframework.core.model.LoadedModelReference
 import com.amplifyframework.datastore.generated.model.ClinicRating as AmplifyClinicRating
 import kotlinx.datetime.Instant
 
-class AndroidClinicRating(amplifyClinicRating: AmplifyClinicRating) : ClinicRating {
+class AndroidClinicRating(amplifyClinicRating: AmplifyClinicRating) : AmplifyWrapper(), ClinicRating {
   override val id: String = amplifyClinicRating.id
   override val clinic: AndroidClinic? =
       (amplifyClinicRating.clinic as? LoadedModelReference)?.value?.let { AndroidClinic(it) }
@@ -26,5 +26,5 @@ class AndroidClinicRating(amplifyClinicRating: AmplifyClinicRating) : ClinicRati
       emptyList()
     }
   }
-  override val date: Instant = Instant.parse(amplifyClinicRating.createdAt.format())
+  override val date: Instant = temporalToDateTime(amplifyClinicRating.createdAt)
 }

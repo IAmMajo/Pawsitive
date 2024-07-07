@@ -5,7 +5,6 @@ import extensions.averageNotZero
 interface Clinic {
   val id: String
   val name: String
-  val imageSource: String
   val street: String
   val houseNumber: String
   val addressDetails: String
@@ -43,4 +42,6 @@ interface Clinic {
 
   val averageRatingAlternativeMedicine: Double
     get() = ratings.map { it.ratingAlternativeMedicine }.averageNotZero()
+
+  suspend fun getImageUrl(): String
 }

@@ -13,6 +13,6 @@ class AppViewModel : ViewModel() {
   val uiState: StateFlow<AppState> = _uiState.asStateFlow()
 
   fun setSection(section: Screen) {
-    _uiState.update { currentState -> currentState.copy(section = section) }
+    _uiState.update { it.copy(section = section) }
   }
 }

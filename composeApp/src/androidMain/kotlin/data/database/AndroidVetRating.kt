@@ -5,7 +5,7 @@ import com.amplifyframework.core.model.LoadedModelReference
 import com.amplifyframework.datastore.generated.model.VetRating as AmplifyVetRating
 import kotlinx.datetime.Instant
 
-class AndroidVetRating(amplifyVetRating: AmplifyVetRating) : VetRating {
+class AndroidVetRating(amplifyVetRating: AmplifyVetRating) : AmplifyWrapper(), VetRating {
   override val id: String = amplifyVetRating.id
   override val vet: AndroidVet? =
       (amplifyVetRating.vet as? LoadedModelReference)?.value?.let { AndroidVet(it) }
@@ -38,5 +38,5 @@ class AndroidVetRating(amplifyVetRating: AmplifyVetRating) : VetRating {
       emptyList()
     }
   }
-  override val date: Instant = Instant.parse(amplifyVetRating.createdAt.format())
+  override val date: Instant = temporalToDateTime(amplifyVetRating.createdAt)
 }

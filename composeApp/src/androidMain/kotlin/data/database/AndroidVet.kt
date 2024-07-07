@@ -4,10 +4,9 @@ import com.amplifyframework.core.model.LoadedModelList
 import com.amplifyframework.core.model.LoadedModelReference
 import com.amplifyframework.datastore.generated.model.Vet as AmplifyVet
 
-class AndroidVet(amplifyVet: AmplifyVet) : Vet {
+class AndroidVet(private val amplifyVet: AmplifyVet) : AmplifyWrapper(), Vet {
   override val id: String = amplifyVet.id
   override val name: String = amplifyVet.name
-  override val imageSource: String = amplifyVet.imagePath ?: ""
   override val specialization: String = amplifyVet.specialization ?: ""
   override val clinic: AndroidClinic? =
       (amplifyVet.clinic as? LoadedModelReference)?.value?.let { AndroidClinic(it) }
@@ -18,5 +17,9 @@ class AndroidVet(amplifyVet: AmplifyVet) : Vet {
     } else {
       emptyList()
     }
+  }
+
+  override suspend fun getImageUrl(): String {
+    return getImageUrl(amplifyVet.imagePath)
   }
 }

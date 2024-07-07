@@ -13,8 +13,8 @@ class SearchViewModel : ViewModel() {
   val uiState: StateFlow<SearchState> = _uiState.asStateFlow()
 
   suspend fun fetchResults() {
-    _uiState.update { currentState -> currentState.copy(loading = true) }
-    _uiState.update { currentState -> currentState.copy(results = getVetsList(), loading = false) }
+    _uiState.update { it.copy(loading = true) }
+    _uiState.update { it.copy(results = getVetsList(), loading = false) }
   }
 }
 

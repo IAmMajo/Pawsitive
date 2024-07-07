@@ -39,9 +39,11 @@ kotlin {
     androidMain.dependencies {
       implementation(compose.preview)
       implementation(libs.androidx.activity.compose)
-      implementation("com.amplifyframework.ui:authenticator:1.2.0")
-      implementation("com.amplifyframework:aws-api:2.19.1")
-      implementation("com.amplifyframework:core-kotlin:2.19.1")
+      implementation(libs.aws.auth.cognito)
+      implementation(libs.aws.api)
+      implementation(libs.aws.storage.s3)
+      implementation(libs.core.kotlin)
+      implementation(libs.ktor.client.okhttp)
     }
     commonMain.dependencies {
       implementation(compose.runtime)
@@ -50,9 +52,15 @@ kotlin {
       implementation(compose.ui)
       implementation(compose.components.resources)
       implementation(compose.components.uiToolingPreview)
-      implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
-      implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
-      implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
+      implementation(libs.lifecycle.viewmodel.compose)
+      implementation(libs.navigation.compose)
+      implementation(libs.kotlinx.datetime)
+      implementation(libs.coil)
+      implementation(libs.coil.network.ktor)
+      implementation(libs.coil.compose)
+    }
+    wasmJsMain.dependencies {
+      implementation(libs.ktor.client.js)
     }
   }
 }

@@ -3,10 +3,9 @@ package data.database
 import com.amplifyframework.core.model.LoadedModelList
 import com.amplifyframework.datastore.generated.model.Clinic as AmplifyClinic
 
-class AndroidClinic(amplifyClinic: AmplifyClinic) : Clinic {
+class AndroidClinic(private val amplifyClinic: AmplifyClinic) : AmplifyWrapper(), Clinic {
   override val id: String = amplifyClinic.id
   override val name: String = amplifyClinic.name
-  override val imageSource: String = amplifyClinic.imagePath ?: ""
   override val street: String = amplifyClinic.street
   override val houseNumber: String = amplifyClinic.houseNumber
   override val addressDetails: String = amplifyClinic.addressDetails ?: ""
@@ -33,5 +32,9 @@ class AndroidClinic(amplifyClinic: AmplifyClinic) : Clinic {
     } else {
       emptyList()
     }
+  }
+
+  override suspend fun getImageUrl(): String {
+    return getImageUrl(amplifyClinic.imagePath)
   }
 }
