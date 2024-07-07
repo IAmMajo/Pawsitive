@@ -54,7 +54,7 @@ fun SearchScreen(navController: NavController) {
                       Icon(Icons.Default.Menu, contentDescription = "Menu")
                     }
                   },
-                  colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent))
+                  colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xfffafafa)))
             }) {
               Column(
                   Modifier.fillMaxWidth().verticalScroll(state).padding(it),

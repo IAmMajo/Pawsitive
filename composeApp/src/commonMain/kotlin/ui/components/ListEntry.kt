@@ -41,6 +41,7 @@ import ui.theme.CardModifier
 import ui.theme.ProfilePictureModifier
 import ui.theme.ProfilePictureModifierSM
 import ui.theme.StarModifier
+import ui.theme.subHeadingColor
 
 @Composable
 fun ListEntryComponent(navController: NavController, vet: Vet) {
@@ -80,7 +81,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                           text = vet.name,
                           fontSize = 18.sp,
                           fontWeight = FontWeight.Bold,
-                          color = Color(0xFF202020),
+                          color = subHeadingColor,
                           modifier = Modifier.padding(start = 5.dp))
 
                       Row(modifier = Modifier.padding(start = 3.dp)) {
@@ -114,7 +115,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                         Text(
                             text = vet.averageRating.format(),
                             fontWeight = FontWeight.SemiBold,
-                            color = Color(0xFF202020),
+                            color = subHeadingColor,
                         )
                       }
                       Row {
@@ -160,7 +161,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     modifier = Modifier.padding(start = 2.dp),
                 )
                 Text(
-                    text = "07:30 Uhr - 22:30 Uhr",
+                    text = clinic.openingHours,
                     fontWeight = FontWeight.Medium,
                     color = Color(0xffb9b9b9),
                 )
@@ -201,7 +202,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     text = "Bewertungen",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF202020))
+                    color = subHeadingColor)
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -244,7 +245,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     Text(
                         text = vet.averageRatingDiagnosis.format(),
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF202020),
+                        color = subHeadingColor,
                     )
                   }
                 }
@@ -290,7 +291,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     Text(
                         text = vet.averageRatingTreatment.format(),
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF202020),
+                        color = subHeadingColor,
                     )
                   }
                 }
@@ -336,7 +337,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     Text(
                         text = vet.averageRatingInformation.format(),
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF202020),
+                        color = subHeadingColor,
                     )
                   }
                 }
@@ -382,7 +383,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     Text(
                         text = vet.averageRatingTrust.format(),
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF202020),
+                        color = subHeadingColor,
                     )
                   }
                 }
@@ -428,7 +429,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     Text(
                         text = vet.averageRatingInvestedTime.format(),
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF202020),
+                        color = subHeadingColor,
                     )
                   }
                 }
@@ -474,7 +475,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                     Text(
                         text = vet.averageRatingFriendliness.format(),
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF202020),
+                        color = subHeadingColor,
                     )
                   }
                 }
@@ -522,7 +523,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                             },
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFF202020),
+                            color = subHeadingColor,
                         )
                         Row {
                           Icon(
@@ -543,7 +544,7 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                         text = it.comment,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Normal,
-                        color = Color(0xFF202020),
+                        color = subHeadingColor,
                     )
                   }
                 }
