@@ -28,7 +28,7 @@ import ui.theme.ProfilePictureModifierLG
 import ui.theme.secondaryIconColor
 
 @Composable
-fun DoctorCardComponent() {
+fun VetCardComponent() {
   // Info-Card Arzt -> abgeänderte ListEntryComponent()
   Column(
       modifier =
@@ -37,7 +37,7 @@ fun DoctorCardComponent() {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth()) {
-              // Nane + Bild
+              // ProfilBild + Name
               Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
                     painter = painterResource(Res.drawable.mockimage),
@@ -54,12 +54,13 @@ fun DoctorCardComponent() {
                           fontSize = 20.sp,
                           fontWeight = FontWeight.Bold,
                           color = secondaryIconColor)
+
+                      // Spezialisierung des Tierarztes
                       Row(modifier = Modifier.padding(start = 2.dp, top = 2.dp)) {
                         Icon(
                             Icons.Rounded.Pets,
-                            contentDescription = "Placeholder Icon",
+                            contentDescription = "Paw Icon",
                             tint = secondaryIconColor,
-                            // modifier = Modifier.padding(start = 2.dp)
                         )
                         Text(
                             text = "Schäferhunde",
@@ -74,6 +75,8 @@ fun DoctorCardComponent() {
             horizontalAlignment = Alignment.Start,
             modifier = Modifier.padding(top = 7.dp) // padding ergänzt
             ) {
+
+              // PraxisName
               Row {
                 Icon(
                     Icons.Rounded.Home,
@@ -85,6 +88,8 @@ fun DoctorCardComponent() {
                     fontWeight = FontWeight.SemiBold,
                     color = secondaryIconColor)
               }
+
+              // Addresse
               Row {
                 Icon(
                     Icons.Rounded.LocationOn,
@@ -96,6 +101,8 @@ fun DoctorCardComponent() {
                     fontWeight = FontWeight.Medium,
                     color = secondaryIconColor)
               }
+
+              // Entfernung
               Row {
                 Icon(
                     Icons.Rounded.NearMe,

@@ -39,30 +39,19 @@ val surfaceContainerLight = Color(0xFFFFFFFF)
 val surfaceContainerHighLight = Color(0xFFEBE7E7)
 val surfaceContainerHighestLight = Color(0xFFE5E2E1)
 
-// Our Colors
+////
 
+val cardColor = Color.White
 val shadowColor = Color(0xff3a3a3a)
-val cardBackgroundColor = Color.White
 val lightGreenCardColor = Color(0xc200d455)
-
 val primaryButtonColor = Color(0xFF00D47B)
 val secondaryButtonColor = Color(0xffbdbdbd)
-
 val subHeadingColor = Color(0xFF293133)
 val lightText = Color(0xFF959494)
 val textFieldColor = Color.LightGray
 val greenTextColor = Color(0xFF00D47B)
-val outlinedTextFieldFocusedBorderColor =
-    Color.White // zum ausblenden der border im OutlinedTextField (Searchbar.kt)
-val outlinedTextFieldUnfocusedBorderColor =
-    Color.White // zum ausblenden der border im OutlinedTextField (Searchbar.kt)
-val placeholderTextFieldColor = Color.Gray
-
 val starSelectedColor = Color(0xFF00D47B)
 val starNotSelectedColor = Color(0xff8a8a8a)
 val iconColor = Color(0xFF959494) // bisher nur Placeholder
 val secondaryIconColor = Color(0xfff5f5f5)
 val searchIconColor = Color.Gray
-
-// test:
-// val mainGreen = Color(0xff0ddc48)
