@@ -37,7 +37,7 @@ fun VetCardComponent() {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth()) {
-              // Nane + Bild
+              // ProfilBild + Name
               Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
                     painter = painterResource(Res.drawable.mockimage),
@@ -54,12 +54,13 @@ fun VetCardComponent() {
                           fontSize = 20.sp,
                           fontWeight = FontWeight.Bold,
                           color = secondaryIconColor)
-                      Row(modifier = Modifier.padding(start = 2.dp, top = 2.dp)) {
+                      
+                    // Spezialisierung des Tierarztes
+                    Row(modifier = Modifier.padding(start = 2.dp, top = 2.dp)) {
                         Icon(
                             Icons.Rounded.Pets,
-                            contentDescription = "Placeholder Icon",
+                            contentDescription = "Paw Icon",
                             tint = secondaryIconColor,
-                            // modifier = Modifier.padding(start = 2.dp)
                         )
                         Text(
                             text = "Schäferhunde",
@@ -74,6 +75,8 @@ fun VetCardComponent() {
             horizontalAlignment = Alignment.Start,
             modifier = Modifier.padding(top = 7.dp) // padding ergänzt
             ) {
+              
+              // PraxisName
               Row {
                 Icon(
                     Icons.Rounded.Home,
@@ -85,6 +88,8 @@ fun VetCardComponent() {
                     fontWeight = FontWeight.SemiBold,
                     color = secondaryIconColor)
               }
+              
+              // Addresse
               Row {
                 Icon(
                     Icons.Rounded.LocationOn,
@@ -96,6 +101,8 @@ fun VetCardComponent() {
                     fontWeight = FontWeight.Medium,
                     color = secondaryIconColor)
               }
+            
+              // Entfernung
               Row {
                 Icon(
                     Icons.Rounded.NearMe,
