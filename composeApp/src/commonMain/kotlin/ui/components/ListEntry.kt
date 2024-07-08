@@ -95,8 +95,8 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                         val rating = remember { mutableStateOf("") }
                         Row {
                           AverageStars(
-                            rating = vet.averageRating,
-                            stars = 5,
+                              rating = vet.averageRating,
+                              stars = 5,
                           )
                         }
                         Text(
