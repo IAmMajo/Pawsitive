@@ -34,16 +34,18 @@ fun VetRatingComponent() {
     ) {
       Text(text = "Diagnose", fontWeight = FontWeight.Medium, color = lightText)
 
-      /////////////////////////////////////////////////////////////////////////////////////
+      
       // StarRating
-
       Row(
           // modifier = Modifier.fillMaxSize(),
           verticalAlignment = Alignment.CenterVertically,
           horizontalArrangement = Arrangement.SpaceBetween,
       ) {
+        
+        // Startanzeige - 0 Sterne ausgewählt
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
+        // Reihe mit 5 auswählbaren Sternen
         StarRow(
             modifier = Modifier,
             rating = rating_1,
@@ -68,8 +70,11 @@ fun VetRatingComponent() {
           verticalAlignment = Alignment.CenterVertically,
           horizontalArrangement = Arrangement.SpaceBetween,
       ) {
+
+        // Startanzeige - 0 Sterne ausgewählt
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
+        // Reihe mit 5 auswählbaren Sternen
         StarRow(
             modifier = Modifier,
             rating = rating_1,
@@ -91,8 +96,11 @@ fun VetRatingComponent() {
           verticalAlignment = Alignment.CenterVertically,
           horizontalArrangement = Arrangement.SpaceBetween,
       ) {
+
+        // Startanzeige - 0 Sterne ausgewählt
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
+        // Reihe mit 5 auswählbaren Sternen
         StarRow(
             modifier = Modifier,
             rating = rating_1,
@@ -114,8 +122,11 @@ fun VetRatingComponent() {
           verticalAlignment = Alignment.CenterVertically,
           horizontalArrangement = Arrangement.SpaceBetween,
       ) {
+
+        // Startanzeige - 0 Sterne ausgewählt
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
+        // Reihe mit 5 auswählbaren Sternen
         StarRow(
             modifier = Modifier,
             rating = rating_1,
@@ -137,8 +148,11 @@ fun VetRatingComponent() {
           verticalAlignment = Alignment.CenterVertically,
           horizontalArrangement = Arrangement.SpaceBetween,
       ) {
+
+        // Startanzeige - 0 Sterne ausgewählt
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
+        // Reihe mit 5 auswählbaren Sternen
         StarRow(
             modifier = Modifier,
             rating = rating_1,
@@ -160,8 +174,11 @@ fun VetRatingComponent() {
           verticalAlignment = Alignment.CenterVertically,
           horizontalArrangement = Arrangement.SpaceBetween,
       ) {
+
+        // Startanzeige - 0 Sterne ausgewählt
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
+        // Reihe mit 5 auswählbaren Sternen
         StarRow(
             modifier = Modifier,
             rating = rating_1,
@@ -173,7 +190,8 @@ fun VetRatingComponent() {
 
     //// Textfeld - Rating Arzt ////
     val rating = remember { mutableStateOf("") }
-
+    
+    // NEUE Version Textfeld!!!
     OutlinedTextField(
         value = rating.value,
         onValueChange = { rating.value = it },
