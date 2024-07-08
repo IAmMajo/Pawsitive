@@ -15,11 +15,10 @@ import androidx.compose.material.icons.rounded.DateRange
 import androidx.compose.material.icons.rounded.NearMe
 import androidx.compose.material.icons.rounded.Place
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
@@ -48,7 +47,6 @@ val StarIconModifier = Modifier.size(24.dp)
 
 val TextFieldModifier = Modifier.fillMaxWidth()
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FeedbackComponent(navController: NavController) {
   Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
@@ -262,19 +260,17 @@ fun FeedbackComponent(navController: NavController) {
         /// Textfeld - Rating Praxis //
 
         val rating = remember { mutableStateOf("") }
-        // NEUE Version Textfeld!!!
         OutlinedTextField(
             value = rating.value,
             onValueChange = { rating.value = it },
             modifier = TextFieldModifier,
             label = { Text("Feedback...") },
-            // colors = OutlinedTextFieldDefaults.colors(textFieldColor),
             colors =
-                TextFieldDefaults.outlinedTextFieldColors(
-                    unfocusedLabelColor = textFieldColor,
-                    focusedLabelColor = greenTextColor,
-                    unfocusedBorderColor = textFieldColor,
+                OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = greenTextColor,
+                    unfocusedBorderColor = textFieldColor,
+                    focusedLabelColor = greenTextColor,
+                    unfocusedLabelColor = textFieldColor,
                 ),
         )
       }

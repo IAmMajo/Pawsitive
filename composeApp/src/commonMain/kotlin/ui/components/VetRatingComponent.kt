@@ -189,14 +189,11 @@ fun VetRatingComponent() {
 
     //// Textfeld - Rating Arzt ////
     val rating = remember { mutableStateOf("") }
-
-    // NEUE Version Textfeld!!!
     OutlinedTextField(
         value = rating.value,
         onValueChange = { rating.value = it },
         modifier = TextFieldModifier,
         label = { Text("Feedback...") },
-        // colors = OutlinedTextFieldDefaults.colors(textFieldColor),
         colors =
             OutlinedTextFieldDefaults.colors(
                 unfocusedLabelColor = textFieldColor,
