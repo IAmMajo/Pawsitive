@@ -25,8 +25,7 @@ import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.mockimage
 import ui.theme.ProfileCardModifier
 import ui.theme.ProfilePictureModifierLG
-import ui.theme.iconColorLight
-import ui.theme.subHeadingColor
+import ui.theme.secondaryIconColor
 
 @Composable
 fun DoctorCardComponent() {
@@ -54,18 +53,18 @@ fun DoctorCardComponent() {
                           text = "Rita Strauß",
                           fontSize = 20.sp,
                           fontWeight = FontWeight.Bold,
-                          color = subHeadingColor)
+                          color = secondaryIconColor)
                       Row(modifier = Modifier.padding(start = 2.dp, top = 2.dp)) {
                         Icon(
                             Icons.Rounded.Pets,
                             contentDescription = "Placeholder Icon",
-                            tint = iconColorLight,
+                            tint = secondaryIconColor,
                             // modifier = Modifier.padding(start = 2.dp)
                         )
                         Text(
                             text = "Schäferhunde",
                             fontWeight = FontWeight.Medium,
-                            color = iconColorLight)
+                            color = secondaryIconColor)
                       }
                     }
               }
@@ -79,31 +78,31 @@ fun DoctorCardComponent() {
                 Icon(
                     Icons.Rounded.Home,
                     contentDescription = "Placeholder Icon",
-                    tint = iconColorLight,
+                    tint = secondaryIconColor,
                     modifier = Modifier.padding(start = 2.dp))
                 Text(
                     text = "Kleintierpraxis Tatze",
                     fontWeight = FontWeight.SemiBold,
-                    color = iconColorLight)
+                    color = secondaryIconColor)
               }
               Row {
                 Icon(
                     Icons.Rounded.LocationOn,
                     contentDescription = "Map-Pin Icon",
-                    tint = iconColorLight,
+                    tint = secondaryIconColor,
                     modifier = Modifier.padding(start = 2.dp))
                 Text(
                     text = "Fantasiestraße 4, Fantasiestadt",
                     fontWeight = FontWeight.Medium,
-                    color = iconColorLight)
+                    color = secondaryIconColor)
               }
               Row {
                 Icon(
                     Icons.Rounded.NearMe,
                     contentDescription = "Distance Icon",
-                    tint = iconColorLight,
+                    tint = secondaryIconColor,
                     modifier = Modifier.padding(start = 2.dp))
-                Text(text = "10,4km", fontWeight = FontWeight.Medium, color = iconColorLight)
+                Text(text = "10,4km", fontWeight = FontWeight.Medium, color = secondaryIconColor)
               }
             }
       }

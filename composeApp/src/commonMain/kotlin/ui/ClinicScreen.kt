@@ -1,8 +1,10 @@
 package ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DateRange
@@ -22,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -37,6 +40,7 @@ import extensions.format
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import pawsitive.composeapp.generated.resources.Map
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.clinic_placeholder
 import pawsitive.composeapp.generated.resources.vets
@@ -200,7 +204,7 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
 
       Text(
           stringResource(Res.string.vets),
-          modifier = Modifier.padding(10.dp, 8.dp, 10.dp, 0.dp),
+          modifier = Modifier.padding(10.dp, 10.dp, 10.dp, 5.dp),
           color = subHeadingColor,
           fontSize = 18.sp,
           fontWeight = FontWeight.Bold,
@@ -213,6 +217,154 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
       }
     }
     // Map-Ausschnitt
+    Column(modifier = Modifier.sizeIn(maxHeight = 300.dp)) {
+      Text(
+          text = "Map",
+          modifier = Modifier.padding(10.dp, 5.dp, 10.dp, 5.dp),
+          color = subHeadingColor,
+          fontSize = 18.sp,
+          fontWeight = FontWeight.Bold,
+      )
+      Image(
+          painter = painterResource(Res.drawable.Map),
+          contentDescription = "Ausschnitt Map",
+          contentScale = ContentScale.Crop,
+          modifier =
+              Modifier.fillMaxSize()
+                  .clip(RoundedCornerShape(25f))
+                  .padding(horizontal = 7.dp, vertical = 5.dp))
+    }
 
+    // Bewertungen
+    Text(
+        text = "Bewertungen",
+        modifier = Modifier.padding(10.dp, 5.dp, 10.dp, 5.dp),
+        color = subHeadingColor,
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold,
+    )
+    Column(
+        modifier =
+            Modifier.padding(horizontal = 7.dp) // , vertical = 5.dp
+                // .clip(RoundedCornerShape(15.dp))
+                .fillMaxWidth()
+                .background(Color.White),
+        horizontalAlignment = Alignment.Start,
+    ) {
+
+      //// Ausstattung der Praxis
+      Row(
+          verticalAlignment = Alignment.CenterVertically,
+          horizontalArrangement = Arrangement.SpaceBetween,
+          modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+      ) {
+        Text(
+            text = "Ausstattung der Praxis",
+            color = lightText,
+            fontWeight = FontWeight.SemiBold,
+        )
+        Row {
+          Row {
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarModifier,
+            )
+          }
+          Text(
+              text = "0,0", // vet.averageRatingDiagnosis.format(),
+              fontWeight = FontWeight.SemiBold,
+              color = subHeadingColor,
+          )
+        }
+      }
+      //// Telefonische Erreichbarkeit
+      Row(
+          verticalAlignment = Alignment.CenterVertically,
+          horizontalArrangement = Arrangement.SpaceBetween,
+          modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+      ) {
+        Text(
+            text = "Telefonische Erreichbarkeit",
+            color = lightText,
+            fontWeight = FontWeight.SemiBold,
+        )
+        Row {
+          Row {
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarModifier,
+            )
+          }
+          Text(
+              text = "0,0", // vet.averageRatingDiagnosis.format(),
+              fontWeight = FontWeight.SemiBold,
+              color = subHeadingColor,
+          )
+        }
+      }
+
+      //// Parkmöglichkeit
+      Row(
+          verticalAlignment = Alignment.CenterVertically,
+          horizontalArrangement = Arrangement.SpaceBetween,
+          modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+      ) {
+        Text(
+            text = "Parkmöglichkeit",
+            color = lightText,
+            fontWeight = FontWeight.SemiBold,
+        )
+        Row {
+          Row {
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarModifier,
+            )
+          }
+          Text(
+              text = "0,0", // vet.averageRatingDiagnosis.format(),
+              fontWeight = FontWeight.SemiBold,
+              color = subHeadingColor,
+          )
+        }
+      }
+
+      //// Alternative Heilmethoden
+      Row(
+          verticalAlignment = Alignment.CenterVertically,
+          horizontalArrangement = Arrangement.SpaceBetween,
+          modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+      ) {
+        Text(
+            text = "Alternative Heilmethoden",
+            color = lightText,
+            fontWeight = FontWeight.SemiBold,
+        )
+        Row {
+          Row {
+            Icon(
+                Icons.Rounded.Star,
+                contentDescription = "Star Placeholder Icon",
+                tint = Color(0xFF00D47B),
+                modifier = StarModifier,
+            )
+          }
+          Text(
+              text = "0,0", // vet.averageRatingDiagnosis.format(),
+              fontWeight = FontWeight.SemiBold,
+              color = subHeadingColor,
+          )
+        }
+      }
+
+      // Kommetare
+
+    }
   }
 }
