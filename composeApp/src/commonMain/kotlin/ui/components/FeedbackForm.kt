@@ -52,7 +52,6 @@ val TextFieldModifier = Modifier.fillMaxWidth()
 @Composable
 fun FeedbackComponent(navController: NavController) {
   Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-    
     VetCardComponent()
 
     VetRatingComponent()
