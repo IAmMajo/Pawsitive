@@ -26,7 +26,6 @@ import pawsitive.composeapp.generated.resources.gecko
 import pawsitive.composeapp.generated.resources.hundewelpe
 import pawsitive.composeapp.generated.resources.pfau
 import ui.theme.ProfilePictureModifier
-import ui.theme.lightText
 import ui.theme.starNotSelectedColor
 import ui.theme.subHeadingColor
 
@@ -50,10 +49,7 @@ fun PetProfileDropdown() {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
-        modifier =
-            Modifier.fillMaxWidth().height(60.dp).clickable {
-              expanded = true
-            }) {
+        modifier = Modifier.fillMaxWidth().height(60.dp).clickable { expanded = true }) {
           Text(
               text = selectedPet.first,
               color = subHeadingColor,
