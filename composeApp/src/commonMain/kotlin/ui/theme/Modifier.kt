@@ -34,7 +34,7 @@ val ProfileCardModifier =
 val PraxisCardModifier =
     Modifier.padding(horizontal = 7.dp, vertical = 5.dp)
         .clip(RoundedCornerShape(15.dp))
-        .background(Color.White)
+        .background(lightGreenCardColor)
         .fillMaxWidth()
 
 val SearchbarModifier =

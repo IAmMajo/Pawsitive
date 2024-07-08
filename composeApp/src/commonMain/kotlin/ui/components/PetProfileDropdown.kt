@@ -27,6 +27,7 @@ import pawsitive.composeapp.generated.resources.hundewelpe
 import pawsitive.composeapp.generated.resources.pfau
 import ui.theme.ProfilePictureModifier
 import ui.theme.lightText
+import ui.theme.starNotSelectedColor
 import ui.theme.subHeadingColor
 
 @Composable
@@ -40,7 +41,7 @@ fun PetProfileDropdown() {
           Pair("Richard", Res.drawable.pfau),
           Pair("Bella", Res.drawable.hundewelpe))
 
-  Row(modifier = Modifier.padding(start = 22.dp, top = 22.dp, end = 5.dp).fillMaxWidth()) {
+  Row(modifier = Modifier.padding(start = 22.dp, top = 22.dp, end = 12.dp).fillMaxWidth()) {
     Image(
         painter = painterResource(selectedPet.second),
         contentDescription = "MockImagePetProfile",
@@ -50,7 +51,7 @@ fun PetProfileDropdown() {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
         modifier =
-            Modifier.fillMaxWidth().height(60.dp).padding(end = 25.dp).clickable {
+            Modifier.fillMaxWidth().height(60.dp).clickable {
               expanded = true
             }) {
           Text(
@@ -66,8 +67,8 @@ fun PetProfileDropdown() {
             Icon(
                 Icons.Rounded.ArrowDropDown,
                 contentDescription = "Arrow Drop Down Icon",
-                tint = lightText,
-                modifier = Modifier.clip(RoundedCornerShape(50f)).background(Color.Transparent))
+                tint = starNotSelectedColor,
+                modifier = Modifier.clip(RoundedCornerShape(50f)).background(Color.LightGray))
           }
         }
     DropdownMenu(

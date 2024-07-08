@@ -1,8 +1,10 @@
 package ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.DateRange
@@ -22,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -37,13 +40,16 @@ import extensions.format
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import pawsitive.composeapp.generated.resources.Map
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.clinic_placeholder
 import pawsitive.composeapp.generated.resources.vets
 import ui.components.ListEntryComponent
+import ui.theme.CardModifier
 import ui.theme.HeaderImageModifier
 import ui.theme.StarModifier
 import ui.theme.iconColor
+import ui.theme.lightGreenCardColor
 import ui.theme.lightText
 import ui.theme.starNotSelectedColor
 import ui.theme.subHeadingColor
@@ -59,70 +65,70 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
   Column(modifier = Modifier.verticalScroll(state)) {
     // Header Image
     AsyncImage(
-        model =
-            ImageRequest.Builder(LocalPlatformContext.current)
-                .data(uiState.imageUrl)
-                .crossfade(true)
-                .build(),
-        contentDescription = null,
-        modifier = HeaderImageModifier.aspectRatio(1.5f),
-        contentScale = ContentScale.Crop,
-        placeholder = painterResource(Res.drawable.clinic_placeholder),
-        error = painterResource(Res.drawable.clinic_placeholder),
+      model =
+      ImageRequest.Builder(LocalPlatformContext.current)
+        .data(uiState.imageUrl)
+        .crossfade(true)
+        .build(),
+      contentDescription = null,
+      modifier = HeaderImageModifier.aspectRatio(1.5f),
+      contentScale = ContentScale.Crop,
+      placeholder = painterResource(Res.drawable.clinic_placeholder),
+      error = painterResource(Res.drawable.clinic_placeholder),
     )
 
     val clinic = uiState.clinic
     if (clinic == null) {
       CircularProgressIndicator(
-          modifier = Modifier.align(Alignment.CenterHorizontally).padding(24.dp),
+        modifier = Modifier.align(Alignment.CenterHorizontally).padding(24.dp),
       )
     } else {
       Column(modifier = Modifier.fillMaxWidth().background(Color.White)) {
         Column(modifier = Modifier.padding(top = 8.dp, start = 10.dp).fillMaxWidth()) {
           // Clinic Name
           Text(
-              text = clinic.name,
-              fontWeight = FontWeight.Bold,
-              fontSize = 20.sp,
-              color = subHeadingColor,
-              modifier = Modifier.align(Alignment.Start),
+            text = clinic.name,
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp,
+            color = subHeadingColor,
+            modifier = Modifier.align(Alignment.Start),
           )
 
           Row {
             Icon(
-                Icons.Rounded.Star,
-                contentDescription = "Star Placeholder Icon",
-                tint = starNotSelectedColor,
-                modifier = StarModifier,
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = starNotSelectedColor,
+              modifier = StarModifier,
             )
             Icon(
-                Icons.Rounded.Star,
-                contentDescription = "Star Placeholder Icon",
-                tint = Color(0xFF00D47B),
-                modifier = StarModifier,
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier,
             )
             Icon(
-                Icons.Rounded.Star,
-                contentDescription = "Star Placeholder Icon",
-                tint = Color(0xFF00D47B),
-                modifier = StarModifier,
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier,
             )
             Icon(
-                Icons.Rounded.Star,
-                contentDescription = "Star Placeholder Icon",
-                tint = Color(0xFF00D47B),
-                modifier = StarModifier,
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier,
             )
             Icon(
-                Icons.Rounded.Star,
-                contentDescription = "Star Placeholder Icon",
-                tint = Color(0xFF00D47B),
-                modifier = StarModifier,
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier,
             )
             Text(
-                text = clinic.averageRating.format(),
-                fontWeight = FontWeight.SemiBold,
-                color = Color(0xFF202020),
+              text = clinic.averageRating.format(),
+              fontWeight = FontWeight.SemiBold,
+              color = Color(0xFF202020),
             )
           }
         }
@@ -130,14 +136,15 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
         // Additional Information (zur Praxis)
         Column(modifier = Modifier.fillMaxWidth().padding(10.dp)) {
           Row(
-              verticalAlignment = Alignment.CenterVertically,
-              modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth(),
           ) {
             Icon(
-                Icons.Rounded.DateRange,
-                contentDescription = "Calender Icon",
-                tint = iconColor,
-                modifier = Modifier.padding(start = 2.dp))
+              Icons.Rounded.DateRange,
+              contentDescription = "Calender Icon",
+              tint = iconColor,
+              modifier = Modifier.padding(start = 2.dp)
+            )
             Text(text = "Öffnungszeiten:", fontWeight = FontWeight.SemiBold, color = lightText)
           }
 
@@ -146,51 +153,51 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
             Text(text = clinic.openingHours, fontWeight = FontWeight.Medium, color = lightText)
           }
           Row(
-              modifier = Modifier.padding(top = 2.dp),
-              verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(top = 2.dp),
+            verticalAlignment = Alignment.CenterVertically,
           ) {
             Icon(
-                Icons.Rounded.Place,
-                contentDescription = "MapPin Icon",
-                tint = iconColor,
+              Icons.Rounded.Place,
+              contentDescription = "MapPin Icon",
+              tint = iconColor,
             )
             Text(
-                text = clinic.streetAndHouseNumber,
-                fontWeight = FontWeight.Medium,
-                color = lightText,
+              text = clinic.streetAndHouseNumber,
+              fontWeight = FontWeight.Medium,
+              color = lightText,
             )
           }
 
           Row(
-              modifier = Modifier.padding(top = 2.dp),
-              verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(top = 2.dp),
+            verticalAlignment = Alignment.CenterVertically,
           ) {
             Icon(
-                Icons.Rounded.Phone,
-                contentDescription = "Phone Icon",
-                tint = iconColor,
+              Icons.Rounded.Phone,
+              contentDescription = "Phone Icon",
+              tint = iconColor,
             )
             Text(
-                text = clinic.phone,
-                fontWeight = FontWeight.Medium,
-                color = lightText,
+              text = clinic.phone,
+              fontWeight = FontWeight.Medium,
+              color = lightText,
             )
           }
 
           Row(
-              verticalAlignment = Alignment.CenterVertically,
-              horizontalArrangement = Arrangement.SpaceBetween,
-              modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth(),
           ) {
             Row(
-                modifier = Modifier.padding(top = 2.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Start,
+              modifier = Modifier.padding(top = 2.dp),
+              verticalAlignment = Alignment.CenterVertically,
+              horizontalArrangement = Arrangement.Start,
             ) {
               Icon(
-                  Icons.Rounded.NearMe,
-                  contentDescription = "Distance Icon",
-                  tint = iconColor,
+                Icons.Rounded.NearMe,
+                contentDescription = "Distance Icon",
+                tint = iconColor,
               )
               Text(text = "2km", fontWeight = FontWeight.Medium, color = lightText)
             }
@@ -199,11 +206,11 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
       }
 
       Text(
-          stringResource(Res.string.vets),
-          modifier = Modifier.padding(10.dp, 8.dp, 10.dp, 0.dp),
-          color = subHeadingColor,
-          fontSize = 18.sp,
-          fontWeight = FontWeight.Bold,
+        stringResource(Res.string.vets),
+        modifier = Modifier.padding(10.dp, 10.dp, 10.dp, 5.dp),
+        color = subHeadingColor,
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold,
       )
       clinic.vets.forEach { ListEntryComponent(navController, it) }
 
@@ -213,6 +220,161 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
       }
     }
     // Map-Ausschnitt
+    Column(
+      modifier = Modifier.sizeIn(maxHeight = 300.dp)
+    ) {
+      Text(
+        text = "Map",
+        modifier = Modifier.padding(10.dp, 5.dp, 10.dp, 5.dp),
+        color = subHeadingColor,
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold,
+      )
+      Image(
+        painter = painterResource(Res.drawable.Map),
+        contentDescription = "Ausschnitt Map",
+        contentScale = ContentScale.Crop,
+        modifier = Modifier.fillMaxSize()
+          .clip(RoundedCornerShape(25f))
+          .padding(horizontal = 7.dp, vertical = 5.dp)
+      )
+    }
 
+    //Bewertungen 
+    Text(
+      text = "Bewertungen",
+      modifier = Modifier.padding(10.dp, 5.dp, 10.dp, 5.dp),
+      color = subHeadingColor,
+      fontSize = 18.sp,
+      fontWeight = FontWeight.Bold,
+    )
+    Column(
+      modifier = Modifier
+        .padding(horizontal = 7.dp) // , vertical = 5.dp
+        //.clip(RoundedCornerShape(15.dp))
+        .fillMaxWidth()
+        .background(Color.White),
+      horizontalAlignment = Alignment.Start,
+      
+    ) {
+      
+//// Ausstattung der Praxis
+      Row(
+          verticalAlignment = Alignment.CenterVertically,
+          horizontalArrangement = Arrangement.SpaceBetween,
+          modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+        ) {
+        Text(
+          text = "Ausstattung der Praxis",
+          color = lightText,
+          fontWeight = FontWeight.SemiBold,
+          )
+        Row {
+          Row {
+            Icon(
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier,
+            )
+          }
+          Text(
+            text = "0,0",//vet.averageRatingDiagnosis.format(),
+            fontWeight = FontWeight.SemiBold,
+            color = subHeadingColor,
+          )
+        }
+      }
+      //// Telefonische Erreichbarkeit
+      Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+        ) {
+        Text(
+          text = "Telefonische Erreichbarkeit",
+          color = lightText,
+          fontWeight = FontWeight.SemiBold,
+          )
+        Row {
+          Row {
+            Icon(
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier,
+              )
+          }
+          Text(
+            text = "0,0",//vet.averageRatingDiagnosis.format(),
+            fontWeight = FontWeight.SemiBold,
+            color = subHeadingColor,
+            )
+        } 
+      }
+
+      //// Parkmöglichkeit
+      Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+      ) {
+        Text(
+          text = "Parkmöglichkeit",
+          color = lightText,
+          fontWeight = FontWeight.SemiBold,
+          )
+        Row {
+          Row {
+            Icon(
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier,
+            )
+          }
+          Text(
+            text = "0,0",//vet.averageRatingDiagnosis.format(),
+            fontWeight = FontWeight.SemiBold,
+            color = subHeadingColor,
+          )
+        }
+      }
+      
+      //// Alternative Heilmethoden 
+      Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp),
+      ) {
+        Text(
+          text = "Alternative Heilmethoden",
+          color = lightText,
+          fontWeight = FontWeight.SemiBold,
+          )
+        Row {
+          Row {
+            Icon(
+              Icons.Rounded.Star,
+              contentDescription = "Star Placeholder Icon",
+              tint = Color(0xFF00D47B),
+              modifier = StarModifier,
+            )
+          }
+          Text(
+            text = "0,0",//vet.averageRatingDiagnosis.format(),
+            fontWeight = FontWeight.SemiBold,
+            color = subHeadingColor,
+          )
+        }
+      }
+      
+      // Kommetare
+
+      
+      
+    }
   }
 }
+  
+
