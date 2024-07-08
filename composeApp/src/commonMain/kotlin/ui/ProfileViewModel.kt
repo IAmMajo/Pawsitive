@@ -8,18 +8,18 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
-class ProfileViewModel: ViewModel() {
+class ProfileViewModel : ViewModel() {
   private val _uiState = MutableStateFlow(ProfileState())
   val uiState: StateFlow<ProfileState> = _uiState.asStateFlow()
 
   suspend fun load() {
     _uiState.update { it.copy(loading = false, email = getEmail(), pets = getPetsList()) }
   }
-  
+
   fun startLogout() {
     _uiState.update { it.copy(loading = true, email = "", logout = true) }
   }
-  
+
   suspend fun executeLogout() {
     logout()
     _uiState.update { it.copy(loading = false, logout = false) }

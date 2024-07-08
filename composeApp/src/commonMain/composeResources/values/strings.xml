@@ -6,7 +6,9 @@
   <string name="profile">Profil</string>
   <string name="and">und</string>
   <string name="vets">Ärzte</string>
-  <string name="login_or_register">Logge dich ein oder registriere dich, um Bewertungen zu schreiben, deine Haustiere zu verwalten und Ärzte zu favorisieren!</string>
+  <string
+    name="login_or_register"
+  >Logge dich ein oder registriere dich, um Bewertungen zu schreiben, deine Haustiere zu verwalten und Ärzte zu favorisieren!</string>
   <string name="login">Login</string>
   <string name="register">Registrieren</string>
   <string name="email">E-Mail</string>
