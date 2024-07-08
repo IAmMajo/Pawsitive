@@ -60,8 +60,8 @@ fun FeedbackComponent(navController: NavController) {
     /////// Abschnitt: Bewertung Praxis ///////
 
     Column() {
-
-      // Info-Card Praxis
+      
+      ////// Praxis Info-Card //////
       Column(
           modifier =
               PraxisCardModifier.padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)) {
@@ -69,14 +69,13 @@ fun FeedbackComponent(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()) {
-                  // Name + Bild
+                  // PraxisBild + Name
                   Row(verticalAlignment = Alignment.CenterVertically) {
                     Image(
                         painter = painterResource(Res.drawable.praxis),
                         contentDescription = "MockImage",
                         contentScale = ContentScale.Crop,
                         modifier = ProfilePictureModifier)
-
                     Column(
                         verticalArrangement = Arrangement.Center,
                         modifier = Modifier.padding(start = 5.dp)) {
@@ -87,6 +86,7 @@ fun FeedbackComponent(navController: NavController) {
                               fontWeight = FontWeight.Bold,
                               color = secondaryIconColor
                           )
+                      // Adresse
                           Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
                                 Icons.Rounded.Place,
@@ -101,8 +101,10 @@ fun FeedbackComponent(navController: NavController) {
                         }
                   }
                 }
-            // Angaben zur Praxis (in der Arzt-Info-Card) //
+            // weitere Angaben zur Praxis (in der Praxis-Info-Card) //
             Column(horizontalAlignment = Alignment.Start, modifier = Modifier.padding(top = 7.dp)) {
+                            
+              // Öffnungszeiten
               Row {
                 Icon(
                     Icons.Rounded.DateRange,
@@ -116,18 +118,19 @@ fun FeedbackComponent(navController: NavController) {
                 }
               }
 
+              // Entfernung
               Row {
                 Icon(
-                    Icons.Rounded.NearMe,
-                    contentDescription = "Distance Icon",
-                    tint = secondaryIconColor,
-                    modifier = Modifier.padding(start = 2.dp))
-                Text(text = "10,4km", fontWeight = FontWeight.Medium, color = secondaryIconColor,)                
+                  Icons.Rounded.NearMe,
+                  contentDescription = "Distance Icon",
+                  tint = secondaryIconColor,
+                  modifier = Modifier.padding(start = 2.dp))
+                Text(text = "10,4km", fontWeight = FontWeight.Medium, color = secondaryIconColor,)
               }
             }
           }
 
-      // Column: Rating Praxis //
+      //// Praxis Rating-Section ////
       Column(modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)) {
 
         // Rating Ausstattung (Praxis)
@@ -138,11 +141,14 @@ fun FeedbackComponent(navController: NavController) {
         ) {
           Text(text = "Ausstattung der Praxis", fontWeight = FontWeight.Medium, color = lightText)
           Row(
-              // modifier = Modifier.fillMaxSize(),
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.SpaceBetween,
           ) {
+            
+            // Startanzeige - 0 Sterne ausgewählt
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
+            
+            // Reihe mit 5 auswählbaren Sternen
             StarRow(
                 modifier = Modifier,
                 rating = rating_1,
@@ -164,11 +170,14 @@ fun FeedbackComponent(navController: NavController) {
               color = lightText,
           )
           Row(
-              // modifier = Modifier.fillMaxSize(),
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.SpaceBetween,
           ) {
+            
+            // Startanzeige - 0 Sterne ausgewählt
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
+            
+            // Reihe mit 5 auswählbaren Sternen
             StarRow(
                 modifier = Modifier,
                 rating = rating_1,
@@ -191,11 +200,13 @@ fun FeedbackComponent(navController: NavController) {
               color = lightText,
           )
           Row(
-              // modifier = Modifier.fillMaxSize(),
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.SpaceBetween,
           ) {
+            
+            // Startanzeige - 0 Sterne ausgewählt
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
+            // Reihe mit 5 auswählbaren Sternen
             StarRow(
                 modifier = Modifier,
                 rating = rating_1,
@@ -221,7 +232,11 @@ fun FeedbackComponent(navController: NavController) {
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.SpaceBetween,
           ) {
+
+            // Startanzeige - 0 Sterne ausgewählt
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
+            
+            // Reihe mit 5 auswählbaren Sternen
             StarRow(
                 modifier = Modifier,
                 rating = rating_1,
@@ -255,7 +270,7 @@ fun FeedbackComponent(navController: NavController) {
     ///// HIER SOLL DAS DROP DOWN HIN
     PetProfileDropdown()
 
-    // Button (Feeedback absenden)
+    // Button (Feedback absenden)
     Row(
         modifier = Modifier.fillMaxWidth().padding(20.dp),
         verticalAlignment = Alignment.CenterVertically,
