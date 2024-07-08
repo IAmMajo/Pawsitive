@@ -2,7 +2,6 @@ package ui.components
 
 import PetProfileDropdown
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -40,8 +39,8 @@ import pawsitive.composeapp.generated.resources.praxis
 import ui.theme.PraxisCardModifier
 import ui.theme.ProfilePictureModifier
 import ui.theme.greenTextColor
-import ui.theme.secondaryIconColor
 import ui.theme.lightText
+import ui.theme.secondaryIconColor
 import ui.theme.textFieldColor
 
 // aus ListEntry.kt + abgeändert
@@ -85,8 +84,7 @@ fun FeedbackComponent(navController: NavController) {
                               text = "Kleintierpraxis Tatze",
                               fontSize = 20.sp,
                               fontWeight = FontWeight.Bold,
-                              color = secondaryIconColor
-                          )
+                              color = secondaryIconColor)
                           Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
                                 Icons.Rounded.Place,
@@ -96,7 +94,8 @@ fun FeedbackComponent(navController: NavController) {
                             Text(
                                 text = "Fantasiestraße 4, Basel",
                                 fontWeight = FontWeight.Medium,
-                                color = secondaryIconColor,)
+                                color = secondaryIconColor,
+                            )
                           }
                         }
                   }
@@ -110,9 +109,18 @@ fun FeedbackComponent(navController: NavController) {
                     tint = secondaryIconColor,
                     modifier = Modifier.padding(start = 2.dp))
                 Column {
-                  Text(text = "Öffnungszeiten", fontWeight = FontWeight.Medium, color = secondaryIconColor)
-                  Text(text = "Mo-Fr: 8-13Uhr", fontWeight = FontWeight.Medium, color = secondaryIconColor)
-                  Text(text = "Di, Do: 15-18Uhr", fontWeight = FontWeight.Medium, color = secondaryIconColor)
+                  Text(
+                      text = "Öffnungszeiten",
+                      fontWeight = FontWeight.Medium,
+                      color = secondaryIconColor)
+                  Text(
+                      text = "Mo-Fr: 8-13Uhr",
+                      fontWeight = FontWeight.Medium,
+                      color = secondaryIconColor)
+                  Text(
+                      text = "Di, Do: 15-18Uhr",
+                      fontWeight = FontWeight.Medium,
+                      color = secondaryIconColor)
                 }
               }
 
@@ -122,7 +130,11 @@ fun FeedbackComponent(navController: NavController) {
                     contentDescription = "Distance Icon",
                     tint = secondaryIconColor,
                     modifier = Modifier.padding(start = 2.dp))
-                Text(text = "10,4km", fontWeight = FontWeight.Medium, color = secondaryIconColor,)                
+                Text(
+                    text = "10,4km",
+                    fontWeight = FontWeight.Medium,
+                    color = secondaryIconColor,
+                )
               }
             }
           }
@@ -260,13 +272,13 @@ fun FeedbackComponent(navController: NavController) {
         modifier = Modifier.fillMaxWidth().padding(20.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
-        ) {
-          Button(
-              onClick = { navController.navigate(Screen.Completed.name) },
-              modifier = Modifier.fillMaxWidth(),
-          ) {
-            Text("Senden")
-          }
-        }
+    ) {
+      Button(
+          onClick = { navController.navigate(Screen.Completed.name) },
+          modifier = Modifier.fillMaxWidth(),
+      ) {
+        Text("Senden")
+      }
+    }
   }
 }
