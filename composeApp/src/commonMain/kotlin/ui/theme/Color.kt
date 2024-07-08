@@ -39,9 +39,7 @@ val surfaceContainerLight = Color(0xFFFFFFFF)
 val surfaceContainerHighLight = Color(0xFFEBE7E7)
 val surfaceContainerHighestLight = Color(0xFFE5E2E1)
 
-
 ////
-
 
 val cardColor = Color.White
 val shadowColor = Color(0xff3a3a3a)
