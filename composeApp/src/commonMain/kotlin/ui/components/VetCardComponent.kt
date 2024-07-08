@@ -54,9 +54,9 @@ fun VetCardComponent() {
                           fontSize = 20.sp,
                           fontWeight = FontWeight.Bold,
                           color = secondaryIconColor)
-                      
-                    // Spezialisierung des Tierarztes
-                    Row(modifier = Modifier.padding(start = 2.dp, top = 2.dp)) {
+
+                      // Spezialisierung des Tierarztes
+                      Row(modifier = Modifier.padding(start = 2.dp, top = 2.dp)) {
                         Icon(
                             Icons.Rounded.Pets,
                             contentDescription = "Paw Icon",
@@ -75,7 +75,7 @@ fun VetCardComponent() {
             horizontalAlignment = Alignment.Start,
             modifier = Modifier.padding(top = 7.dp) // padding ergänzt
             ) {
-              
+
               // PraxisName
               Row {
                 Icon(
@@ -88,7 +88,7 @@ fun VetCardComponent() {
                     fontWeight = FontWeight.SemiBold,
                     color = secondaryIconColor)
               }
-              
+
               // Addresse
               Row {
                 Icon(
@@ -101,7 +101,7 @@ fun VetCardComponent() {
                     fontWeight = FontWeight.Medium,
                     color = secondaryIconColor)
               }
-            
+
               // Entfernung
               Row {
                 Icon(
