@@ -15,7 +15,10 @@ const schema = a.schema({
       ratings: a.hasMany("VetRating", "vetId"),
       favorites: a.hasMany("Favorite", "vetId"),
     })
-    .authorization((allow) => [allow.guest().to(["read"])]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.authenticated().to(["read"]),
+    ]),
   Clinic: a
     .model({
       name: a.string().required(),
@@ -34,7 +37,10 @@ const schema = a.schema({
       vets: a.hasMany("Vet", "clinicId"),
       ratings: a.hasMany("ClinicRating", "clinicId"),
     })
-    .authorization((allow) => [allow.guest().to(["read"])]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.authenticated().to(["read"]),
+    ]),
   VetRating: a
     .model({
       vetId: a.id().required(),
@@ -53,10 +59,15 @@ const schema = a.schema({
         .required()
         .authorization((allow) => [
           allow.guest().to(["read"]),
+          allow.authenticated().to(["read"]),
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.authenticated().to(["read"]),
+      allow.owner(),
+    ]),
   Favorite: a
     .model({
       vetId: a.id().required(),
@@ -84,10 +95,15 @@ const schema = a.schema({
         .required()
         .authorization((allow) => [
           allow.guest().to(["read"]),
+          allow.authenticated().to(["read"]),
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.authenticated().to(["read"]),
+      allow.owner(),
+    ]),
   VetRatingService: a
     .model({
       ratingId: a.id().required(),
@@ -99,10 +115,15 @@ const schema = a.schema({
         .required()
         .authorization((allow) => [
           allow.guest().to(["read"]),
+          allow.authenticated().to(["read"]),
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.authenticated().to(["read"]),
+      allow.owner(),
+    ]),
   VetRatingPet: a
     .model({
       ratingId: a.id().required(),
@@ -114,10 +135,15 @@ const schema = a.schema({
         .required()
         .authorization((allow) => [
           allow.guest().to(["read"]),
+          allow.authenticated().to(["read"]),
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.authenticated().to(["read"]),
+      allow.owner(),
+    ]),
   ClinicRatingPet: a
     .model({
       ratingId: a.id().required(),
@@ -129,10 +155,15 @@ const schema = a.schema({
         .required()
         .authorization((allow) => [
           allow.guest().to(["read"]),
+          allow.authenticated().to(["read"]),
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.authenticated().to(["read"]),
+      allow.owner(),
+    ]),
   Service: a
     .model({
       id: a.string().required(),
@@ -141,7 +172,10 @@ const schema = a.schema({
       category: a.belongsTo("ServiceCategory", "categoryId"),
       ratings: a.hasMany("VetRatingService", "serviceNumber"),
     })
-    .authorization((allow) => [allow.guest().to(["read"])]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.authenticated().to(["read"]),
+    ]),
   Pet: a
     .model({
       name: a.string().required(),
@@ -156,10 +190,15 @@ const schema = a.schema({
         .required()
         .authorization((allow) => [
           allow.guest().to(["read"]),
+          allow.authenticated().to(["read"]),
           allow.owner().to(["read", "delete"]),
         ]),
     })
-    .authorization((allow) => [allow.guest().to(["read"]), allow.owner()]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.authenticated().to(["read"]),
+      allow.owner(),
+    ]),
   ServiceCategory: a
     .model({
       name: a.string().required(),
@@ -168,7 +207,10 @@ const schema = a.schema({
       childCategories: a.hasMany("ServiceCategory", "parentCategoryId"),
       services: a.hasMany("Service", "categoryId"),
     })
-    .authorization((allow) => [allow.guest().to(["read"])]),
+    .authorization((allow) => [
+      allow.guest().to(["read"]),
+      allow.authenticated().to(["read"]),
+    ]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
