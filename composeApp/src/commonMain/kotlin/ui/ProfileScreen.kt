@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -33,6 +34,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import pawsitive.composeapp.generated.resources.Res
 import pawsitive.composeapp.generated.resources.gecko
+import pawsitive.composeapp.generated.resources.Illustration
 import pawsitive.composeapp.generated.resources.logged_in_as
 import pawsitive.composeapp.generated.resources.login
 import pawsitive.composeapp.generated.resources.login_or_register
@@ -47,7 +49,12 @@ fun ProfileScreen(navController: NavController) {
   val viewModel = viewModel { ProfileViewModel() }
   val uiState by viewModel.uiState.collectAsState()
   LaunchedEffect(true) { viewModel.load() }
-  Column {
+  Column(
+    horizontalAlignment = Alignment.CenterHorizontally,
+    verticalArrangement = Arrangement.Center,
+    modifier = Modifier
+      .fillMaxHeight()
+  ) {
     if (uiState.loading) {
       if (uiState.logout) {
         LaunchedEffect(true) { viewModel.executeLogout() }
@@ -55,12 +62,25 @@ fun ProfileScreen(navController: NavController) {
       CircularProgressIndicator()
     } else {
       if (uiState.email.isEmpty()) {
-        Text(stringResource(Res.string.login_or_register))
-        Row {
-          Button({ navController.navigate(Screen.Login.name) }) {
+        Text(
+          textAlign = TextAlign.Center,
+          fontWeight = FontWeight.Bold,
+          text = stringResource(Res.string.login_or_register))
+        Image(
+          painter = painterResource(Res.drawable.Illustration),
+          contentDescription = "Beschreibung",
+          modifier = Modifier.size(320.dp)
+        )
+        Row (
+          verticalAlignment = Alignment.CenterVertically,
+          horizontalArrangement = Arrangement.Center,
+          modifier = Modifier.fillMaxWidth()
+        ) {
+          Button(
+            { navController.navigate(Screen.Login.name) }, modifier = Modifier.padding(horizontal = 5.dp)) {
             Text(stringResource(Res.string.login))
           }
-          Button({}) { Text(stringResource(Res.string.register)) }
+          Button({}, modifier = Modifier.padding(horizontal = 5.dp) ) { Text(stringResource(Res.string.register)) }
         }
       } else {
         Text("${stringResource(Res.string.logged_in_as)}: ${uiState.email}")

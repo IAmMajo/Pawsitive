@@ -1,6 +1,9 @@
 package ui
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -12,8 +15,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import org.jetbrains.compose.resources.stringResource
@@ -31,7 +37,12 @@ import ui.theme.textFieldColor
 fun LoginScreen(navController: NavController) {
   val viewModel = viewModel { LoginViewModel(navController) }
   val uiState by viewModel.uiState.collectAsState()
-  Column {
+  Column(
+    verticalArrangement = Arrangement.Center,
+    horizontalAlignment = Alignment.CenterHorizontally,
+    modifier = Modifier
+      .fillMaxSize()
+  ) {
     if (uiState.loading) {
       LaunchedEffect(true) { viewModel.login() }
       CircularProgressIndicator()
@@ -41,6 +52,7 @@ fun LoginScreen(navController: NavController) {
       }
       OutlinedTextField(
           uiState.email,
+          modifier = Modifier.padding(vertical = 5.dp),
           onValueChange = { viewModel.updateEmail(it) },
           label = { Text(stringResource(Res.string.email)) },
           keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
@@ -55,6 +67,7 @@ fun LoginScreen(navController: NavController) {
       )
       OutlinedTextField(
           uiState.password,
+          modifier = Modifier.padding(vertical = 5.dp),
           onValueChange = { viewModel.updatePassword(it) },
           label = { Text(stringResource(Res.string.password)) },
           visualTransformation = PasswordVisualTransformation(),
@@ -68,7 +81,7 @@ fun LoginScreen(navController: NavController) {
                   focusedLabelColor = greenTextColor,
               ),
       )
-      Button({ viewModel.startLoading() }) { Text(stringResource(Res.string.login)) }
+      Button({ viewModel.startLoading() },modifier = Modifier.padding(vertical = 5.dp)) { Text(stringResource(Res.string.login)) }
     }
   }
 }
