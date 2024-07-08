@@ -12,7 +12,6 @@ import ui.components.FeedbackComponent
 @Composable
 @Preview
 fun RateScreen(navController: NavController) {
-
   Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
     FeedbackComponent(navController)
   }

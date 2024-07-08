@@ -45,12 +45,7 @@ fun VetRatingComponent() {
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
         // Reihe mit 5 auswählbaren Sternen
-        StarRow(
-            modifier = Modifier,
-            rating = rating_1,
-        ) {
-          rating_1 = it
-        }
+        StarRow(modifier = Modifier, rating = rating_1) { rating_1 = it }
       }
     }
     /// Rating Behandlung
@@ -74,12 +69,7 @@ fun VetRatingComponent() {
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
         // Reihe mit 5 auswählbaren Sternen
-        StarRow(
-            modifier = Modifier,
-            rating = rating_1,
-        ) {
-          rating_1 = it
-        }
+        StarRow(modifier = Modifier, rating = rating_1) { rating_1 = it }
       }
     }
 
@@ -100,12 +90,7 @@ fun VetRatingComponent() {
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
         // Reihe mit 5 auswählbaren Sternen
-        StarRow(
-            modifier = Modifier,
-            rating = rating_1,
-        ) {
-          rating_1 = it
-        }
+        StarRow(modifier = Modifier, rating = rating_1) { rating_1 = it }
       }
     }
 
@@ -126,12 +111,7 @@ fun VetRatingComponent() {
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
         // Reihe mit 5 auswählbaren Sternen
-        StarRow(
-            modifier = Modifier,
-            rating = rating_1,
-        ) {
-          rating_1 = it
-        }
+        StarRow(modifier = Modifier, rating = rating_1) { rating_1 = it }
       }
     }
 
@@ -152,12 +132,7 @@ fun VetRatingComponent() {
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
         // Reihe mit 5 auswählbaren Sternen
-        StarRow(
-            modifier = Modifier,
-            rating = rating_1,
-        ) {
-          rating_1 = it
-        }
+        StarRow(modifier = Modifier, rating = rating_1) { rating_1 = it }
       }
     }
 
@@ -178,12 +153,7 @@ fun VetRatingComponent() {
         var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
         // Reihe mit 5 auswählbaren Sternen
-        StarRow(
-            modifier = Modifier,
-            rating = rating_1,
-        ) {
-          rating_1 = it
-        }
+        StarRow(modifier = Modifier, rating = rating_1) { rating_1 = it }
       }
     }
 

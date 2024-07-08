@@ -52,119 +52,121 @@ fun ProfileScreen(navController: NavController) {
   Column(
       horizontalAlignment = Alignment.CenterHorizontally,
       verticalArrangement = Arrangement.Center,
-      modifier = Modifier.fillMaxHeight()) {
-        if (uiState.loading) {
-          if (uiState.logout) {
-            LaunchedEffect(true) { viewModel.executeLogout() }
+      modifier = Modifier.fillMaxHeight(),
+  ) {
+    if (uiState.loading) {
+      if (uiState.logout) {
+        LaunchedEffect(true) { viewModel.executeLogout() }
+      }
+      CircularProgressIndicator()
+    } else {
+      if (uiState.email.isEmpty()) {
+        Text(
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            text = stringResource(Res.string.login_or_register),
+        )
+        Image(
+            painter = painterResource(Res.drawable.Illustration),
+            contentDescription = "Beschreibung",
+            modifier = Modifier.size(320.dp),
+        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+          Button(
+              { navController.navigate(Screen.Login.name) },
+              modifier = Modifier.padding(horizontal = 5.dp),
+          ) {
+            Text(stringResource(Res.string.login))
           }
-          CircularProgressIndicator()
-        } else {
-          if (uiState.email.isEmpty()) {
-            Text(
-                textAlign = TextAlign.Center,
-                fontWeight = FontWeight.Bold,
-                text = stringResource(Res.string.login_or_register))
-            Image(
-                painter = painterResource(Res.drawable.Illustration),
-                contentDescription = "Beschreibung",
-                modifier = Modifier.size(320.dp))
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier.fillMaxWidth()) {
-                  Button(
-                      { navController.navigate(Screen.Login.name) },
-                      modifier = Modifier.padding(horizontal = 5.dp)) {
-                        Text(stringResource(Res.string.login))
-                      }
-                  Button({}, modifier = Modifier.padding(horizontal = 5.dp)) {
-                    Text(stringResource(Res.string.register))
-                  }
-                }
-          } else {
-            Text("${stringResource(Res.string.logged_in_as)}: ${uiState.email}")
-            Button({ viewModel.startLogout() }) { Text(stringResource(Res.string.logout)) }
-            uiState.pets.forEach {
-              var petImageUrl by remember { mutableStateOf("") }
-              LaunchedEffect(true) { petImageUrl = it.getImageUrl() }
-              Box(
-                  modifier =
-                      Modifier.height(250.dp)
-                          .clip(RoundedCornerShape(8.dp))
-                          .padding(5.dp)
-                          .fillMaxWidth(),
-              ) {
-                AsyncImage(
-                    model =
-                        ImageRequest.Builder(LocalPlatformContext.current)
-                            .data(petImageUrl)
-                            .crossfade(true)
-                            .build(),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(8.dp)),
-                    contentScale = ContentScale.Crop,
-                    placeholder = painterResource(Res.drawable.pet_placeholder),
-                    error = painterResource(Res.drawable.pet_placeholder),
-                )
-                Column(
-                    verticalArrangement = Arrangement.Bottom,
-                    horizontalAlignment = Alignment.Start,
-                    modifier = Modifier.fillMaxSize(),
-                ) {
-                  Text(
-                      text = "${it.name} (${it.age} ${stringResource(Res.string.years_old)})",
-                      color = Color.LightGray,
-                      fontWeight = FontWeight.Bold,
-                      fontSize = 22.sp,
-                      modifier = Modifier.padding(horizontal = 16.dp),
-                  )
-                  Text(
-                      text = it.species,
-                      color = Color.LightGray,
-                      fontWeight = FontWeight.SemiBold,
-                      fontSize = 18.sp,
-                      modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 6.dp),
-                  )
-                }
-              }
-            }
-            Box(
-                modifier =
-                    Modifier.height(250.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                        .padding(5.dp)
-                        .fillMaxWidth(),
+          Button({}, modifier = Modifier.padding(horizontal = 5.dp)) {
+            Text(stringResource(Res.string.register))
+          }
+        }
+      } else {
+        Text("${stringResource(Res.string.logged_in_as)}: ${uiState.email}")
+        Button({ viewModel.startLogout() }) { Text(stringResource(Res.string.logout)) }
+        uiState.pets.forEach {
+          var petImageUrl by remember { mutableStateOf("") }
+          LaunchedEffect(true) { petImageUrl = it.getImageUrl() }
+          Box(
+              modifier =
+                  Modifier.height(250.dp)
+                      .clip(RoundedCornerShape(8.dp))
+                      .padding(5.dp)
+                      .fillMaxWidth(),
+          ) {
+            AsyncImage(
+                model =
+                    ImageRequest.Builder(LocalPlatformContext.current)
+                        .data(petImageUrl)
+                        .crossfade(true)
+                        .build(),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop,
+                placeholder = painterResource(Res.drawable.pet_placeholder),
+                error = painterResource(Res.drawable.pet_placeholder),
+            )
+            Column(
+                verticalArrangement = Arrangement.Bottom,
+                horizontalAlignment = Alignment.Start,
+                modifier = Modifier.fillMaxSize(),
             ) {
-              Image(
-                  painter = painterResource(Res.drawable.gecko),
-                  contentDescription = null,
-                  contentScale = ContentScale.Crop,
-                  modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(8.dp)),
+              Text(
+                  text = "${it.name} (${it.age} ${stringResource(Res.string.years_old)})",
+                  color = Color.LightGray,
+                  fontWeight = FontWeight.Bold,
+                  fontSize = 22.sp,
+                  modifier = Modifier.padding(horizontal = 16.dp),
               )
-              Column(
-                  verticalArrangement = Arrangement.Bottom,
-                  horizontalAlignment = Alignment.Start,
-                  modifier = Modifier.fillMaxSize(),
-              ) {
-                Text(
-                    text = "Thomas (19 Jahre alt)",
-                    color = Color.LightGray,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 22.sp,
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                )
-                Text(
-                    text = "Stirnlappenbasilisk",
-                    color = Color.LightGray,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 18.sp,
-                    modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 6.dp),
-                )
-              }
+              Text(
+                  text = it.species,
+                  color = Color.LightGray,
+                  fontWeight = FontWeight.SemiBold,
+                  fontSize = 18.sp,
+                  modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 6.dp),
+              )
             }
           }
         }
+        Box(
+            modifier =
+                Modifier.height(250.dp).clip(RoundedCornerShape(8.dp)).padding(5.dp).fillMaxWidth(),
+        ) {
+          Image(
+              painter = painterResource(Res.drawable.gecko),
+              contentDescription = null,
+              contentScale = ContentScale.Crop,
+              modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(8.dp)),
+          )
+          Column(
+              verticalArrangement = Arrangement.Bottom,
+              horizontalAlignment = Alignment.Start,
+              modifier = Modifier.fillMaxSize(),
+          ) {
+            Text(
+                text = "Thomas (19 Jahre alt)",
+                color = Color.LightGray,
+                fontWeight = FontWeight.Bold,
+                fontSize = 22.sp,
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
+            Text(
+                text = "Stirnlappenbasilisk",
+                color = Color.LightGray,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 18.sp,
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 6.dp),
+            )
+          }
+        }
       }
+    }
+  }
 }
 
 // Hier könnte man dann auch die Ärzte eintragen, die man bereits besucht hat

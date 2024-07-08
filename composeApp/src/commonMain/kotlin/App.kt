@@ -64,7 +64,8 @@ fun App() {
                   navController.navigate(Screen.Search.name)
                 },
                 icon = { Icon(Icons.Rounded.Search, stringResource(Res.string.search)) },
-                label = { Text(stringResource(Res.string.search)) })
+                label = { Text(stringResource(Res.string.search)) },
+            )
             NavigationBarItem(
                 selected = uiState.section === Screen.Rate,
                 onClick = {
@@ -72,7 +73,8 @@ fun App() {
                   navController.navigate(Screen.Rate.name)
                 },
                 icon = { Icon(Icons.Rounded.Star, stringResource(Res.string.rate)) },
-                label = { Text(stringResource(Res.string.rate)) })
+                label = { Text(stringResource(Res.string.rate)) },
+            )
             NavigationBarItem(
                 selected = uiState.section === Screen.Map,
                 onClick = {
@@ -80,7 +82,8 @@ fun App() {
                   navController.navigate(Screen.Map.name)
                 },
                 icon = { Icon(Icons.Rounded.Place, stringResource(Res.string.map)) },
-                label = { Text(stringResource(Res.string.map)) })
+                label = { Text(stringResource(Res.string.map)) },
+            )
             NavigationBarItem(
                 selected = uiState.section === Screen.Profile,
                 onClick = {
@@ -88,27 +91,29 @@ fun App() {
                   navController.navigate(Screen.Profile.name)
                 },
                 icon = { Icon(Icons.Rounded.Pets, stringResource(Res.string.profile)) },
-                label = { Text(stringResource(Res.string.profile)) })
+                label = { Text(stringResource(Res.string.profile)) },
+            )
           }
-        }) {
-          NavHost(
-              navController = navController,
-              startDestination = Screen.Search.name,
-              modifier = Modifier.padding(it),
-          ) {
-            composable(route = Screen.Search.name) { SearchScreen(navController) }
-            composable(route = Screen.Rate.name) { RateScreen(navController) }
-            composable(route = Screen.Map.name) { MapScreen() }
-            composable(route = Screen.Profile.name) { ProfileScreen(navController) }
-            composable(
-                route = "${Screen.Clinic.name}/{clinicId}",
-                arguments = listOf(navArgument("clinicId") {}),
-            ) { backStackEntry ->
-              ClinicScreen(navController, backStackEntry.arguments!!.getString("clinicId")!!)
-            }
-            composable(route = Screen.Login.name) { LoginScreen(navController) }
-            composable(route = Screen.Completed.name) { CompletedRateScreen() }
-          }
+        },
+    ) {
+      NavHost(
+          navController = navController,
+          startDestination = Screen.Search.name,
+          modifier = Modifier.padding(it),
+      ) {
+        composable(route = Screen.Search.name) { SearchScreen(navController) }
+        composable(route = Screen.Rate.name) { RateScreen(navController) }
+        composable(route = Screen.Map.name) { MapScreen() }
+        composable(route = Screen.Profile.name) { ProfileScreen(navController) }
+        composable(
+            route = "${Screen.Clinic.name}/{clinicId}",
+            arguments = listOf(navArgument("clinicId") {}),
+        ) { backStackEntry ->
+          ClinicScreen(navController, backStackEntry.arguments!!.getString("clinicId")!!)
         }
+        composable(route = Screen.Login.name) { LoginScreen(navController) }
+        composable(route = Screen.Completed.name) { CompletedRateScreen() }
+      }
+    }
   }
 }

@@ -38,35 +38,40 @@ fun PetProfileDropdown() {
       listOf(
           Pair("Fridolin", Res.drawable.gecko),
           Pair("Richard", Res.drawable.pfau),
-          Pair("Bella", Res.drawable.hundewelpe))
+          Pair("Bella", Res.drawable.hundewelpe),
+      )
 
   Row(modifier = Modifier.padding(start = 22.dp, top = 22.dp, end = 12.dp).fillMaxWidth()) {
     Image(
         painter = painterResource(selectedPet.second),
         contentDescription = "MockImagePetProfile",
         contentScale = ContentScale.Crop,
-        modifier = ProfilePictureModifier)
+        modifier = ProfilePictureModifier,
+    )
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxWidth().height(60.dp).clickable { expanded = true }) {
-          Text(
-              text = selectedPet.first,
-              color = subHeadingColor,
-              fontSize = 18.sp,
-              fontWeight = FontWeight.Bold,
-              modifier = Modifier.padding(start = 5.dp))
-          Button(
-              onClick = { expanded = true },
-              colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
-          ) {
-            Icon(
-                Icons.Rounded.ArrowDropDown,
-                contentDescription = "Arrow Drop Down Icon",
-                tint = starNotSelectedColor,
-                modifier = Modifier.clip(RoundedCornerShape(50f)).background(Color.LightGray))
-          }
-        }
+        modifier = Modifier.fillMaxWidth().height(60.dp).clickable { expanded = true },
+    ) {
+      Text(
+          text = selectedPet.first,
+          color = subHeadingColor,
+          fontSize = 18.sp,
+          fontWeight = FontWeight.Bold,
+          modifier = Modifier.padding(start = 5.dp),
+      )
+      Button(
+          onClick = { expanded = true },
+          colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+      ) {
+        Icon(
+            Icons.Rounded.ArrowDropDown,
+            contentDescription = "Arrow Drop Down Icon",
+            tint = starNotSelectedColor,
+            modifier = Modifier.clip(RoundedCornerShape(50f)).background(Color.LightGray),
+        )
+      }
+    }
     DropdownMenu(
         expanded = expanded,
         onDismissRequest = { expanded = false },
@@ -77,7 +82,8 @@ fun PetProfileDropdown() {
               selectedPet = pet
               expanded = false
             },
-            text = { Text(text = pet.first) })
+            text = { Text(text = pet.first) },
+        )
       }
     }
   }

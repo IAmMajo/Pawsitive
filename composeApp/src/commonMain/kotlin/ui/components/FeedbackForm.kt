@@ -61,85 +61,95 @@ fun FeedbackComponent(navController: NavController) {
       ////// Praxis Info-Card //////
       Column(
           modifier =
-              PraxisCardModifier.padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp)) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth()) {
-                  // PraxisBild + Name
-                  Row(verticalAlignment = Alignment.CenterVertically) {
-                    Image(
-                        painter = painterResource(Res.drawable.praxis),
-                        contentDescription = "MockImage",
-                        contentScale = ContentScale.Crop,
-                        modifier = ProfilePictureModifier)
-                    Column(
-                        verticalArrangement = Arrangement.Center,
-                        modifier = Modifier.padding(start = 5.dp)) {
-                          Text(
-                              modifier = Modifier.padding(start = 5.dp),
-                              text = "Kleintierpraxis Tatze",
-                              fontSize = 20.sp,
-                              fontWeight = FontWeight.Bold,
-                              color = secondaryIconColor,
-                          )
-                          // Adresse
-                          Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                Icons.Rounded.Place,
-                                contentDescription = "Map-Pin Icon",
-                                tint = secondaryIconColor,
-                                modifier = Modifier.padding(start = 2.dp))
-                            Text(
-                                text = "Fantasiestraße 4, Basel",
-                                fontWeight = FontWeight.Medium,
-                                color = secondaryIconColor,
-                            )
-                          }
-                        }
-                  }
-                }
-            // weitere Angaben zur Praxis (in der Praxis-Info-Card) //
-            Column(horizontalAlignment = Alignment.Start, modifier = Modifier.padding(top = 7.dp)) {
-
-              // Öffnungszeiten
-              Row {
+              PraxisCardModifier.padding(start = 10.dp, end = 10.dp, top = 15.dp, bottom = 15.dp),
+      ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+          // PraxisBild + Name
+          Row(verticalAlignment = Alignment.CenterVertically) {
+            Image(
+                painter = painterResource(Res.drawable.praxis),
+                contentDescription = "MockImage",
+                contentScale = ContentScale.Crop,
+                modifier = ProfilePictureModifier,
+            )
+            Column(
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier.padding(start = 5.dp),
+            ) {
+              Text(
+                  modifier = Modifier.padding(start = 5.dp),
+                  text = "Kleintierpraxis Tatze",
+                  fontSize = 20.sp,
+                  fontWeight = FontWeight.Bold,
+                  color = secondaryIconColor,
+              )
+              // Adresse
+              Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    Icons.Rounded.DateRange,
-                    contentDescription = "Calender Icon",
+                    Icons.Rounded.Place,
+                    contentDescription = "Map-Pin Icon",
                     tint = secondaryIconColor,
-                    modifier = Modifier.padding(start = 2.dp))
-                Column {
-                  Text(
-                      text = "Öffnungszeiten",
-                      fontWeight = FontWeight.Medium,
-                      color = secondaryIconColor)
-                  Text(
-                      text = "Mo-Fr: 8-13Uhr",
-                      fontWeight = FontWeight.Medium,
-                      color = secondaryIconColor)
-                  Text(
-                      text = "Di, Do: 15-18Uhr",
-                      fontWeight = FontWeight.Medium,
-                      color = secondaryIconColor)
-                }
-              }
-
-              // Entfernung
-              Row {
-                Icon(
-                    Icons.Rounded.NearMe,
-                    contentDescription = "Distance Icon",
-                    tint = secondaryIconColor,
-                    modifier = Modifier.padding(start = 2.dp))
+                    modifier = Modifier.padding(start = 2.dp),
+                )
                 Text(
-                    text = "10,4km",
+                    text = "Fantasiestraße 4, Basel",
                     fontWeight = FontWeight.Medium,
                     color = secondaryIconColor,
                 )
               }
             }
           }
+        }
+        // weitere Angaben zur Praxis (in der Praxis-Info-Card) //
+        Column(horizontalAlignment = Alignment.Start, modifier = Modifier.padding(top = 7.dp)) {
+
+          // Öffnungszeiten
+          Row {
+            Icon(
+                Icons.Rounded.DateRange,
+                contentDescription = "Calender Icon",
+                tint = secondaryIconColor,
+                modifier = Modifier.padding(start = 2.dp),
+            )
+            Column {
+              Text(
+                  text = "Öffnungszeiten",
+                  fontWeight = FontWeight.Medium,
+                  color = secondaryIconColor,
+              )
+              Text(
+                  text = "Mo-Fr: 8-13Uhr",
+                  fontWeight = FontWeight.Medium,
+                  color = secondaryIconColor,
+              )
+              Text(
+                  text = "Di, Do: 15-18Uhr",
+                  fontWeight = FontWeight.Medium,
+                  color = secondaryIconColor,
+              )
+            }
+          }
+
+          // Entfernung
+          Row {
+            Icon(
+                Icons.Rounded.NearMe,
+                contentDescription = "Distance Icon",
+                tint = secondaryIconColor,
+                modifier = Modifier.padding(start = 2.dp),
+            )
+            Text(
+                text = "10,4km",
+                fontWeight = FontWeight.Medium,
+                color = secondaryIconColor,
+            )
+          }
+        }
+      }
 
       //// Praxis Rating-Section ////
       Column(modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)) {
@@ -160,12 +170,7 @@ fun FeedbackComponent(navController: NavController) {
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
             // Reihe mit 5 auswählbaren Sternen
-            StarRow(
-                modifier = Modifier,
-                rating = rating_1,
-            ) {
-              rating_1 = it
-            }
+            StarRow(modifier = Modifier, rating = rating_1) { rating_1 = it }
           }
         }
 
@@ -189,12 +194,7 @@ fun FeedbackComponent(navController: NavController) {
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
             // Reihe mit 5 auswählbaren Sternen
-            StarRow(
-                modifier = Modifier,
-                rating = rating_1,
-            ) {
-              rating_1 = it
-            }
+            StarRow(modifier = Modifier, rating = rating_1) { rating_1 = it }
           }
         }
 
@@ -218,12 +218,7 @@ fun FeedbackComponent(navController: NavController) {
             // Startanzeige - 0 Sterne ausgewählt
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
             // Reihe mit 5 auswählbaren Sternen
-            StarRow(
-                modifier = Modifier,
-                rating = rating_1,
-            ) {
-              rating_1 = it
-            }
+            StarRow(modifier = Modifier, rating = rating_1) { rating_1 = it }
           }
         }
 
@@ -248,12 +243,7 @@ fun FeedbackComponent(navController: NavController) {
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
 
             // Reihe mit 5 auswählbaren Sternen
-            StarRow(
-                modifier = Modifier,
-                rating = rating_1,
-            ) {
-              rating_1 = it
-            }
+            StarRow(modifier = Modifier, rating = rating_1) { rating_1 = it }
           }
         }
 

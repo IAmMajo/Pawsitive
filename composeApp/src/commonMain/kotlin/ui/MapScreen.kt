@@ -14,14 +14,14 @@ import pawsitive.composeapp.generated.resources.Res
 @Composable
 @Preview
 fun MapScreen() {
-
   Box() {
     Box(modifier = Modifier.fillMaxSize()) {
       Image(
           painter = painterResource(Res.drawable.Map),
           contentDescription = null,
           contentScale = ContentScale.Crop,
-          modifier = Modifier.fillMaxSize())
+          modifier = Modifier.fillMaxSize(),
+      )
     }
   }
 }

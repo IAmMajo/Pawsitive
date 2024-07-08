@@ -145,7 +145,8 @@ fun ClinicScreen(navController: NavController, clinicId: String) {
                 Icons.Rounded.DateRange,
                 contentDescription = "Calender Icon",
                 tint = iconColor,
-                modifier = Modifier.padding(start = 2.dp))
+                modifier = Modifier.padding(start = 2.dp),
+            )
             Text(text = "Öffnungszeiten:", fontWeight = FontWeight.SemiBold, color = lightText)
           }
 

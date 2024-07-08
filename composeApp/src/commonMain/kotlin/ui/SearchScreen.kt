@@ -55,20 +55,22 @@ fun SearchScreen(navController: NavController) {
                       Icon(Icons.Default.Menu, contentDescription = "Menu", tint = subHeadingColor)
                     }
                   },
-                  colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xfffafafa)))
-            }) {
-              Column(
-                  Modifier.fillMaxWidth().verticalScroll(state).padding(it),
-                  horizontalAlignment = Alignment.CenterHorizontally,
-              ) {
-                Searchbar(viewModel, uiState)
-                if (uiState.loading) {
-                  CircularProgressIndicator()
-                } else {
-                  uiState.results.forEach { vet -> ListEntryComponent(navController, vet) }
-                }
-              }
+                  colors = TopAppBarDefaults.topAppBarColors(containerColor = Color(0xfffafafa)),
+              )
+            },
+        ) {
+          Column(
+              Modifier.fillMaxWidth().verticalScroll(state).padding(it),
+              horizontalAlignment = Alignment.CenterHorizontally,
+          ) {
+            Searchbar(viewModel, uiState)
+            if (uiState.loading) {
+              CircularProgressIndicator()
+            } else {
+              uiState.results.forEach { vet -> ListEntryComponent(navController, vet) }
             }
+          }
+        }
       })
 }
 
@@ -88,7 +90,8 @@ fun DropdownMenuComponent(label: String) {
           readOnly = true,
           label = { Text("Select Item") },
           trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-          modifier = Modifier.menuAnchor())
+          modifier = Modifier.menuAnchor(),
+      )
       ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
         items.forEach { item ->
           DropdownMenuItem(
@@ -96,7 +99,8 @@ fun DropdownMenuComponent(label: String) {
                 selectedText = item
                 expanded = false
               },
-              text = { Text(text = item) })
+              text = { Text(text = item) },
+          )
         }
       }
     }

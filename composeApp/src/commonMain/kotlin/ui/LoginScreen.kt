@@ -40,48 +40,49 @@ fun LoginScreen(navController: NavController) {
   Column(
       verticalArrangement = Arrangement.Center,
       horizontalAlignment = Alignment.CenterHorizontally,
-      modifier = Modifier.fillMaxSize()) {
-        if (uiState.loading) {
-          LaunchedEffect(true) { viewModel.login() }
-          CircularProgressIndicator()
-        } else {
-          if (uiState.error) {
-            Text(stringResource(Res.string.login_error), color = MaterialTheme.colorScheme.error)
-          }
-          OutlinedTextField(
-              uiState.email,
-              modifier = Modifier.padding(vertical = 5.dp),
-              onValueChange = { viewModel.updateEmail(it) },
-              label = { Text(stringResource(Res.string.email)) },
-              keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-              singleLine = true,
-              colors =
-                  OutlinedTextFieldDefaults.colors(
-                      unfocusedBorderColor = textFieldColor,
-                      unfocusedLabelColor = textFieldColor,
-                      focusedBorderColor = greenTextColor,
-                      focusedLabelColor = greenTextColor,
-                  ),
-          )
-          OutlinedTextField(
-              uiState.password,
-              modifier = Modifier.padding(vertical = 5.dp),
-              onValueChange = { viewModel.updatePassword(it) },
-              label = { Text(stringResource(Res.string.password)) },
-              visualTransformation = PasswordVisualTransformation(),
-              keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-              singleLine = true,
-              colors =
-                  OutlinedTextFieldDefaults.colors(
-                      unfocusedBorderColor = textFieldColor,
-                      unfocusedLabelColor = textFieldColor,
-                      focusedBorderColor = greenTextColor,
-                      focusedLabelColor = greenTextColor,
-                  ),
-          )
-          Button({ viewModel.startLoading() }, modifier = Modifier.padding(vertical = 5.dp)) {
-            Text(stringResource(Res.string.login))
-          }
-        }
+      modifier = Modifier.fillMaxSize(),
+  ) {
+    if (uiState.loading) {
+      LaunchedEffect(true) { viewModel.login() }
+      CircularProgressIndicator()
+    } else {
+      if (uiState.error) {
+        Text(stringResource(Res.string.login_error), color = MaterialTheme.colorScheme.error)
       }
+      OutlinedTextField(
+          uiState.email,
+          modifier = Modifier.padding(vertical = 5.dp),
+          onValueChange = { viewModel.updateEmail(it) },
+          label = { Text(stringResource(Res.string.email)) },
+          keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+          singleLine = true,
+          colors =
+              OutlinedTextFieldDefaults.colors(
+                  unfocusedBorderColor = textFieldColor,
+                  unfocusedLabelColor = textFieldColor,
+                  focusedBorderColor = greenTextColor,
+                  focusedLabelColor = greenTextColor,
+              ),
+      )
+      OutlinedTextField(
+          uiState.password,
+          modifier = Modifier.padding(vertical = 5.dp),
+          onValueChange = { viewModel.updatePassword(it) },
+          label = { Text(stringResource(Res.string.password)) },
+          visualTransformation = PasswordVisualTransformation(),
+          keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+          singleLine = true,
+          colors =
+              OutlinedTextFieldDefaults.colors(
+                  unfocusedBorderColor = textFieldColor,
+                  unfocusedLabelColor = textFieldColor,
+                  focusedBorderColor = greenTextColor,
+                  focusedLabelColor = greenTextColor,
+              ),
+      )
+      Button({ viewModel.startLoading() }, modifier = Modifier.padding(vertical = 5.dp)) {
+        Text(stringResource(Res.string.login))
+      }
+    }
+  }
 }

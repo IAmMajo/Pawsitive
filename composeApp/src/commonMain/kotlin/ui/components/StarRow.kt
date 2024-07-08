@@ -21,7 +21,6 @@ fun StarRow(
     stars: Int = 5,
     onRatingChange: (Double) -> Unit
 ) {
-
   Row(
       verticalAlignment = Alignment.CenterVertically,
       horizontalArrangement = Arrangement.SpaceBetween,
