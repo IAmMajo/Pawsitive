@@ -59,7 +59,7 @@ fun FeedbackComponent(navController: NavController) {
     /////// Abschnitt: Bewertung Praxis ///////
 
     Column() {
-      
+
       ////// Praxis Info-Card //////
       Column(
           modifier =
@@ -82,10 +82,10 @@ fun FeedbackComponent(navController: NavController) {
                               modifier = Modifier.padding(start = 5.dp),
                               text = "Kleintierpraxis Tatze",
                               fontSize = 20.sp,
-                              fontWeight = FontWeight.Bold, 
+                              fontWeight = FontWeight.Bold,
                               color = secondaryIconColor,
                           )
-                      // Adresse
+                          // Adresse
                           Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
                                 Icons.Rounded.Place,
@@ -103,7 +103,7 @@ fun FeedbackComponent(navController: NavController) {
                 }
             // weitere Angaben zur Praxis (in der Praxis-Info-Card) //
             Column(horizontalAlignment = Alignment.Start, modifier = Modifier.padding(top = 7.dp)) {
-                            
+
               // Öffnungszeiten
               Row {
                 Icon(
@@ -139,7 +139,6 @@ fun FeedbackComponent(navController: NavController) {
                     fontWeight = FontWeight.Medium,
                     color = secondaryIconColor,
                 )
-
               }
             }
           }
@@ -158,10 +157,10 @@ fun FeedbackComponent(navController: NavController) {
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.SpaceBetween,
           ) {
-            
+
             // Startanzeige - 0 Sterne ausgewählt
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
-            
+
             // Reihe mit 5 auswählbaren Sternen
             StarRow(
                 modifier = Modifier,
@@ -187,10 +186,10 @@ fun FeedbackComponent(navController: NavController) {
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.SpaceBetween,
           ) {
-            
+
             // Startanzeige - 0 Sterne ausgewählt
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
-            
+
             // Reihe mit 5 auswählbaren Sternen
             StarRow(
                 modifier = Modifier,
@@ -217,7 +216,7 @@ fun FeedbackComponent(navController: NavController) {
               verticalAlignment = Alignment.CenterVertically,
               horizontalArrangement = Arrangement.SpaceBetween,
           ) {
-            
+
             // Startanzeige - 0 Sterne ausgewählt
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
             // Reihe mit 5 auswählbaren Sternen
@@ -249,7 +248,7 @@ fun FeedbackComponent(navController: NavController) {
 
             // Startanzeige - 0 Sterne ausgewählt
             var rating_1 by remember { mutableDoubleStateOf(0.0) }
-            
+
             // Reihe mit 5 auswählbaren Sternen
             StarRow(
                 modifier = Modifier,
