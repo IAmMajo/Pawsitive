@@ -23,7 +23,7 @@ import ui.theme.lightText
 import ui.theme.textFieldColor
 
 @Composable
-fun RatingArztComponent() {
+fun VetRatingComponent() {
   Column(modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)) {
 
     // Rating Diagnose

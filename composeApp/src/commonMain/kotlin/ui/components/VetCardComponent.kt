@@ -28,7 +28,7 @@ import ui.theme.ProfilePictureModifierLG
 import ui.theme.secondaryIconColor
 
 @Composable
-fun DoctorCardComponent() {
+fun VetCardComponent() {
   // Info-Card Arzt -> abgeänderte ListEntryComponent()
   Column(
       modifier =
