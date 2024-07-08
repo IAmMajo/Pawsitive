@@ -1,18 +1,41 @@
-This is a Kotlin Multiplatform project targeting Android, Web.
+## Pawsitive
 
-- `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+**Pawsitive** zielt darauf ab, eine Plattform zu schaffen, die Tierhalter und Tierärzte miteinander verbindet, um die bestmögliche tierärztliche Versorgung sicherzustellen. Das Geschäftsmodell des Projekts wird durch verschiedene Schlüsselpartner, Aktivitäten und Ressourcen unterstützt, die eine wertvolle und effiziente Dienstleistung bieten.
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+#### Schlüsselpartner
 
-**Note:** Compose/Web is Experimental and may be changed at any time. Use it only for evaluation purposes.
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
+Zu den wichtigsten Partnern von Pawsitive gehören Tierärzte und ihre Praxen, Anbieter von Ärztedatenbanken und Kartenanbietern, sowie die Tierhalter selbst. Diese Partner spielen eine zentrale Rolle in der Funktionsweise und dem Erfolg der Plattform.
 
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+#### Schlüsselaktivitäten
+
+Die Kernaktivitäten von Pawsitive umfassen die Bereitstellung einer Übersicht über die Spezialisierungen der Tierärzte, eine Kommentarfunktion, die den Austausch von Erfahrungen ermöglicht, und eine Bewertungsfunktion, die den Nutzern hilft, informierte Entscheidungen zu treffen. Diese Aktivitäten stellen sicher, dass die Plattform für die Nutzer nützlich und interaktiv bleibt.
+
+#### Schlüsselressourcen
+
+Die Plattform stützt sich auf essentielle Ressourcen wie umfangreiche Datenbanken, detaillierte Ärzteprofile und Tierprofile. Diese Ressourcen sind entscheidend, um den Nutzern eine präzise und hilfreiche Informationsbasis zu bieten.
+
+#### Werteversprechen
+
+Das Werteversprechen von Pawsitive liegt in der einfachen und schnellen Auffindbarkeit spezialisierter Tierärzte, basierend auf den Bewertungen anderer Nutzer. Durch die Bewertungsfunktion wird konstruktives Feedback ermöglicht, was sowohl neuen Besuchern als auch den Tierärzten selbst zugutekommt. Die Plattform trägt zur Kostenreduzierung bei, indem sie unnötige Besuche vermeidet und die Zeitersparnis durch gezielte Suche fördert.
+
+#### Kundenbeziehungen
+
+Pawsitive legt großen Wert auf die Pflege der Kundenbeziehungen. Dies wird durch direkte Kontaktmöglichkeiten und Automatisierungen erreicht, die die Interaktion zwischen Nutzern und der Plattform erleichtern.
+
+#### Marktkanäle
+
+Der primäre Marktzugang von Pawsitive erfolgt über die eigene App. Diese bietet den Nutzern eine benutzerfreundliche Schnittstelle, um auf die Dienstleistungen zuzugreifen und mit der Community zu interagieren.
+
+#### Kundensegmente
+
+Die Hauptzielgruppen von Pawsitive sind Tierhalter, die nach der besten tierärztlichen Versorgung für ihre Haustiere suchen, und Tierärzte sowie deren Praxen, die ihre Dienstleistungen anbieten und verbessern möchten.
+
+#### Kostenstruktur
+
+Die wesentlichen Kostenpunkte des Projekts umfassen die Arbeitszeit der Beteiligten, die Gebühren für Karten- und Datenbankanbieter sowie die allgemeinen Betriebskosten der Plattform. Diese Investitionen sind notwendig, um die hohe Qualität und Zuverlässigkeit der Dienstleistung zu gewährleisten.
+
+#### Einnahmequellen
+
+Pawsitive generiert Einnahmen hauptsächlich durch Gebühren, die von den Tierärzten gezahlt werden. Diese können dafür zahlen, um höher in der Datenbank gelistet zu werden, auf Bewertungen reagieren zu können oder ihre Praxisseiten individuell zu gestalten. Diese Einnahmemodelle bieten den Tierärzten wertvolle Möglichkeiten zur Selbstpräsentation und Interaktion mit den Nutzern.
+
+Insgesamt bietet Pawsitive eine innovative Lösung zur Verbesserung der tierärztlichen Versorgung und fördert die Zufriedenheit sowohl der Tierhalter als auch der Tierärzte. Die Plattform verbindet moderne Technologien mit den Bedürfnissen der Community und schafft somit einen Mehrwert für alle Beteiligten.
