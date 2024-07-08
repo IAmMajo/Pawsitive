@@ -27,6 +27,7 @@ import pawsitive.composeapp.generated.resources.search
 import ui.AppViewModel
 import ui.ClinicScreen
 import ui.CompletedRateScreen
+import ui.LoginScreen
 import ui.MapScreen
 import ui.ProfileScreen
 import ui.RateScreen
@@ -41,7 +42,8 @@ enum class Screen {
   Map,
   Profile,
   Clinic,
-  Completed
+  Login,
+  Completed,
 }
 
 ////// COMPOSABLE SECTION ///////
@@ -97,13 +99,14 @@ fun App() {
             composable(route = Screen.Search.name) { SearchScreen(navController) }
             composable(route = Screen.Rate.name) { RateScreen(navController) }
             composable(route = Screen.Map.name) { MapScreen() }
-            composable(route = Screen.Profile.name) { ProfileScreen() }
+            composable(route = Screen.Profile.name) { ProfileScreen(navController) }
             composable(
                 route = "${Screen.Clinic.name}/{clinicId}",
                 arguments = listOf(navArgument("clinicId") {}),
             ) { backStackEntry ->
               ClinicScreen(navController, backStackEntry.arguments!!.getString("clinicId")!!)
             }
+            composable(route = Screen.Login.name) { LoginScreen(navController) }
             composable(route = Screen.Completed.name) { CompletedRateScreen() }
           }
         }
