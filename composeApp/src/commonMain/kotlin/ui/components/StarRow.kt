@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.StarBorder
+import androidx.compose.material.icons.rounded.StarHalf
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,22 +29,27 @@ fun StarRow(
       horizontalArrangement = Arrangement.SpaceBetween,
   ) {
 
-    // var isHalfStar = (rating % 1) != 0.0
+    var isHalfStar = (rating % 1) != 0.0
 
+    // Schleife zum Sterne erstellen
     for (index in 1..stars) {
       Icon(
           Icons.Rounded.Star,
           contentDescription = "Star Placeholder Icon",
           modifier = StarIconModifier.clickable { onRatingChange(index.toDouble()) }.size(24.dp),
+          // ausgewählte Sterne grün; Rest grau
           tint = if (rating >= index) starSelectedColor else starNotSelectedColor,
       )
-    }
-    /*if (isHalfStar){
+      /*
+      if (isHalfStar){
         isHalfStar = false
         Icons.Rounded.StarHalf
       } else {
-        Icons.Rounded.StarOutlined
-      }
-    }*/
+        Icons.Rounded.StarBorder
+      }  
+     */
+    }
+    
   }
+  
 }

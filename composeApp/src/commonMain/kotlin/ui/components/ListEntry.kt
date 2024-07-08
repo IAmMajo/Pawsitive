@@ -92,32 +92,12 @@ fun ListEntryComponent(navController: NavController, vet: Vet) {
                           modifier = Modifier.padding(start = 2.dp),
                           verticalAlignment = Alignment.CenterVertically,
                       ) {
+                        val rating = remember { mutableStateOf("") }
                         Row {
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
-                          Icon(
-                              Icons.Rounded.Star,
-                              contentDescription = "Star Placeholder Icon",
-                              tint = Color(0xFF00D47B),
-                              modifier = StarModifier)
+                          AverageStars(
+                            rating = vet.averageRating,
+                            stars = 5,
+                          )
                         }
                         Text(
                             text = vet.averageRating.format(),
